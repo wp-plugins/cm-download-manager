@@ -35,10 +35,6 @@ With this plugin you can make a directory where users can upload and manage Down
 * User can track from profile his downloads
 * User can receive  notification on new support questions
 
-**Demo**
-
-* Basic demo [Read Only mode](http://www.cminds.com/cmdownloads/).
-
 
 **More About this Plugin**
 	
