@@ -1,0 +1,75 @@
+<p class="clear">
+<?php
+if (!empty($messages)):
+    foreach ($messages as $message):
+        ?><div class="updated"><p><?php echo $message; ?></p></div><?php
+    endforeach;
+endif;
+?>
+        <form method="post" enctype="multipart/form-data">
+        <h3>General Settings:</h3>
+        <table>
+            <tr valign="top">
+                <th scope="row" valign="middle" align="left" >Downloads listing title:</th>
+                <td ><input type="text" size="60" name="addons_title" value="<?php echo esc_attr($addons_title); ?>" /></td>
+            </tr>
+            <tr valign="top">
+                <th scope="row" valign="middle" align="left" >Search placeholder text:</th>
+                <td ><input type="text" size="60" name="search_placeholder_text" value="<?php echo esc_attr($searchPlaceholder);?>" /></td>
+            </tr>
+                        <tr valign="top">
+                <th scope="row" valign="middle" align="left" >Allowed file extensions (separate with comma):</th>
+                <td ><input type="text" size="60" name="allowed_extensions" value="<?php echo esc_attr(implode(',', $allowed_extensions));?>" /></td>
+            </tr>
+            <tr valign="top">
+<th scope="row" align="left">"No screenshot" image:</th>
+<td><label for="upload_default_screenshot">
+
+<input id="upload_default_screenshot" type="text" size="60" name="upload_default_screenshot" value="<?php echo esc_attr($default_screenshot); ?>" />
+<input id="upload_default_screenshot_button" type="button" value="Upload Image" />
+<br />Enter an URL or upload an image (Size: H: 220px W: 720px)<br />
+        <img id="upload_default_screenshot_img" src="<?php echo esc_url($default_screenshot); ?>" width="720" height="220" />
+</label></td>
+</tr>
+            <tr valign="top">
+                <th scope="row" valign="middle" align="left" >Add "Downloads" (<a href="<?php echo home_url('/cmdownloads/'); ?>">/cmdownloads</a>) to site menu?:</th>
+                <td ><input type="checkbox" name="add_addons_menu" value="1" <?php checked($add_addons_menu); ?>/></td>
+            </tr>
+            <tr valign="top">
+                <th scope="row" valign="middle" align="left" >Add "My Downloads" (<a href="<?php echo home_url('/cmdownload/dashboard/'); ?>">/cmdownload/dashboard</a>) to site menu?:</th>
+                <td ><input type="checkbox" name="add_dashboard_menu" value="1" <?php checked($add_dashboard_menu); ?>/></td>
+            </tr>
+          
+        </table>
+        <h3>Notification Settings:</h3>
+        <table>
+            <tr valign="top">
+                <th scope="row" valign="middle" align="left" >New topic notification title:</th>
+                <td ><input type="text" size="60" name="<?php echo CMDM_SupportThread::OPTION_NEW_THREAD_NOTIFICATION_TITLE; ?>" value="<?php echo esc_attr($threadNewNotificationTitle);?>" /></td>
+            </tr>
+            <tr valign="top">
+                <th scope="row" valign="top" align="left" >New topic notification message:</th>
+                <td ><textarea cols="60" rows="5" name="<?php echo CMDM_SupportThread::OPTION_NEW_THREAD_NOTIFICATION; ?>"><?php echo $threadNewNotification; ?></textarea></td>
+            </tr>
+            <tr valign="top">
+                <th scope="row" valign="middle" align="left" >Topic comment notification title:</th>
+                <td ><input type="text" size="60" name="<?php echo CMDM_SupportThread::OPTION_THREAD_NOTIFICATION_TITLE; ?>" value="<?php echo esc_attr($threadNotificationTitle);?>" /></td>
+            </tr>
+            <tr valign="top">
+                <th scope="row" valign="top" align="left" >Topic comment notification message:</th>
+                <td ><textarea cols="60" rows="5" name="<?php echo CMDM_SupportThread::OPTION_THREAD_NOTIFICATION; ?>"><?php echo $threadNotification; ?></textarea></td>
+            </tr>
+        </table>
+<h3>Panel Titles:</h3>
+
+    <table>
+<?php foreach (self::$_titles as $key => $value): ?>
+            <tr valign="top">
+                <th scope="row" valign="middle" align="left" style="border-bottom:solid 1px #ccc"><?php echo $key; ?></th>
+                <td style="border-bottom:solid 1px #ccc"><input type="text" size="60" name="titles[<?php echo esc_attr($key); ?>]" value="<?php echo esc_attr($value); ?>" /></td>
+            </tr><?php endforeach; ?>
+    </table>
+    
+    <input type="submit" class="button" value="Update" />
+</form>
+</p>

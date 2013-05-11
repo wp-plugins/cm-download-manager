@@ -1,0 +1,24 @@
+<div class="CMDM">
+<table class="searchResList">
+    <?php $total = CMDM_GroupDownloadPage::getTotalCount(); ?>
+    <tr><td><a href="<?php echo CMDM_get_url('downloads', ''); ?>">All Downloads</a> (<?php echo $total; ?>)</td>
+    <?php
+    ob_start();
+    $categories = CMDM_GroupDownloadPage::getMainCategories(false, true);
+    $i=2;
+    foreach ($categories as $id=>$cat) {
+        if ($i%3==1) echo '<tr>';
+        echo '<td><a href="'.$cat['url'].'">'.$cat['name'].'</a> ('.$cat['count'].')</td>';
+        if ($i%3==0) echo '</tr>';
+        $i++;
+    }
+    if (--$i%3>0) {
+        $diff = $i%3;
+        while ($diff--) {
+            echo '<td> </td>';
+        }
+        echo '</tr>';
+    }
+    ?>
+</table>
+</div>

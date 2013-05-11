@@ -1,0 +1,19 @@
+<?php
+global $post;
+if (!empty($items)) {
+    foreach ($items as $comment) {
+        ?>
+        <tr>
+            <td><a class="topicLink" href="<?php echo get_permalink($comment['post_id']) . '/topic/' . $comment['thread_id']; ?>"><?php if ($comment['resolved']): ?>[RESOLVED] <?php endif; ?><?php echo $comment['title']; ?></a></td>
+            <td><?php echo $comment['counter']; ?></td>
+            <td><?php echo $comment['lastPoster']; ?></td>
+            <td><?php echo CMDM_SupportThread::renderDaysAgo($comment['lastUpdate']); ?>
+            </td>
+        </tr>
+        <?php
+    }
+}
+else { ?>
+        <tr><td colspan="4">No topics, would you like to create one?</td></tr>
+<?php }
+?>

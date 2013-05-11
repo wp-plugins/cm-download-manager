@@ -1,0 +1,41 @@
+<span id="CMDM_rating_counter"><?php echo $ratingCounter; ?></span> Ratings
+<?php if ($allowed): global $post;?>
+    <form method="post" action="<?php echo CMDM_get_url('cmdownload', 'rate', array('id' => $post->ID)); ?>" id="CMDM_rating_form" style="display: inline-block;vertical-align: text-bottom;">
+        <fieldset class="CMDM-rating">
+            <?php
+            for ($i = 5; $i > 0; $i--):
+                ?>
+                <input type="radio" id="star<?php echo $i; ?>" name="rating" value="<?php echo $i; ?>" <?php if ($avgRating == $i): ?>checked="checked"<?php endif; ?>/><label for="star<?php echo $i; ?>" title="<?php echo $i; ?> Stars"><?php echo $i; ?> Stars</label>
+            <?php endfor; ?>
+        </fieldset>
+      ​</form>
+<script>
+jQuery(document).ready(function($) {
+    $('.CMDM-rating input[type=radio]').click(function() {
+        var val = $(this).val();
+        var form = $('#CMDM_rating_form');
+        $.post(form.attr('action'),
+        {rating:val},
+        function(data) {
+            $('#CMDM_rating_counter').text(data.ratingCounter);
+            $('.CMDM-rating input[type=radio]').removeAttr('checked').attr('disabled', 'disabled');
+            $('#star'+data.avgRating).attr('checked', 'checked');
+            $('#CMDM-rating-message').show().delay(3000).fadeOut();
+        }, 
+        'json'
+    );
+    });
+});
+</script>
+<div id="CMDM-rating-message">Thanks for rating!</div>
+    <?php
+else:
+    for ($i = 1; $i <= $avgRating; $i++) {
+        echo '<img src="' . CMDM_URL . '/views/resources/imgs/starOn.png" alt="" width="22" height="22"/> ';
+    }
+    for ($i = 1; $i <= 5 - $avgRating; $i++) {
+        echo '<img src="' . CMDM_URL . '/views/resources/imgs/star.png" alt="" width="22" height="22"/> ';
+    }
+endif;
+?>
+
