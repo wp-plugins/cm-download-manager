@@ -15,14 +15,14 @@ With this plugin you can make a directory where users can upload and manage Down
 **Use-Cases**
 
 * Plugin Directory - Create a plugin directory similar to WordPress Plugins Directory. 
-* Download Counter - Monitor download hits / counter per each download
+* Download Counter - Count downloads per each download
 * Support forum - Support your users while letting them vote and answer existing topics per each download
 * Customer Support - Support customers questions 
 * File Manager - Manage files in a directory structure
 
 **Features**
 
-* Includes views count.
+* Includes download count.
 * Includes voting per each download.
 * Includes Download Categories.
 * Member only downloads.
@@ -33,7 +33,7 @@ With this plugin you can make a directory where users can upload and manage Down
 * Filter download by internal Search
 * Admin can define which file extensions are supported
 * User can track from profile his downloads
-* User can receive  notification on new support questions
+* User can receive notification on new support questions
 
 **Demo**
 
