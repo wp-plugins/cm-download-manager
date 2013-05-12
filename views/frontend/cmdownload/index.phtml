@@ -16,12 +16,14 @@ get_header();
 <div class="CMDM">
 <div class="CMDM-app">
     <div class="aside">
+		<?  if ( is_user_logged_in() ) {  ?> 
             <div class="sideBox">
                 <div class="manageAddOns">
                     <a class="manageAddOnsA" href="<?php echo CMDM_get_url('cmdownload', 'dashboard'); ?>">Manage my Downloads <img src="<?php echo CMDM_URL; ?>/views/resources/imgs/uploadIcon.png" alt="" style="vertical-align:middle;"></a>
                     
                 </div>
             </div>
+			<? } ?>
             <!--/sideBox -->
 <?php dynamic_sidebar('cm-download-manager-sidebar'); ?>
     </div>
