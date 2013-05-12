@@ -5,6 +5,8 @@
     <?php echo $author; ?> <br />
     <label>Version:</label>
     <?php echo $version; ?><br />
+    <label>Downloads:</label>
+    <cite><?php $counter=CMDM_number_of_downloads(); echo $counter; ?> Download<?php if ($counter>1 || $counter==0) echo 's'; ?></cite> <br />
       <label>Updated:</label>
     <?php echo $updated; ?><br />
     

@@ -1,11 +1,16 @@
 <div class="CMDM">
 <table class="CMDM-dashboard">
     <thead>
-        <tr>
-            <th>Title</th>
+	<tr>
+	<th colspan=4>
+	&nbsp;&nbsp;<a href="<?php echo CMDM_get_url('cmdownload', 'add'); ?>" class="CMDM-add">Add new</a>
+	</th>
+	</tr>
+	<tr>
+            <th style="min-width:250px">Title</th>
             <th>Status</th>
-            <th>Number of downloads</th>
-            <th>Actions<a href="<?php echo CMDM_get_url('cmdownload', 'add'); ?>" class="CMDM-add">Add new</a></th>
+            <th >Downloads</th>
+            <th style="min-width:200px">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -18,7 +23,7 @@
             <tr>
                 <td><a href="<?php echo get_permalink($download->getId()); ?>"><?php echo $download->getTitle(); ?></a></td>
                 <td><?php $status = $download->getStatus(); echo ucfirst($status); ?></td>
-                <td><?php echo $download->getNumberOfDownloads(); ?></td>
+                <td align="center"><?php echo $download->getNumberOfDownloads(); ?></td>
                 <?php
                 if ($status == 'published') $action = 'unpublish';
                 else $action = 'publish';

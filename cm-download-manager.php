@@ -5,7 +5,7 @@
   Plugin URI: http://www.cminds.com/plugins/download-manager
   Description: Allow users to post downloads in a derctory
   Author: CreativeMinds
-  Version: 1.0
+  Version: 1.0.1
  */
 
 /*
