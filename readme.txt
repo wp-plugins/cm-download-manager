@@ -66,6 +66,12 @@ In your template create a directory "CMDM". Inside you can place a structure sim
 
 == Screenshots ==
 
+1. Main Download Page
+2. Specific Download Page
+3. Download Support Forum.
+4. Support Forum Functionality.
+5. Add download form
+
 
 
 == Changelog ==
