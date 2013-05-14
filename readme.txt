@@ -7,10 +7,10 @@ Requires at least: 3.2
 Tested up to: 3.5
 Stable tag: 1.0.1
 
-Allow users to upload and manage Downloads in a directory structure for others users to use and comment.
+Allow users to upload,manage,track and support documents or files in a directory listing structure for others to use and comment like WP Plugin Directory
  
 == Description ==
-With this plugin you can make a directory where users can upload and manage Downloads / Apps / Add-on / Packages / Plugins / Archives with detailed description for other to download and use. It also contains download counter and support forum per each download page (like WP Plugin Directory)
+With this plugin you can make a directory where users can upload and manage Files / Downloads / Apps / Add-on / Packages / Plugins / Archives each containing detailed description. It contains download counter and support forum per each download page (like WP Plugin Directory)
 
 **Use-Cases**
 
@@ -22,7 +22,7 @@ With this plugin you can make a directory where users can upload and manage Down
 
 **Features**
 
-* Includes download count.
+* Includes download counter.
 * Includes voting per each download.
 * Includes Download Categories.
 * Member only downloads.
