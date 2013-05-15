@@ -99,14 +99,14 @@ list-style-type: none;}
 .CMDM .tabNav li.on { background: url(imgs/tabOn.png) center 0 no-repeat; border-color: transparent; }
 .CMDM .tabNav li.on + li { border-color: transparent; }
 .CMDM .tabItem { display: none; padding: 10px; line-height: 2; }
-.CMDM .tabItem p { line-height: 2; margin: 1em 0; }
+.CMDM .tabItem p { line-height: 2; margin: 1em 0; max-width:500px;word-wrap:break-word;}
 .CMDM .tabItem p strong,
 .CMDM .tabItem p a { color: #473e82; }
 .CMDM .tabItem.tabItemSupport { padding: 5px 0; }
-.CMDM .topicTblWrapper { background: #fff; border: 1px solid #ccc; padding-bottom: 20px; }
+.CMDM .topicTblWrapper { background: #fff; border: 1px solid #ccc; padding-bottom: 3px; }
 .CMDM .topicTbl { border-collapse: collapse; width: 100%; }
-.CMDM .topicTbl th { background: #ededed; border-bottom: 1px solid #ffcc00; color: #473e82; padding: 5px 10px; white-space: nowrap; text-align: left; }
-.CMDM .topicTbl td { background: #fff; border-bottom: 1px solid #ccc; padding: 5px 10px; white-space: nowrap; }
+.CMDM .topicTbl th { background: #ededed; border-bottom: 1px solid #ccc; color: #473e82; padding: 5px 10px; white-space: nowrap; text-align: left; }
+.CMDM .topicTbl td { background: #fff; border-bottom: 1px solid #ccc; padding: 5px 10px; }
 .CMDM .topicTbl td .topicLink { width: 400px; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-decoration: none; }
 .CMDM .topicTbl td .topicLink:hover { text-decoration: underline; }
 .CMDM .topicTbl td .topicLink:before { content: ""; border: solid transparent; border-width: 4px 0 3px 5px; border-left-color: #473e82; display: inline-block; vertical-align: middle; margin: -3px 5px 0 0;}
@@ -172,6 +172,7 @@ padding-left: 0px}
 .CMDM_comment_author {font-weight:bold;font-size:12px;}
 .CMDM_comment_date {}
 .CMDM_comment_date a {}
+.CMDM_author_color  {color: #473e82;}
 .CMDM_comment_content {vertical-align:top;text-align:left;line-height:1.0em}
 .CMDM .tabItem .CMDM_comment_content p {margin:0;line-height: 1.0em;}
 .CMDM .topicTbl a.CMDM_back_to_support {font-size:11px;float:right;}

@@ -28,13 +28,13 @@ if (have_posts()):
                                         <tr>
                                             <th colspan="2" class="CMDM_thread_title"><?php
                                             if ($thread['resolved']): ?>[RESOLVED] <?php endif; ?>
-                                            <?php echo $thread['title']; ?><a class="CMDM_back_to_support" href="<?php the_permalink($post->ID); ?>#support">&laquo; Back to Support Page</a></th>
+                                            <a class="CMDM_back_to_support" href="<?php the_permalink($post->ID); ?>#support">&laquo; Back to Support Page</a><br><?php echo $thread['title']; ?></th>
                                         </tr>
                                     </thead>
                                     <tbody id="threadTableContainer">
                                         <tr class="CMDM_comment CMDM_comment_main" id="comment-<?php echo $thread['thread_id']; ?>">
                                             <td class="CMDM_comment_meta" align="left" valign="top">
-                                                <div class="CMDM_comment_author"><?php echo $thread['author']; ?></div>
+                                                <div class="CMDM_comment_author"><?php echo '<span class="CMDM_author_color">'.$thread['author'].'</span>'; ?></div>
                                                 <div class="CMDM_comment_date"><?php echo ($thread['date']);
                     ?> <a href="#comment-<?php echo $thread['thread_id']; ?>">#</a></div>
                                             </td>
@@ -42,10 +42,22 @@ if (have_posts()):
                                                 <?php echo nl2br($thread['question']); ?>
                                             </td>
                                         </tr>
-                                        <?php foreach ($thread['comments'] as $comment): ?>
+									</tbody>
+                                </table></div>
+								<br>
+                            <div class="topicTblWrapper">
+									<table class="topicTbl" id="threadTable" style="position:relative">
+                                    <tbody id="threadTableContainer">
+	                                    <?php foreach ($thread['comments'] as $comment): ?>
                                             <tr class="CMDM_comment" id="comment-<?php echo $comment->comment_ID; ?>">
                                                 <td class="CMDM_comment_meta" align="left" valign="top">
-                                                    <div class="CMDM_comment_author"><?php echo get_comment_author($comment->comment_ID); ?></div>
+                                                    <div class="CMDM_comment_author">
+													<?php 
+														if (get_comment_author($comment->comment_ID) == $thread['author']) echo '<span class="CMDM_author_color">'.get_comment_author($comment->comment_ID).'</span>'; 
+														elseif (get_comment_author($comment->comment_ID) == $author) echo get_comment_author($comment->comment_ID).' (Author)'; 
+														else  echo get_comment_author($comment->comment_ID); 
+													?>
+														</div>
                                                     <div class="CMDM_comment_date"><?php echo (get_comment_date('Y-m-d H:i', $comment->comment_ID));
                                             ?> <a href="#comment-<?php echo $comment->comment_ID; ?>">#</a></div>
                                                 </td>
@@ -55,8 +67,7 @@ if (have_posts()):
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
-                                </table>
-                            </div>
+                                </table></div>
                         </div>
                         <div class="boxWhite694">
                             <form id="addCommentForm" action="<?php the_permalink($post->ID); ?>topic/<?php echo $thread['thread_id']; ?>/add" method="post" style="position:relative">
