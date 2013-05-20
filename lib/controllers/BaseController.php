@@ -458,18 +458,18 @@ abstract class CMDM_BaseController {
     }
 
     public static function registerAdminPages() {
-        wp_enqueue_script('jquery');
-        wp_enqueue_script('media-upload');
-wp_enqueue_script('thickbox');
-wp_register_script('cmdm-admin-upload', CMDM_URL.'/views/resources/js/admin.js', array('jquery','media-upload','thickbox'));
-wp_enqueue_script('cmdm-admin-upload');
-wp_enqueue_style('thickbox');
+
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'CM Downloads Settings', 'Downloads Settings', 'manage_options', self::ADMIN_SETTINGS, array(get_class(), 'displaySettingsPage'));
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'About', 'About', 'manage_options', self::ADMIN_ABOUT, array(get_class(), 'displayAboutPage'));
     }
 
     public static function displaySettingsPage() {
-        
+                wp_enqueue_script('jquery');
+        wp_enqueue_script('media-upload');
+wp_enqueue_script('thickbox');
+wp_register_script('cmdm-admin-upload', CMDM_URL.'/views/resources/js/admin.js', array('jquery','media-upload','thickbox'));
+wp_enqueue_script('cmdm-admin-upload');
+wp_enqueue_style('thickbox');
         $messages = array();
         if (!empty($_POST['titles'])) {
             self::$_titles = array_map('stripslashes', $_POST['titles']);
