@@ -31,7 +31,7 @@ function CMDM_get_screenshots($id = 0) {
     return $download->getScreenshots();
 }
 function CMDM_get_default_screenshot() {
-    return CMDM_DownloadController::getDefaultScreenshot();
+    return CMDM_CmdownloadController::getDefaultScreenshot();
 }
 
 ?>

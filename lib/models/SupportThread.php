@@ -56,32 +56,60 @@ Click to see: [comment_link]';
         return compact('items', 'total');
     }
 
-    public static function renderDaysAgo($date) {
-        if (!is_numeric($date))
-            $date = strtotime($date);
-        $days_ago = round(( date('U') - $date ) / ( 60 * 60 * 24 ));
-        if ($days_ago == 0)
-            return 'today';
-        elseif ($days_ago == 1)
-            return '1 day ago';
+    public static function renderDaysAgo($date, $gmt = false)
+    {
+        if (!is_numeric($date)) $date = strtotime($date);
+        $current = current_time('timestamp', $gmt);
+        $seconds_ago = floor($current - $date);
+        if ($seconds_ago < 0) return __('some time ago', 'cm-download-manager');
         else {
-            if ($days_ago > 30) {
-                $months_ago = $days_ago / 30;
-                if ($months_ago == 1) {
-                    return '1 month ago';
+            if ($seconds_ago < 60) {
+                return sprintf(_n('1 second ago', '%d seconds ago',
+                                $seconds_ago, 'cm-download-manager'), $seconds_ago);
+            } else {
+                $minutes_ago = floor($seconds_ago / 60);
+                if ($minutes_ago < 60) {
+                    return sprintf(_n('1 minute ago', '%d minutes ago',
+                                    $minutes_ago, 'cm-download-manager'),
+                            $minutes_ago);
                 } else {
-                    if ($months_ago > 12) {
-                        $years_ago = $months_ago / 12;
-                        if ($years_ago == 1)
-                            return '1 year ago';
-                        else
-                            return $years_ago . ' years ago';
+                    $hours_ago = floor($minutes_ago / 60);
+                    if ($hours_ago < 24) {
+                        return sprintf(_n('1 hour ago', '%d hours ago',
+                                        $hours_ago, 'cm-download-manager'),
+                                $hours_ago);
                     } else {
-                        return $months_ago . ' months ago';
+                        $days_ago = floor($hours_ago / 24);
+                        if ($days_ago < 7) {
+                            return sprintf(_n('1 day ago', '%d days ago',
+                                            $days_ago, 'cm-download-manager'),
+                                    $days_ago);
+                        } else {
+                            $weeks_ago = floor($days_ago / 7);
+                            if ($weeks_ago < 4) {
+                                return sprintf(_n('1 week ago', '%d weeks ago',
+                                                $weeks_ago, 'cm-download-manager'),
+                                        $weeks_ago);
+                            } else {
+                                $months_ago = floor($weeks_ago / 4);
+                                if ($months_ago < 12) {
+                                    return sprintf(_n('1 month ago',
+                                                    '%d months ago',
+                                                    $months_ago,
+                                                    'cm-download-manager'),
+                                            $months_ago);
+                                } else {
+                                    $years_ago = floor($months_ago / 12);
+                                    return sprintf(_n('1 year ago',
+                                                    '%d years ago', $years_ago,
+                                                    'cm-download-manager'),
+                                            $years_ago);
+                                }
+                            }
+                        }
                     }
                 }
-            } else
-                return $days_ago . ' days ago';
+            }
         }
     }
 
@@ -182,7 +210,7 @@ Click to see: [comment_link]';
         $thread = self::getThread($thread_id);
         $counter = count($thread['comments']);
         $user = get_userdata($lastAuthorId);
-        update_comment_meta($thread_id, '_thread_updated', current_time('timestamp'));
+        update_comment_meta($thread_id, '_thread_updated', current_time('timestamp', true));
         update_comment_meta($thread_id, '_thread_posts', $counter);
         if ($resolved)
             update_comment_meta($thread_id, '_thread_resolved', $resolved);
@@ -203,7 +231,7 @@ Click to see: [comment_link]';
             'content' => $comment->comment_content,
             'author' => get_comment_author($comment_id),
             'date' => get_comment_date('Y-m-d H:i', $comment_id),
-            'daysAgo' => self::renderDaysAgo(get_comment_date('', $comment_id))
+            'daysAgo' => self::renderDaysAgo(get_comment_date('G', $comment_id), true)
         );
         return $retVal;
     }
@@ -221,7 +249,7 @@ Click to see: [comment_link]';
                     'pre' => array()
                 )));
         if (empty($content))
-            $errors[] = 'Content cannot be empty';
+            $errors[] = __('Content cannot be empty', 'cm-download-manager');
         if (!empty($errors)) {
             throw new Exception(serialize($errors));
         }
@@ -254,9 +282,9 @@ Click to see: [comment_link]';
                     'pre' => array()
                 )));
         if (empty($title))
-            $errors[] = 'Title cannot be empty';
+            $errors[] = __('Title cannot be empty', 'cm-download-manager');
         if (empty($content))
-            $errors[] = 'Content cannot be empty';
+            $errors[] = __('Content cannot be empty', 'cm-download-manager');
         if (!empty($errors)) {
             throw new Exception(serialize($errors));
         }

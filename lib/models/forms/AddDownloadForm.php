@@ -17,58 +17,58 @@ class CMDM_AddDownloadForm extends CMDM_Form {
                 ->setEnctype('multipart/form-data')
                 ->addElement(
                         CMDM_Form_Element::factory('text', 'title')
-                        ->setLabel('Title')
+                        ->setLabel(__('Title', 'cm-download-manager'))
                         ->setRequired()
                 )
                 ->addElement(
                         CMDM_Form_Element::factory('text', 'version')
-                        ->setLabel('Version')
+                        ->setLabel(__('Version', 'cm-download-manager'))
                         ->setRequired()
                 )
                 ->addElement(
                         CMDM_Form_Element::factory('fileUploader', 'package')
-                        ->setLabel('File')
-                        ->setDescription('(Allowed extensions: '.implode(', ', get_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, array('zip', 'doc', 'docx', 'pdf'))).')')
+                        ->setLabel(__('File', 'cm-download-manager'))
+                        ->setDescription('('.__('Allowed extensions', 'cm-download-manager').': '.implode(', ', get_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, array('zip', 'doc', 'docx', 'pdf'))).')')
                         ->addValidator('fileExtension', get_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, array('zip', 'doc', 'docx', 'pdf')))
                         ->setRequired()
                 )
                 ->addElement(CMDM_Form_Element::factory('multiCheckbox', 'categories')
-                        ->setLabel('Category (max. 3)')
+                        ->setLabel(__('Category (max. 3)', 'cm-download-manager'))
                         ->setRequired()
                         ->setOptions(CMDM_GroupDownloadPage::getMainCategories())
                 )
                 ->addElement(
                         CMDM_Form_Element::factory('visual', 'description')
-                        ->setLabel('Description')
+                        ->setLabel(__('Description', 'cm-download-manager'))
                         ->setSize(5, 100)
                         ->setRequired()
                 )
                 ->addElement(
                         CMDM_Form_Element::factory('SWFUploader', 'screenshots')
-                        ->setLabel('Screenshots')
-                        ->setDescription('(Max. 4, Size: H: 220px W: 720px)')
+                        ->setLabel(__('Screenshots', 'cm-download-manager'))
+                        ->setDescription(sprintf(__('(Max. %d, Size: H: %dpx W: %dpx)','cm-download-manager'), 4, 220, 720))
 //                        ->setRequired()
                         ->setAttribs(array(
                             'uploadUrl' => home_url('/cmdownload/screenshots'),
                             'fileSizeLimit' => '1 MB',
                             'fileTypes' => '*.jpg;*.gif;*.png',
-                            'fileTypesDescription' => 'Images',
+                            'fileTypesDescription' => __('Images', 'cm-download-manager'),
                             'fileUploadLimit' => 4
                         ))
         );
         if (current_user_can('manage_options')) {
             $this->addElement(
                     CMDM_Form_Element::factory('checkbox', 'admin_supported')
-                            ->setLabel('Admin Recommended')
+                            ->setLabel(__('Admin Recommended', 'cm-download-manager'))
             );
         }
         $this->addElement(
                 CMDM_Form_Element::factory('checkbox', 'support_notifications')
-                        ->setLabel('Notify me on new support topics')
+                        ->setLabel(__('Notify me on new support topics', 'cm-download-manager'))
         );
         $this->addElement(
                 CMDM_Form_Element::factory('submit', 'submit')
-                        ->setValue(isset($editId) ? 'Update' : 'Add')
+                        ->setValue(isset($editId) ? __('Update', 'cm-download-manager') : __('Add', 'cm-download-manager'))
         );
         if (isset($editId)) {
             $this->getElement('package')->setRequired(false);

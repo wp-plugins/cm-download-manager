@@ -36,14 +36,14 @@ class CMDM_Form_Element_SWFUploader extends CMDM_Form_Element {
             $_value = $value;
         if ($this->isRequired() && empty($_value)) {
             if ($showError)
-                $this->addError($this->getLabel() .' needs to be uploaded');
+                $this->addError(sprintf(__('%s needs to be uploaded', 'cm-download-manager'), $this->getLabel()));
             return false;
         }
         $fileUploadLimit = isset($this->_attribs['fileUploadLimit']) ? $this->_attribs['fileUploadLimit'] : 0;
         if ($fileUploadLimit > 0) {
             if (is_array($_value) && count($_value) > $fileUploadLimit) {
                 if ($showError)
-                    $this->addError('Limit of uploaded files (' . $fileUploadLimit . ') has been exceeded!');
+                    $this->addError(sprintf(__e('Limit of uploaded files (%s) has been exceeded!', 'cm-download-manager'), $fileUploadLimit));
                 return false;
             }
         }
@@ -125,10 +125,10 @@ class CMDM_Form_Element_SWFUploader extends CMDM_Form_Element {
                         jQuery("#<?php echo $this->getId(); ?>").val(JSON.stringify(currentFiles));
                         progress.setName(serverData.message, "<?php echo CMDM_get_url('cmdownload', 'screenshot', array('size'=>'196x60', 'img'=>'')); ?>");
                         progress.setComplete(<?php echo $this->getId(); ?>deleteCallback);
-                        progress.setStatus("Complete.");
+                        progress.setStatus("<?php _e('Completed', 'cm-download-manager'); ?>");
                     } else {
                         //error Handling
-                        progress.setStatus('Upload failed.');
+                        progress.setStatus('<?php _e('Upload failed', 'cm-download-manager'); ?>');
                         progress.setError();
                     } 
                     progress.enableSubmit();
@@ -174,7 +174,7 @@ class CMDM_Form_Element_SWFUploader extends CMDM_Form_Element {
         $html = '<div '.$this->_getClassName().'>';
         $html .= '<input type="hidden" id="' . $this->getId() . '" name="' . $this->getId() . '" value="' . esc_attr(json_encode($value)) . '" />';
         $html .= '<div id="' . $this->getId() . '_error" style="display:none"></div>';
-        $html .= '<span id="' . $this->getId() . '_button">Upload</span>';
+        $html .= '<span id="' . $this->getId() . '_button">'.__('Upload', 'cm-download-manager').'</span>';
         $html .= '<div class="fieldset flash" id="' . $this->getId() . 'fsUploadProgress">';
         foreach ($value as $row) {
             ob_start();

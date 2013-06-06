@@ -19,6 +19,7 @@ class CMDM_Form_Element {
     protected $_filters = array();
 
     public function __construct($id) {
+        $this->_requiredError = sprintf(__('%s is required', 'cm-download-manager'), '%label%');
         $this->setId($id);
         $this->_init();
         return $this;

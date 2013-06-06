@@ -5,7 +5,7 @@
   Plugin URI: http://www.cminds.com/plugins/download-manager
   Description: Allow users to upload,manage,track and support documents or files in a directory listing structure for others to use and comment
   Author: CreativeMinds
-  Version: 1.0.3
+  Version: 1.2
  */
 
 /*
@@ -24,6 +24,7 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
+load_plugin_textdomain( 'cm-download-manager', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 if (version_compare('5.3', phpversion(), '>')) {
     die('We are sorry, but you need to have at least PHP 5.3 to run this plugin (currently installed version: '.phpversion().') - please upgrade or contact your system administrator.');
 }

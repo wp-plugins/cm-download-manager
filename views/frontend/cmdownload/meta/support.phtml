@@ -2,10 +2,10 @@
     <table class="topicTbl" style="position:relative">
         <thead>
             <tr>
-                <th>Topic</th>
-                <th>Posts</th>
-                <th>Last Poster</th>
-                <th>Updated</th>
+                <th><?php _e('Topic', 'cm-download-manager'); ?></th>
+                <th><?php _e('Posts', 'cm-download-manager'); ?></th>
+                <th><?php _e('Last Poster', 'cm-download-manager'); ?></th>
+                <th><?php _e('Updated', 'cm-download-manager'); ?></th>
             </tr>
         </thead>
         <tbody id="threadsContainer">
@@ -32,18 +32,18 @@ $currentPage = 1;
 <?  if ( is_user_logged_in() ) {  ?>     
 <div class="boxWhite694">
     <form id="addThreadForm" action="<?php the_permalink($post->ID); ?>/topic/add" method="post" style="position:relative">
-        <h5>Leave your comment/question</h5>
+        <h5><?php _e('Leave your comment/question', 'cm-download-manager'); ?></h5>
         <ul class="CMDM_error" style="display:none"></ul>
         <ul class="notes">
-            <li>Allow markup: &lt;strong&gt;, &lt;em&gt;, &lt;a&gt;</li>
-            <li>Wrap your code using &lt;pre&gt;&lt;/pre&gt;</li>
+            <li><?php _e('Allow markup', 'cm-download-manager'); ?>: &lt;strong&gt;, &lt;em&gt;, &lt;a&gt;</li>
+            <li><?php _e('Wrap your code using', 'cm-download-manager'); ?> &lt;pre&gt;&lt;/pre&gt;</li>
         </ul>
-        <input type="text" name="thread_title" placeholder="Title" autocomplete="off"/><br />
-        <textarea name="thread_comment" cols="" rows="" placeholder="What is your comment about?"></textarea>
+        <input type="text" name="thread_title" placeholder="<?php _e('Title', 'cm-download-manager'); ?>" autocomplete="off"/><br />
+        <textarea name="thread_comment" cols="" rows="" placeholder="<?php _e('What is your comment about?"', 'cm-download-manager'); ?>"></textarea>
         <label>
             <input name="thread_notify" type="checkbox" value="1"/>
-            Notify me of follow</label>
-        <button class="butPost">Post &gt;</button>
+            <?php _e('Notify me of follow', 'cm-download-manager'); ?></label>
+        <button class="butPost"><?php _e('Post', 'cm-download-manager'); ?> &gt;</button>
     </form>
 </div>
 <? } ?>

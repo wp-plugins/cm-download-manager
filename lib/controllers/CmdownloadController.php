@@ -381,10 +381,10 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
             if (self::_isPost() && $form->isValid($_POST)) {
                 $item = CMDM_GroupDownloadPage::newInstance($form->getValues());
                 if ($item instanceof CMDM_GroupDownloadPage)
-                    self::_addMessage(self::MESSAGE_SUCCESS, '"' . $item->getTitle() . '" has been succesfully added - <a href="' . get_permalink($item->getId()) . '">View &raquo;</a>');
+                    self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully added', 'cm-download-manager'), $item->getTitle()).' - <a href="' . get_permalink($item->getId()) . '">'.__('View', 'cm-download-manager').' &raquo;</a>');
 
                 else
-                    self::_addMessage(self::MESSAGE_ERROR, 'There was an error while adding new element: "' . $item . '"');
+                    self::_addMessage(self::MESSAGE_ERROR, __('There was an error while adding new element', 'cm-download-manager').': "' . $item . '"');
                 wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                 exit;
             }
@@ -415,7 +415,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
                     $form = CMDM_Form::getInstance('AddDownloadForm', array('edit_id' => $id));
                     if (self::_isPost() && $form->isValid($_POST)) {
                         $download->update($form->getValues());
-                        self::_addMessage(self::MESSAGE_SUCCESS, '"' . $name . '" has been succesfully updated - <a href="' . get_permalink($id) . '">View &raquo;</a>');
+                        self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully updated', 'cm-download-manager'), $name).' - <a href="' . get_permalink($id) . '">View &raquo;</a>');
                         wp_redirect(self::getUrl('cmdownload', 'edit', array('id' => $id)), 303);
                         exit;
                     }
@@ -480,14 +480,14 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
             } else {
                 $download = CMDM_GroupDownloadPage::getInstance($id);
                 if (!$download->isEditAllowed(get_current_user_id())) {
-                    self::_addError('You are not allowed to delete this element');
+                    self::_addError(__('You are not allowed to delete this element', 'cm-download-manager'));
                     return;
                 } else {
                     $name = $download->getTitle();
                     if ($download->delete())
-                        self::_addMessage(self::MESSAGE_SUCCESS, '"' . $name . '" has been succesfully deleted');
+                        self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully deleted', 'cm-download-manager'), $name));
                     else
-                        self::_addMessage(self::MESSAGE_ERROR, 'There was an error while deleting "' . $name . '"');
+                        self::_addMessage(self::MESSAGE_ERROR, sprintf(__('There was an error while deleting "%s"', 'cm-download-manager'), $name));
                     wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                     exit;
                 }
@@ -505,11 +505,11 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
                 $download = CMDM_GroupDownloadPage::getInstance($id);
                 $name = $download->getTitle();
                 if (!$download->isEditAllowed(get_current_user_id())) {
-                    self::_addError('You are not allowed to change status of this element');
+                    self::_addError(__('You are not allowed to change status of this element', 'cm-download-manager'));
                     return;
                 } else {
                     $download->setStatus('publish', true);
-                    self::_addMessage(self::MESSAGE_SUCCESS, '"' . $name . '" has been succesfully published');
+                    self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully published', 'cm-download-manager'), $name));
                     wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                     exit;
                 }
@@ -527,11 +527,11 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
                 $download = CMDM_GroupDownloadPage::getInstance($id);
                 $name = $download->getTitle();
                 if (!$download->isEditAllowed(get_current_user_id())) {
-                    self::_addError('You are not allowed to change status of this element');
+                    self::_addError(__('You are not allowed to change status of this element', 'cm-download-manager'));
                     return;
                 } else {
                     $download->setStatus('draft', true);
-                    self::_addMessage(self::MESSAGE_SUCCESS, '"' . $name . '" has been succesfully unpublished');
+                    self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully unpublished', 'cm-download-manager'), $name));
                     wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                     exit;
                 }
@@ -547,7 +547,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
             $multiplier = ($unit == 'M' ? 1048576 : ($unit == 'K' ? 1024 : ($unit == 'G' ? 1073741824 : 1)));
 
             if ((int) $_SERVER['CONTENT_LENGTH'] > $multiplier * (int) $POST_MAX_SIZE && $POST_MAX_SIZE) {
-                self::handleUploadError("POST exceeded maximum allowed size.");
+                self::handleUploadError(__("POST exceeded maximum allowed size.", 'cm-download-manager'));
                 exit;
             }
 
@@ -561,12 +561,12 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
             $file_name = "";
             $file_extension = "";
             $uploadErrors = array(
-                0 => "There is no error, the file uploaded with success",
-                1 => "The uploaded file exceeds the upload_max_filesize directive in php.ini",
-                2 => "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form",
-                3 => "The uploaded file was only partially uploaded",
-                4 => "No file was uploaded",
-                6 => "Missing a temporary folder"
+                0 => __("There is no error, the file uploaded with success", 'cm-download-manager'),
+                1 => __("The uploaded file exceeds the upload_max_filesize directive in php.ini", 'cm-download-manager'),
+                2 => __("The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form", 'cm-download-manager'),
+                3 => __("The uploaded file was only partially uploaded", 'cm-download-manager'),
+                4 => __("No file was uploaded", 'cm-download-manager'),
+                6 => __("Missing a temporary folder", 'cm-download-manager')
             );
 
 
@@ -588,7 +588,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
 // Validate the file size (Warning: the largest files supported by this code is 2GB)
             $file_size = @filesize($_FILES[$upload_name]["tmp_name"]);
             if (!$file_size || $file_size > $max_file_size_in_bytes) {
-                self::handleUploadError("File exceeds the maximum allowed size");
+                self::handleUploadError(__("File exceeds the maximum allowed size", 'cm-download-manager'));
                 exit;
             }
 
@@ -602,14 +602,14 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
             $file_name = preg_replace('/[^' . $valid_chars_regex . ']|\.+$/i', "", basename($_FILES[$upload_name]['name']));
             $file_name = sanitize_file_name($file_name);
             if (strlen($file_name) == 0 || strlen($file_name) > $MAX_FILENAME_LENGTH) {
-                self::handleUploadError("Invalid file name");
+                self::handleUploadError(__("Invalid file name", 'cm-download-manager'));
                 exit;
             }
 
 
 // Validate that we won't over-write an existing file
             if (file_exists($save_path . $file_name)) {
-                self::handleUploadError("File with this name already exists");
+                self::handleUploadError(__("File with this name already exists", 'cm-download-manager'));
                 exit;
             }
 
@@ -624,7 +624,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
                 }
             }
             if (!$is_valid_extension) {
-                self::handleUploadError("Invalid file extension");
+                self::handleUploadError(__("Invalid file extension", 'cm-download-manager'));
                 exit;
             }
             try {

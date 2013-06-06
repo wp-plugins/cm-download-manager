@@ -182,9 +182,9 @@ class CMDM_GroupDownloadPage extends CMDM_PostType {
     public function getStatus() {
         $status = $this->post->post_status;
         if ($status == 'draft')
-            return 'not published';
+            return __('not published', 'cm-download-manager');
         elseif ($status == 'publish')
-            return 'published';
+            return __('published', 'cm-download-manager');
     }
 
     /**
@@ -222,7 +222,8 @@ class CMDM_GroupDownloadPage extends CMDM_PostType {
      * @return string
      */
     public function getUpdated($format = 'F j, Y') {
-        return date($format, strtotime($this->post->post_modified));
+        if (empty($format)) $format = get_option('date_format');
+        return date_i18n($format, strtotime($this->post->post_modified));
     }
 
     public function setUpdated($date = null) {

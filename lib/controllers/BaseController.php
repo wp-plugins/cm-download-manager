@@ -451,7 +451,7 @@ abstract class CMDM_BaseController {
 
     public static function _userRequired() {
         if (!is_user_logged_in()) {
-            self::_addError('You have to be logged in to see this page. <a href="' . wp_login_url($_SERVER['REQUEST_URI']) . '">Log in</a>');
+            self::_addError(__('You have to be logged in to see this page', 'cm-download-manager').' <a href="' . wp_login_url($_SERVER['REQUEST_URI']) . '">'.__('Log in', 'cm-download-manager').'</a>');
             return false;
         }
         return true;

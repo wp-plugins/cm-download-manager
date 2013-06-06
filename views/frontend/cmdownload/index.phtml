@@ -19,7 +19,7 @@ get_header();
 		<?  if ( is_user_logged_in() ) {  ?> 
             <div class="sideBox">
                 <div class="manageAddOns">
-                    <a class="manageAddOnsA" href="<?php echo CMDM_get_url('cmdownload', 'dashboard'); ?>">Manage my Downloads <img src="<?php echo CMDM_URL; ?>/views/resources/imgs/uploadIcon.png" alt="" style="vertical-align:middle;"></a>
+                    <a class="manageAddOnsA" href="<?php echo CMDM_get_url('cmdownload', 'dashboard'); ?>"><?php _e('Manage my Downloads', 'cm-download-manager'); ?> <img src="<?php echo CMDM_URL; ?>/views/resources/imgs/uploadIcon.png" alt="" style="vertical-align:middle;"></a>
                     
                 </div>
             </div>
@@ -52,9 +52,9 @@ get_header();
             }
             $title = $cats[count($cats) - 1];
         } elseif (is_search()) {
-            $title = 'Search Results for <em>"' . get_search_query() . '"</em>';
+            $title = __('Search Results for', 'cm-download-manager').' <em>"' . get_search_query() . '"</em>';
         } else {
-            $title = 'All Downloads';
+            $title = __('All Downloads', 'cm-download-manager');
         }
         ?>
 
@@ -69,10 +69,12 @@ get_header();
         <!--/boxGrey724 -->
         <div class="searchResItems">
             <?php if (have_posts()): ?>
-                <div class="searchTitle">Showing <?php echo $showingStart . '-' . $showingEnd; ?> of <?php echo $total; ?></div>
+                <div class="searchTitle"><?php
+                printf(__('Showing %d-%d of %d', 'cm-download-manager'), $showingStart, $showingEnd, $total);
+                ?></div>
                 <ul>
                     <?php while (have_posts()): the_post(); ?>
-                        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> <cite><?php $counter=CMDM_number_of_downloads(); echo $counter; ?> Download<?php if ($counter>1 || $counter==0) echo 's'; ?></cite> <a href="<?php the_permalink(); ?>" class="download">Info</a></li>
+                        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> <cite><?php $counter=CMDM_number_of_downloads(); echo $counter; ?> <?php if ($counter>1 || $counter==0) _e('Downloads', 'cm-download-manager'); else _e('Download', 'cm-download-manager'); ?></cite> <a href="<?php the_permalink(); ?>" class="download"><?php _e('Info', 'cm-download-manager'); ?></a></li>
                     <?php endwhile; ?>
                 </ul>
                 <div class="paging">
@@ -94,7 +96,7 @@ get_header();
                     <a href="<?php echo $next_link; ?>" class="next">&raquo;</a></div>
                 <!--/paging --> 
             <?php else: ?>
-                <div class="searchTitle">No results has been found</div>
+                <div class="searchTitle"><?php _e('No results has been found', 'cm-download-manager'); ?></div>
                 <div class="paging">
                     <a href="#" class="prev">&laquo;</a>
                     1

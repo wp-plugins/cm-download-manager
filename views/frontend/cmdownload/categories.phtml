@@ -1,7 +1,7 @@
 <div class="CMDM">
 <table class="searchResList">
     <?php $total = CMDM_GroupDownloadPage::getTotalCount(); ?>
-    <tr><td><a href="<?php echo CMDM_get_url('downloads', ''); ?>">All Downloads</a> (<?php echo $total; ?>)</td>
+    <tr><td><a href="<?php echo CMDM_get_url('cmdownloads', ''); ?>"><?php _e('All Downloads', 'cm-download-manager'); ?></a> (<?php echo $total; ?>)</td>
     <?php
     ob_start();
     $categories = CMDM_GroupDownloadPage::getMainCategories(false, true);
