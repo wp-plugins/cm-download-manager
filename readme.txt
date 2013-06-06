@@ -34,6 +34,8 @@ With this plugin you can make a directory where users can upload and manage File
 * Admin can define which file extensions are supported
 * User can track from profile his downloads
 * User can receive notification on new support questions
+* User can receive notification on new support questions
+* Plugin is localized. We will be happy to add more language files submitted by WP community members, Currently we support: German, Polish. 
 
 **Demo**
 
