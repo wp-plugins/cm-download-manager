@@ -61,6 +61,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         if (!empty($_POST)) {
             update_option(self::OPTION_ADD_ADDONS_MENU, isset($_POST['add_addons_menu']) ? 1 : 0);
             update_option(self::OPTION_ADD_DASHBOARD_MENU, isset($_POST['add_dashboard_menu']) ? 1 : 0);
+
         }
         $params['add_addons_menu'] = self::addAddonsMenu();
         $params['add_dashboard_menu'] = self::addDashboardMenu();
@@ -101,6 +102,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         $params['allowed_extensions'] = get_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, array('zip', 'doc', 'docx', 'pdf'));
         return $params;
     }
+    
 
     public static function alterSearchQuery($search, $query) {
         if ($query->query_vars['post_type'] == CMDM_GroupDownloadPage::POST_TYPE && $query->query_vars['widget'] !== true && !$query->is_single && !$query->is_404 && !$query->is_author && isset($query->query['search'])) {

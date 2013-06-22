@@ -5,7 +5,7 @@ Donate link: http://www.cminds.com/plugins
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,downlad tracker,download counter,download manager,download monitor,file management plugin,file manager 
 Requires at least: 3.2
 Tested up to: 3.5
-Stable tag: 1.2
+Stable tag: 1.3
 
 Allow users to upload, manage, track and support documents or files in a directory listing structure for others to use and comment 
  
@@ -34,12 +34,38 @@ With this plugin you can make a directory where users can upload and manage File
 * Admin can define which file extensions are supported
 * User can track from profile his downloads
 * User can receive notification on new support questions
-* User can receive notification on new support questions
-* Plugin is localized. We will be happy to add more language files submitted by WP community members, Currently we support: German, Polish. 
 
 **Demo**
 
 * Basic demo [Read Only mode](http://www.cminds.com/cmdownloads/).
+
+**Pro Version**	
+
+[Pro Version](http://www.cminds.com/downloads/cm-download-manager-pro/)
+The Pro version adds a layer of powerful features to the CM Download Manager giving the admin better tools to customize the Answers system behavior, adding login support from social networks, adding shortcodes and support for categories and a lot more
+
+* Social Media Registration Integration- Integrates with Facebook &amp; Google+ &amp; LinkedIn [Image One](http://www.cminds.com/wp-content/uploads/edd/image1.png) [Image 2](http://www.cminds.com/wp-content/uploads/edd/cm-answers-image2.png)
+* Shortcodes/Widgets- Generate top contributors, recent updates and most download items list
+* View Restriction- Define per each download if it is open to non logged in users and which user roles can view in case only logged-in are allowed. This can be set by Admin or Admin can give user ability to define [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-26-17.jpg)
+* Password Protection- Protect download with password [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-33-08.jpg)
+* Upload Restrictions- Define which user roles can create new downloads [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-39-35.jpg)
+* URL / Shortcode- Allow to include URL or shortcode in download page instead of uploading a file. This is useful for integration with other plugins and support checkout carts and selling downloads [Example of EDD integration](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-41-44.jpg)  [Example of User Selection](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-44-14.jpg) 
+* Related Downloads- Show Related downloads in download page [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-45-53.jpg)
+* Downloads Page Tabs- Show more tabs for download descriptions in download page
+* Search- Filter search results by date, downloads and username
+* Moderate User Comments- Admin can moderate user comments [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg) 
+* Auto-approve comments and answers from users- Admin can define a list of users which do not need moderation [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg)
+* Multisite- Supports multisite
+* Public User Profile- Automatically generate a public profile page containing the downloads user posted with link to his social media profile [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
+* Gravatar - Ability to show Gravatar near user name and in user profile [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
+* Order Comments - Show comments in download page in ascending or descending order
+* Localization Support - Forntend (user side) is localized
+* View Count Control - Control how view count is done (by view or by session)
+* Gratitude Message - Does not include Gratitude message in the footer.
+
+
+
+[Visit Pro Version Page](http://www.cminds.com/downloads/cm-download-manager-pro/)
 
 
 **More About this Plugin**
@@ -84,6 +110,9 @@ In your template create a directory "CMDM". Inside you can place a structure sim
 
 
 == Changelog ==
+= 1.3 = 
+* Added info about PRO version
+
 = 1.2 =
 * Fixed daysAgo function, added hours/minutes/seconds
 * Fixed translations

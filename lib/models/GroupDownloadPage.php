@@ -613,6 +613,8 @@ class CMDM_GroupDownloadPage extends CMDM_PostType {
             exit;
         }
     }
+  
+   
 
 }
 

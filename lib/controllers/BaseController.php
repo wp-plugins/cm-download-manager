@@ -6,6 +6,7 @@ abstract class CMDM_BaseController {
     const MESSAGE_ERROR = 'error';
     const ADMIN_SETTINGS = 'CMDM_admin_settings';
     const ADMIN_ABOUT = 'CMDM_admin_about';
+    const ADMIN_PRO = 'CMDM_admin_pro';
     const OPTION_TITLES = 'CMDM_panel_titles';
     protected static $_titles = array();
     protected static $_fired = false;
@@ -461,6 +462,7 @@ abstract class CMDM_BaseController {
 
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'CM Downloads Settings', 'Downloads Settings', 'manage_options', self::ADMIN_SETTINGS, array(get_class(), 'displaySettingsPage'));
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'About', 'About', 'manage_options', self::ADMIN_ABOUT, array(get_class(), 'displayAboutPage'));
+        add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'Pro Version','Pro Version', 'manage_options', self::ADMIN_PRO, array(get_class(), 'displayProPage'));
     }
 
     public static function displaySettingsPage() {
@@ -518,6 +520,13 @@ wp_enqueue_style('thickbox');
     public static function displayAboutPage() {
         ob_start();
         require(CMDM_PATH . '/views/backend/about.phtml');
+        $content = ob_get_contents();
+        ob_end_clean();
+        self::displayAdminPage($content);
+    }
+    public static function displayProPage() {
+        ob_start();
+        require(CMDM_PATH . '/views/backend/pro.phtml');
         $content = ob_get_contents();
         ob_end_clean();
         self::displayAdminPage($content);
