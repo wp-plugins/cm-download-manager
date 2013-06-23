@@ -44,23 +44,23 @@ With this plugin you can make a directory where users can upload and manage File
 [Pro Version](http://www.cminds.com/downloads/cm-download-manager-pro/)
 The Pro version adds a layer of powerful features to the CM Download Manager giving the admin better tools to customize the Answers system behavior, adding login support from social networks, adding shortcodes and support for categories and a lot more
 
-* Social Media Registration Integration- Integrates with Facebook &amp; Google+ &amp; LinkedIn [Image One](http://www.cminds.com/wp-content/uploads/edd/image1.png) [Image 2](http://www.cminds.com/wp-content/uploads/edd/cm-answers-image2.png)
-* Shortcodes/Widgets- Generate top contributors, recent updates and most download items list
-* View Restriction- Define per each download if it is open to non logged in users and which user roles can view in case only logged-in are allowed. This can be set by Admin or Admin can give user ability to define [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-26-17.jpg)
-* Password Protection- Protect download with password [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-33-08.jpg)
-* Upload Restrictions- Define which user roles can create new downloads [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-39-35.jpg)
-* URL / Shortcode- Allow to include URL or shortcode in download page instead of uploading a file. This is useful for integration with other plugins and support checkout carts and selling downloads [Example of EDD integration](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-41-44.jpg)  [Example of User Selection](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-44-14.jpg) 
-* Related Downloads- Show Related downloads in download page [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-45-53.jpg)
+* Social Media Registration Integration- Integrates with Facebook &amp; Google+ &amp; LinkedIn - [View Image One](http://www.cminds.com/wp-content/uploads/edd/image1.png) , [View Image 2](http://www.cminds.com/wp-content/uploads/edd/cm-answers-image2.png)
+* Shortcodes/Widgets- Generate top contributors, recent updates and most download items list.
+* View Restriction- Define per each download if it is open to non logged in users.  If only logged in user are allowed also define which user roles can view download. This can be set by Admin or Admin can give user ability to define. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-26-17.jpg)
+* Password Protection- Protect download with password. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-33-08.jpg)
+* Upload Restrictions- Define which user roles can create new downloads. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-39-35.jpg)
+* URL / Shortcode- Allow to include URL or shortcode in download page instead of uploading a file. This is useful for integration with other plugins and support checkout carts and selling downloads. [Example of EDD integration](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-41-44.jpg) , [Example of User Selection](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-44-14.jpg) 
+* Related Downloads- Show Related downloads in download page. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-45-53.jpg)
 * Downloads Page Tabs- Show more tabs for download descriptions in download page
 * Search- Filter search results by date, downloads and username
-* Moderate User Comments- Admin can moderate user comments [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg) 
-* Auto-approve comments and answers from users- Admin can define a list of users which do not need moderation [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg)
+* Moderate User Comments- Admin can moderate user comments. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg) 
+* Auto-approve comments and answers from users- Admin can define a list of users which do not need moderation. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg)
 * Multisite- Supports multisite
-* Public User Profile- Automatically generate a public profile page containing the downloads user posted with link to his social media profile [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
-* Gravatar - Ability to show Gravatar near user name and in user profile [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
+* Public User Profile- Automatically generate a public profile page containing the downloads user posted with link to his social media profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
+* Gravatar - Ability to show Gravatar near user name and in user profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
 * Order Comments - Show comments in download page in ascending or descending order
 * Localization Support - Forntend (user side) is localized
-* View Count Control - Control how view count is done (by view or by session)
+* View Count  - Show number of views in download page and control how view count is done (by view or by session)
 * Gratitude Message - Does not include Gratitude message in the footer.
 
 
