@@ -24,15 +24,14 @@ With this plugin you can make a directory where users can upload and manage File
 
 * Includes download counter.
 * Includes voting per each download.
-* Includes Download Categories.
-* Member only downloads.
+* Includes download categories.
 * Admin can manage downloads.
 * Built in support forum per each download.
-* Templet can be easily customized.
-* Image preview for download screens.
-* Filter download by internal Search
+* Templet can be customized.
+* Image preview per each download.
+* Filter downloads by internal search
 * Admin can define which file extensions are supported
-* User can track from profile his downloads
+* User can track his downloads from user profile
 * User can receive notification on new support questions
 
 **Demo**
@@ -42,7 +41,7 @@ With this plugin you can make a directory where users can upload and manage File
 **Pro Version**	
 
 [Pro Version](http://www.cminds.com/downloads/cm-download-manager-pro/)
-The Pro version adds a layer of powerful features to the CM Download Manager giving the admin better tools to customize the Answers system behavior, adding login support from social networks, adding shortcodes and support for categories and a lot more
+The Pro version adds a layer of powerful features to the CM Download Manager giving the admin better tools to customize the Downloads system behavior, adding login support from social networks, adding password protection support and a lot more
 
 * Social Media Registration Integration- Integrates with Facebook &amp; Google+ &amp; LinkedIn - [View Image One](http://www.cminds.com/wp-content/uploads/edd/image1.png) , [View Image 2](http://www.cminds.com/wp-content/uploads/edd/cm-answers-image2.png)
 * Shortcodes/Widgets- Generate top contributors, recent updates and most download items list.
