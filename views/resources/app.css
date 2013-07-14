@@ -160,7 +160,8 @@ div.CMDM_loadingOverlay {
 .CMDM li, .CMDM .CMDM-edit-form li {margin-top: 0;
 list-style-type: none;
 background: 0 none;
-padding-left: 0px}
+padding-left: 0px;
+list-style: none;}
 .CMDM .CMDM-edit-form input[type=checkbox] {margin-right:2px;}
 .CMDM .CMDM-edit-form input[type=submit] {color: buttontext;padding: 5px;border: 2px outset buttonface;width:30%;font-weight:bold;font-size:1.2em;float:right;}
 
