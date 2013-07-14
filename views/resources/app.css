@@ -91,7 +91,7 @@ list-style-type: none;}
 .CMDM .paging .navi a.active { background-position: 0 -20px; }
 
 .CMDM .tabNav { height: 19px; padding: 0 12px; margin:0}
-.CMDM .tabNav li { float: left; width: 100px; border-left: 2px solid #f2f2f2; }
+.CMDM .tabNav li { float: left; width: 100px; border-left: 2px solid #f2f2f2; list-style: none;}
 .CMDM .tabNav li:first-child { border-color: transparent; }
 .CMDM .tabNav li a { color: #473e82; display: block; text-decoration: none; width: 100px; text-align: center; line-height: 18px; height: 19px; }
 .CMDM .tabNav li.on a,
