@@ -68,7 +68,7 @@ list-style-type: none;}
 .CMDM .searchResItems .searchTitle span { color: #333; }
 .CMDM .searchResItems ul { margin:0; margin-bottom: 4px; padding:0;}
 .CMDM .searchResItems ul:after { clear: both; content: "\0020"; display: block; height: 0; visibility: hidden; }
-.CMDM .searchResItems li { background: url(imgs/roundedGrey360x66.png) 0 0; float: left; line-height: 1.6; width: 340px; height: 54px; padding: 12px 10px 0; margin: 1px; position: relative; }
+.CMDM .searchResItems li { background: url(imgs/roundedGrey360x66.png) 0 0; float: left; line-height: 1.6; width: 340px; height: 54px; padding: 12px 10px 0; margin: 1px; position: relative; list-style: none;}
 .CMDM .searchResItems li:hover { background-position: 0 -84px; }
 .CMDM .searchResItems li img { float: left; margin-right: 5px; }
 .CMDM .searchResItems li a { text-decoration: none; }
