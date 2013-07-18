@@ -42,7 +42,7 @@ list-style-type: none;}
 .CMDM .linksList dd:before { content: ""; border: solid transparent; border-width: 4px 0 3px 5px; border-left-color: #473e82; position: absolute; left: -12px; top: 5px; }
 .CMDM .linksList dd a { text-decoration: none; }
 .CMDM .linksList dd a:hover { text-decoration: underline; }
-.CMDM a.downloadBut { background: url(imgs/downloadBut.png) center no-repeat; color: #fff; display: block; font-size: 24px; font-weight: bold; height: 50px; line-height: 48px; margin: 10px auto 20px; text-align: center; text-decoration: none; width: 228px; }
+.CMDM a.downloadBut { background: url(imgs/downloadBut.png) center no-repeat; color: #fff; display: block; font-size: 20px; font-weight: bold; height: 50px; line-height: 48px; margin: 10px auto 20px; text-align: center; text-decoration: none; width: 228px; }
 .CMDM .CMDM-app h2 { color: #473e82; font-size: 23px; clear:none; font-weight:bold; background: url(imgs/titlecornersBg.png) right bottom no-repeat; padding: 0 0 12px 0; position: relative; margin: 0 0 5px; }
 .CMDM .CMDM-app h2:before { background: url(imgs/titlecorners.png) 0 0; width: 6px; height: 12px; position: absolute; bottom: 0; content: ""; }
 .CMDM .CMDM-app h2 .num { color: #808080; font-size: 18px; font-weight: normal; }
