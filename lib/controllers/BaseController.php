@@ -463,7 +463,9 @@ abstract class CMDM_BaseController {
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'CM Downloads Settings', 'Downloads Settings', 'manage_options', self::ADMIN_SETTINGS, array(get_class(), 'displaySettingsPage'));
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'About', 'About', 'manage_options', self::ADMIN_ABOUT, array(get_class(), 'displayAboutPage'));
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'Pro Version','Pro Version', 'manage_options', self::ADMIN_PRO, array(get_class(), 'displayProPage'));
-    }
+         global $submenu;
+        $submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][500] = array('User Guide', 'manage_options', 'http://www.cminds.com/cm-download-manager-user-guide/');
+   }
 
     public static function displaySettingsPage() {
                 wp_enqueue_script('jquery');
@@ -500,8 +502,8 @@ wp_enqueue_style('thickbox');
                 $name = '';
                 if (count($slugParts)>1) $name = $slugParts[0];
                 $isCurrent = ($slug == $plugin_page || (!empty($name) && $name===$pagenow));
-                $url = (strpos($item[2], '.php') !== false) ? $slug : get_admin_url('', 'admin.php?page=' . $slug);
-                $submenus[] = array(
+                $url = (strpos($item[2], '.php') !== false || strpos($slug, 'http://') !== false )? $slug : get_admin_url('', 'admin.php?page=' . $slug);
+               $submenus[] = array(
                     'link' => $url,
                     'title' => $item[0],
                     'current' => $isCurrent
@@ -574,8 +576,8 @@ jQuery(document).ready(function($) {
             foreach ($thisMenu as $item) {
                 $slug = $item[2];
                 $isCurrent = ($slug == $plugin_page || strpos($item[2], '.php') === strpos($currentUri, '.php'));
-                $url = (strpos($item[2], '.php') !== false) ? $slug : get_admin_url('', 'admin.php?page=' . $slug);
-                $submenus[$item[0]] =
+                $url = (strpos($item[2], '.php') !== false || strpos($slug, 'http://')!== false) ? $slug : get_admin_url('', 'admin.php?page=' . $slug);
+               $submenus[$item[0]] =
                         '<a href="' . $url . '" class="' . ($isCurrent ? 'current' : '') . '">' . $item[0] . '</a>';
             }
         }

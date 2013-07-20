@@ -5,7 +5,7 @@ Donate link: http://www.cminds.com/plugins
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,downlad tracker,download counter,download manager,download monitor,file management plugin,file manager 
 Requires at least: 3.2
 Tested up to: 3.5
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 
 Allow users to upload, manage, track and support documents or files in a directory listing structure for others to use and comment 
  
@@ -34,9 +34,10 @@ With this plugin you can make a directory where users can upload and manage File
 * User can track his downloads from user profile
 * User can receive notification on new support questions
 
-**Demo**
+**Demo & User Guide**
 
 * Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
+* [User Guide](http://www.cminds.com/cm-download-manager-user-guide/)
 
 **Pro Version**	
 
@@ -109,6 +110,9 @@ In your template create a directory "CMDM". Inside you can place a structure sim
 
 
 == Changelog ==
+= 1.3.5 = 
+* Added User Guide
+
 = 1.3.3 = 
 * Fix display and css related issues
 
