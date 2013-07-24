@@ -79,7 +79,7 @@ abstract class CMDM_BaseController {
             } else
                 $newRules['^' . $page['slug'] . '(?=\/|$)'] = 'index.php?' . $page['query_var'] . '=1';
         }
-        $rules->rules = $newRules + $rules->rules + $additional;
+        $rules->rules = $newRules + $additional + $rules->rules;
         return $rules->rules;
     }
 

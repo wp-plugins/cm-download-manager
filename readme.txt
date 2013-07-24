@@ -5,7 +5,7 @@ Donate link: http://www.cminds.com/plugins
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,downlad tracker,download counter,download manager,download monitor,file management plugin,file manager 
 Requires at least: 3.2
 Tested up to: 3.5
-Stable tag: 1.3.5
+Stable tag: 1.4.0
 
 Allow users to upload, manage, track and support documents or files in a directory listing structure for others to use and comment 
  
@@ -62,6 +62,9 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 * Localization Support - Forntend (user side) is localized
 * View Count  - Show number of views in download page and control how view count is done (by view or by session)
 * Gratitude Message - Does not include Gratitude message in the footer.
+* Permalinks - Ability to change permalink from /cmdownloads to user defined.
+* Support Tab - Ability to remove support forum.
+* Slide Show - Ability to turn off slide show.
 
 
 
@@ -110,6 +113,9 @@ In your template create a directory "CMDM". Inside you can place a structure sim
 
 
 == Changelog ==
+= 1.3.6 =
+* Changed search param name to avoid conflicts
+
 = 1.3.5 = 
 * Added User Guide
 

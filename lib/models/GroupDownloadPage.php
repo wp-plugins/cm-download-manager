@@ -447,6 +447,7 @@ class CMDM_GroupDownloadPage extends CMDM_PostType {
 //        $this->addNumberOfDownloads();
 //        wp_redirect($this->getUploadUrl() . $this->getDownloadFile(), 303);
 //        exit;
+        $this->addNumberOfDownloads();
         header('Content-type: ' . $this->getMimeType());
         $filepath = $this->getFilePath();
         $ext = pathinfo($filepath, PATHINFO_EXTENSION);
@@ -456,7 +457,6 @@ class CMDM_GroupDownloadPage extends CMDM_PostType {
             $ext = '.' . $ext;
         header('Content-Disposition: attachment; filename="' . sanitize_file_name($this->getTitle()) . $ext . '"');
         readfile($filepath);
-        $this->addNumberOfDownloads();
         exit;
     }
 
