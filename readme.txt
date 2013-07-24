@@ -61,10 +61,10 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 * Order Comments - Show comments in download page in ascending or descending order
 * Localization Support - Forntend (user side) is localized
 * View Count  - Show number of views in download page and control how view count is done (by view or by session)
-* Gratitude Message - Does not include Gratitude message in the footer.
-* Permalinks - Ability to change permalink from /cmdownloads to user defined.
+* Permalinks - Ability to change permalink from cmdownloads to user defined.
 * Support Tab - Ability to remove support forum.
 * Slide Show - Ability to turn off slide show.
+* Gratitude Message - Does not include Gratitude message in the footer.
 
 
 
