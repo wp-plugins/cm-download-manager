@@ -5,7 +5,7 @@ Donate link: http://www.cminds.com/plugins
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,downlad tracker,download counter,download manager,download monitor,file management plugin,file manager 
 Requires at least: 3.2
 Tested up to: 3.5
-Stable tag: 1.4.2
+Stable tag: 1.5.0
 
 Allow users to upload, manage, track and support documents or files in a directory listing structure for others to use and comment 
  
@@ -51,7 +51,7 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 * Upload Restrictions- Define which user roles can create new downloads. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-39-35.jpg)
 * URL / Shortcode- Allow to include URL or shortcode in download page instead of uploading a file. This is useful for integration with other plugins and support checkout carts and selling downloads. [Example of EDD integration](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-41-44.jpg) , [Example of User Selection](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-44-14.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Related Downloads- Show Related downloads in download page. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-45-53.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
-* Downloads Page Tabs- Show more tabs for download descriptions in download page [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
+* Downloads Page Tabs- Show more tabs for download descriptions in download page which admin can control in setting [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Search- Filter search results by date, downloads and username
 * Moderate User Comments- Admin can moderate user comments. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg) 
 * Auto-approve comments and answers from users- Admin can define a list of users which do not need moderation. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg)
@@ -66,7 +66,8 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 * Slide Show - Ability to turn off slide show.
 * Disclaimer - Option to display Discliamer for first time users.
 * Gratitude Message - Does not include Gratitude message in the footer.
-
+* External Viewer - Added external link to Google Docs viewer for supported Google Docs document types .  [View Demo](http://www.cminds.com/cmdownloads/pdf-file-preview-example/)
+* MP3 Viewer - Added embedded mp3 player for music files. [View Demo](http://www.cminds.com/cmdownloads/mp3-audio-example/]
 
 
 [Visit Pro Version Page](http://www.cminds.com/downloads/cm-download-manager-pro/)
