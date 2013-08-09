@@ -2,7 +2,7 @@
 Name: CM Download Manager
 Contributors: CreativeMinds (http://www.cminds.com/)
 Donate link: http://www.cminds.com/plugins
-Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,downlad tracker,download counter,download manager,download monitor,file management plugin,file manager 
+Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,downlad tracker,download counter,download manager,download monitor,file management plugin,file manager,mp3,music 
 Requires at least: 3.2
 Tested up to: 3.5
 Stable tag: 1.5.0
@@ -19,6 +19,7 @@ With this plugin you can make a directory where users can upload and manage File
 * Support forum - Support your users while letting them vote and answer existing topics per each download
 * Customer Support - Support customers questions 
 * File Manager - Manage files in a directory structure
+* MP3 and Music file directory - Manage music downloads and allow to listen before download
 
 **Features**
 
