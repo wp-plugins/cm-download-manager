@@ -78,7 +78,6 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 **Pro Version Video**	
 
 [youtube http://www.youtube.com/watch?v=IZNX9zmz4rM]
-[youtube http://www.youtube.com/watch?v=WwF75Z4eYbk]
 
 **More About this Plugin**
 	
