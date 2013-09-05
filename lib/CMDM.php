@@ -25,7 +25,7 @@ class CMDM {
     if (current_user_can('manage_options')) {
         ?>
         <div id="message" class="updated fade">
-            <p><strong>New !! A Pro version of CM Downloads is <a href="http://www.cminds.com/downloads/cm-download-manager-pro/"  target="new">available here</a></strong></p>
+            <p><strong>New !! A Pro version of CM Downloads is <a href="downloadsmanager.cminds.com"  target="new">available here</a></strong></p>
         </div><?php
         delete_option('CMDM_afterActivation');
     }

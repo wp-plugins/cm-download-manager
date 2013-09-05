@@ -1,15 +1,17 @@
 === Plugin Name ===
 Name: CM Download Manager
-Contributors: CreativeMinds (http://www.cminds.com/)
-Donate link: http://www.cminds.com/plugins
+Contributors: CreativeMinds (http://plugins.cminds.com/)
+Donate link: http://downloadsmanager.cminds.com
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,downlad tracker,download counter,download manager,download monitor,file management plugin,file manager,mp3,music 
 Requires at least: 3.2
 Tested up to: 3.5
-Stable tag: 1.5.0
+Stable tag: 1.5.3
 
-Allow users to upload, manage, track and support documents or files in a directory listing structure for others to use and comment 
+Enables you to upload, manage, track and support documents or files in a directory listing structure for others to use and comment 
  
 == Description ==
+CM Downloads Manager is a plug-in for WordPress which enables you to specify which users are allowed to upload, manage, track and support music, documents or files in a directory listing structure for others to use and comment. The plugin also supports downloads password protection, integration with store systems and preview options for different files formats and music files
+
 With this plugin you can make a directory where users can upload and manage Files / Downloads / Apps / Add-on / Packages / Plugins / Archives each containing detailed description. It contains download counter and support forum per each download page (like WP Plugin Directory)
 
 **Use-Cases**
@@ -17,18 +19,18 @@ With this plugin you can make a directory where users can upload and manage File
 * Plugin Directory - Create a plugin directory similar to WordPress Plugins Directory. 
 * Download Counter - Count downloads per each download
 * Support forum - Support your users while letting them vote and answer existing topics per each download
-* Customer Support - Support customers questions 
+* Customer Support - Support for customers questions 
 * File Manager - Manage files in a directory structure
-* MP3 and Music file directory - Manage music downloads and allow to listen before download
+* MP3 and Music file directory - Manage music downloads and allow users to listen to audio files before downloading
 
 **Features**
 
-* Includes download counter.
+* Includes a download counter.
 * Includes voting per each download.
 * Includes download categories.
 * Admin can manage downloads.
 * Built in support forum per each download.
-* Templet can be customized.
+* Template can be customized.
 * Image preview per each download.
 * Filter downloads by internal search
 * Admin can define which file extensions are supported
@@ -42,41 +44,45 @@ With this plugin you can make a directory where users can upload and manage File
 
 **Pro Version**	
 
-[Pro Version](http://www.cminds.com/downloads/cm-download-manager-pro/)
+[Pro Version](http://downloadsmanager.cminds.com)
 The Pro version adds a layer of powerful features to the CM Download Manager giving the admin better tools to customize the Downloads system behavior, adding login support from social networks, adding password protection support and a lot more
 
 * Social Media Registration Integration- Integrates with Facebook &amp; Google+ &amp; LinkedIn - [View Image One](http://www.cminds.com/wp-content/uploads/edd/image1.png) , [View Image 2](http://www.cminds.com/wp-content/uploads/edd/cm-answers-image2.png)
 * Shortcodes/Widgets- Generate top contributors, recent updates and most download items list.
-* View Restriction- Define per each download if it is open to non logged in users.  If only logged in user are allowed also define which user roles can view download. This can be set by Admin or Admin can give user ability to define. [View Image](http://static.cminds.com/wp-content/uploads/cmdm/CMDM91.png)
-* Password Protection- Protect download with password. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-33-08.jpg), [View demo](http://www.cminds.com/cmdownloads/cm-downloads-pro/)
+* View Restriction- Define per each download if it is open to non-logged in users. If only logged in user are allowed, you can also define which user roles can view specific downloads. This can be set by Admin or Admin can give the user ability to define. [View Image](http://static.cminds.com/wp-content/uploads/cmdm/CMDM91.png)
+* Password Protection- Protect downloads with passwords. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-33-08.jpg), [View demo](http://www.cminds.com/cmdownloads/cm-downloads-pro/)
 * Upload Restrictions- Define which user roles can create new downloads. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-39-35.jpg)
 * URL / Shortcode- Allow to include URL or shortcode in download page instead of uploading a file. This is useful for integration with other plugins and support checkout carts and selling downloads. [Example of EDD integration](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-41-44.jpg) , [Example of User Selection](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-44-14.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
-* Related Downloads- Show Related downloads in download page. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-45-53.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
+* Related Downloads- Show Related downloads on the download page. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-45-53.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Downloads Page Tabs- Show more tabs for download descriptions in download page which admin can control in setting [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Search- Filter search results by date, downloads and username
 * Moderate User Comments- Admin can moderate user comments. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg) 
 * Auto-approve comments and answers from users- Admin can define a list of users which do not need moderation. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg)
 * Multisite- Supports multisite
-* Public User Profile- Automatically generate a public profile page containing the downloads user posted with link to his social media profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
+* Public User Profile- Automatically generate a public profile page containing the downloads each user has posted with link to his social media profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
 * Gravatar - Ability to show Gravatar near user name and in user profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
 * Order Comments - Show comments in download page in ascending or descending order
 * Localization Support - Forntend (user side) is localized
-* View Count  - Show number of views in download page and control how view count is done (by view or by session)
+* View Count  - Show view count for each download and Control how view count is done (by view or by session)
 * Permalinks - Ability to change permalink from cmdownloads to user defined.
 * Support Tab - Ability to remove support forum.
 * Slide Show - Ability to turn off slide show.
-* Disclaimer - Option to display Discliamer for first time users.
+* Disclaimer - Add an option to show disclaimer for first time users.
 * Gratitude Message - Does not include Gratitude message in the footer.
-* External Viewer - Added external link to Google Docs viewer for supported Google Docs document types .  [View Demo](http://www.cminds.com/cmdownloads/pdf-file-preview-example/)
+* External Viewer - Added external links to Google Docs viewer for supported Google Docs document types .  [View Demo](http://www.cminds.com/cmdownloads/pdf-file-preview-example/)
 * MP3 Viewer - Added embedded mp3 player for music files. [View Demo](http://www.cminds.com/cmdownloads/mp3-audio-example/]
 
 
-[Visit Pro Version Page](http://www.cminds.com/downloads/cm-download-manager-pro/)
+[Visit Pro Version Page](http://downloadsmanager.cminds.com)
 
+**Pro Version Video**	
+
+[youtube http://www.youtube.com/watch?v=IZNX9zmz4rM]
+[youtube http://www.youtube.com/watch?v=WwF75Z4eYbk]
 
 **More About this Plugin**
 	
-You can find more information about CM Download Manager at [CreativeMinds Website](http://www.cminds.com/plugins/).
+You can find more information about CM Download Manager at [CreativeMinds Website](http://downloadsmanager.cminds.com).
 
 
 **More Plugins by CreativeMinds**
@@ -116,6 +122,13 @@ In your template create a directory "CMDM". Inside you can place a structure sim
 
 
 == Changelog ==
+= 1.5.3 =
+* Update readme and plugin homepage
+
+
+= 1.5.2 =
+* Update readme file
+
 = 1.3.6 =
 * Changed search param name to avoid conflicts
 
