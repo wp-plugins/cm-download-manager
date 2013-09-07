@@ -57,7 +57,7 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 * View Restriction- Define per each download if it is open to non-logged in users. If only logged in user are allowed, you can also define which user roles can view specific downloads. This can be set by Admin or Admin can give the user ability to define. [View Image](http://static.cminds.com/wp-content/uploads/cmdm/CMDM91.png)
 * Password Protection- Protect downloads with passwords. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-33-08.jpg), [View demo](http://www.cminds.com/cmdownloads/cm-downloads-pro/)
 * Upload Restrictions- Define which user roles can create new downloads. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-39-35.jpg)
-* URL / Shortcode- Allow to include URL or shortcode in download page instead of uploading a file. This is useful for integration with other plugins and support checkout carts and selling downloads. [Example of EDD integration](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-41-44.jpg) , [Example of User Selection](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-44-14.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
+* URL / Shortcode- Allow to include URL or shortcode in download page instead of uploading a file. This is useful for integration with other plugins and support checkout carts and selling downloads. [View Example of EDD integration](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-41-44.jpg) , [View Example of User Selection](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-44-14.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Related Downloads- Show Related downloads on the download page. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-45-53.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Downloads Page Tabs- Show more tabs for download descriptions in download page which admin can control in setting [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Search- Filter search results by date, downloads and username [View Demo](http://www.cminds.com/cmdownloads/)
@@ -66,18 +66,18 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 * Multisite- Supports multisite
 * Public User Profile- Automatically generate a public profile page containing the downloads each user has posted with link to his social media profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
 * Gravatar - Ability to show Gravatar near user name and in user profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
-* Order Comments - Show comments in download page in ascending or descending order [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99H.png)
+* Order Comments - Show comments in download page in ascending or descending order [View Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99H.png)
 * Localization Support - Forntend (user side) is localized
-* View Count  - Show view count for each download and Control how view count is done (by view or by session)  [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99F.png), [Image from Downloads edit screen](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99G.png)
-* Permalinks - Permalinks – Ability to change permalink from /cmdownloads to user defined. [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99E.png)
-* Support Tab - Ability to remove support forum and also other tabs from download page. [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99D.png)
-* Slide Show - Ability to turn off slide show. [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99C.png)
-* Disclaimer - Add an option to show disclaimer for first time users.  [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99A.png), [Image from site](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99B.png)
+* View Count  - Show view count for each download and Control how view count is done (by view or by session)  [View Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99F.png), [View Image from Downloads edit screen](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99G.png)
+* Permalinks - Ability to change permalink from /cmdownloads to user defined. [View Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99E.png)
+* Support Tab - Ability to remove support forum and also other tabs from download page. [View Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99D.png)
+* Slide Show - Ability to turn off slide show. [View Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99C.png)
+* Disclaimer - Add an option to show disclaimer for first time users.  [View Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99A.png), [View Image from site](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99B.png)
 * Gratitude Message - Does not include Gratitude message in the footer.
 * External Viewer - Added external links to Google Docs viewer for supported Google Docs document types .  [View Demo](http://www.cminds.com/cmdownloads/pdf-file-preview-example/)
 * MP3 Viewer - Added embedded mp3 player for music files. [View Demo](http://www.cminds.com/cmdownloads/mp3-audio-example/]
-Downloads Index Views – Option to toggle between list view and tiles view. [View Demo](http://www.cminds.com/cmdownloads/)
-* Social Share – Includes a social share widget in the question page [View Demo – Widget on the right](http://www.cminds.com/cmdownloads/mp3-audio-example/)
+* Downloads Index Views - Option to toggle between list view and tiles view. [View Demo](http://www.cminds.com/cmdownloads/)
+* Social Share - Includes a social share widget in the question page [View Demo- Widget on the right](http://www.cminds.com/cmdownloads/mp3-audio-example/)
 
 [Visit Pro Version Page](http://downloadsmanager.cminds.com)
 
