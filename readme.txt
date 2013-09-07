@@ -42,7 +42,12 @@ With this plugin you can make a directory where users can upload and manage File
 * Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
 * [User Guide](http://www.cminds.com/cm-download-manager-user-guide/)
 
-**Pro Version**	
+**Pro Version Video**	
+
+[youtube http://www.youtube.com/watch?v=IZNX9zmz4rM]
+
+
+**Pro Version Features**	
 
 [Pro Version](http://downloadsmanager.cminds.com)
 The Pro version adds a layer of powerful features to the CM Download Manager giving the admin better tools to customize the Downloads system behavior, adding login support from social networks, adding password protection support and a lot more
@@ -55,29 +60,27 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 * URL / Shortcode- Allow to include URL or shortcode in download page instead of uploading a file. This is useful for integration with other plugins and support checkout carts and selling downloads. [Example of EDD integration](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-41-44.jpg) , [Example of User Selection](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-44-14.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Related Downloads- Show Related downloads on the download page. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-45-53.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Downloads Page Tabs- Show more tabs for download descriptions in download page which admin can control in setting [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
-* Search- Filter search results by date, downloads and username
+* Search- Filter search results by date, downloads and username [View Demo](http://www.cminds.com/cmdownloads/)
 * Moderate User Comments- Admin can moderate user comments. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg) 
 * Auto-approve comments and answers from users- Admin can define a list of users which do not need moderation. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg)
 * Multisite- Supports multisite
 * Public User Profile- Automatically generate a public profile page containing the downloads each user has posted with link to his social media profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
 * Gravatar - Ability to show Gravatar near user name and in user profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
-* Order Comments - Show comments in download page in ascending or descending order
+* Order Comments - Show comments in download page in ascending or descending order [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99H.png)
 * Localization Support - Forntend (user side) is localized
-* View Count  - Show view count for each download and Control how view count is done (by view or by session)
-* Permalinks - Ability to change permalink from cmdownloads to user defined.
-* Support Tab - Ability to remove support forum.
-* Slide Show - Ability to turn off slide show.
-* Disclaimer - Add an option to show disclaimer for first time users.
+* View Count  - Show view count for each download and Control how view count is done (by view or by session)  [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99F.png), [Image from Downloads edit screen](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99G.png)
+* Permalinks - Permalinks – Ability to change permalink from /cmdownloads to user defined. [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99E.png)
+* Support Tab - Ability to remove support forum and also other tabs from download page. [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99D.png)
+* Slide Show - Ability to turn off slide show. [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99C.png)
+* Disclaimer - Add an option to show disclaimer for first time users.  [Image from Settings](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99A.png), [Image from site](http://downloadsmanager.cminds.com//wp-content/uploads/edd/Downloads99B.png)
 * Gratitude Message - Does not include Gratitude message in the footer.
 * External Viewer - Added external links to Google Docs viewer for supported Google Docs document types .  [View Demo](http://www.cminds.com/cmdownloads/pdf-file-preview-example/)
 * MP3 Viewer - Added embedded mp3 player for music files. [View Demo](http://www.cminds.com/cmdownloads/mp3-audio-example/]
-
+Downloads Index Views – Option to toggle between list view and tiles view. [View Demo](http://www.cminds.com/cmdownloads/)
+* Social Share – Includes a social share widget in the question page [View Demo – Widget on the right](http://www.cminds.com/cmdownloads/mp3-audio-example/)
 
 [Visit Pro Version Page](http://downloadsmanager.cminds.com)
 
-**Pro Version Video**	
-
-[youtube http://www.youtube.com/watch?v=IZNX9zmz4rM]
 
 **More About this Plugin**
 	
