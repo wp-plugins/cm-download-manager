@@ -79,6 +79,7 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 * Downloads Index Views - Option to toggle between list view and tiles view. [View Demo](http://www.cminds.com/cmdownloads/)
 * Social Share - Includes a social share widget in the question page [View Demo- Widget on the right](http://www.cminds.com/cmdownloads/mp3-audio-example/)
 
+
 [Visit Pro Version Page](http://downloadsmanager.cminds.com)
 
 
