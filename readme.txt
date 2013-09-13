@@ -29,6 +29,11 @@ With this plugin you can make a directory where users can upload and manage File
 * Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
 * [User Guide](http://www.cminds.com/cm-download-manager-user-guide/)
 
+**Pro Version Video**	
+
+[youtube http://www.youtube.com/watch?v=IZNX9zmz4rM]
+
+
 **Features**
 
 * Includes a download counter.
@@ -42,10 +47,6 @@ With this plugin you can make a directory where users can upload and manage File
 * Admin can define which file extensions are supported
 * User can track his downloads from user profile
 * User can receive notification on new support questions
-
-**Pro Version Video**	
-
-[youtube http://www.youtube.com/watch?v=IZNX9zmz4rM]
 
 
 **Pro Version Features**	
