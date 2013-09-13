@@ -1,11 +1,11 @@
 === Plugin Name ===
 Name: CM Download Manager
-Contributors: CreativeMinds (http://plugins.cminds.com/)
+Contributors: CreativeMindsSolutions
 Donate link: http://downloadsmanager.cminds.com
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,downlad tracker,download counter,download manager,download monitor,file management plugin,file manager,mp3,music 
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.5.3
+Stable tag: 1.5.4
 
 Enables you to upload, manage, track and support documents or files in a directory listing structure for others to use and comment 
  
@@ -125,6 +125,9 @@ In your template create a directory "CMDM". Inside you can place a structure sim
 
 
 == Changelog ==
+= 1.5.4 =
+* Fix bug when unsetting checkbox in edit download
+
 = 1.5.3 =
 * Update readme and plugin homepage
 

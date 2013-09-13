@@ -4,8 +4,8 @@
   Plugin Name: CM Download Manager
   Plugin URI: http://downloadsmanager.cminds.com
   Description: Allow users to upload,manage,track and support documents or files in a directory listing structure for others to use and comment
-  Author: CreativeMinds
-  Version: 1.5.3
+  Author: CreativeMindsSolutions
+  Version: 1.5.4
  */
 
 /*
