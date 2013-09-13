@@ -25,7 +25,7 @@ With this plugin you can make a directory where users can upload and manage File
 
 **Demo & User Guide**
 
-* [Pro Version](http://downloadsmanager.cminds.com/).
+* [Plugin Site](http://downloadsmanager.cminds.com/).
 * Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
 * [User Guide](http://www.cminds.com/cm-download-manager-user-guide/)
 
