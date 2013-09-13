@@ -23,6 +23,12 @@ With this plugin you can make a directory where users can upload and manage File
 * File Manager - Manage files in a directory structure
 * MP3 and Music file directory - Manage music downloads and allow users to listen to audio files before downloading
 
+**Demo & User Guide**
+
+* [Pro Version](http://downloadsmanager.cminds.com/).
+* Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
+* [User Guide](http://www.cminds.com/cm-download-manager-user-guide/)
+
 **Features**
 
 * Includes a download counter.
@@ -36,12 +42,6 @@ With this plugin you can make a directory where users can upload and manage File
 * Admin can define which file extensions are supported
 * User can track his downloads from user profile
 * User can receive notification on new support questions
-
-**Demo & User Guide**
-
-* [Pro Version](http://downloadsmanager.cminds.com/).
-* Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
-* [User Guide](http://www.cminds.com/cm-download-manager-user-guide/)
 
 **Pro Version Video**	
 
