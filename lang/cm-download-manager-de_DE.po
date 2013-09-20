@@ -152,23 +152,23 @@ msgid "%s is required"
 msgstr "%s ist erforderlich"
 
 # @ cm-download-manager
-#: lib/helpers/Form/Element/SWFUploader.php:39
+#: lib/helpers/Form/Element/PLUploader.php:39
 #, php-format
 msgid "%s needs to be uploaded"
 msgstr "%s muss hochgeladen werden"
 
 # @ cm-download-manager
-#: lib/helpers/Form/Element/SWFUploader.php:128
+#: lib/helpers/Form/Element/PLUploader.php:128
 msgid "Completed"
 msgstr "fertiggestellt"
 
 # @ cm-download-manager
-#: lib/helpers/Form/Element/SWFUploader.php:131
+#: lib/helpers/Form/Element/PLUploader.php:131
 msgid "Upload failed"
 msgstr "hochladen fehlgeschlagen"
 
 # @ cm-download-manager
-#: lib/helpers/Form/Element/SWFUploader.php:177
+#: lib/helpers/Form/Element/PLUploader.php:177
 msgid "Upload"
 msgstr "hochladen"
 

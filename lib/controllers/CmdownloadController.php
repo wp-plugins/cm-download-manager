@@ -1,17 +1,17 @@
 <?php
-
 include_once CMDM_PATH . '/lib/models/forms/AddDownloadForm.php';
-
-class CMDM_CmdownloadController extends CMDM_BaseController {
-    const DOWNLOAD_NONCE = 'CMDM_download_nonce';
-    const OPTION_SUPPORTED_IMAGE = 'CMDM_option_supported_image';
+class CMDM_CmdownloadController extends CMDM_BaseController
+{
+    const DOWNLOAD_NONCE            = 'CMDM_download_nonce';
+    const OPTION_SUPPORTED_IMAGE    = 'CMDM_option_supported_image';
     const OPTION_SEARCH_PLACEHOLDER = 'CMDM_option_search_placeholder';
     const OPTION_FILTER_PLACEHOLDER = 'CMDM_option_filter_placeholder';
-    const OPTION_ADD_ADDONS_MENU = 'CMDM_option_add_addons_menu';
+    const OPTION_ADD_ADDONS_MENU    = 'CMDM_option_add_addons_menu';
     const OPTION_ADD_DASHBOARD_MENU = 'CMDM_option_add_dashboard_menu';
     const DEFAULT_SCREENSHOT_OPTION = 'CMDM_option_default_screenshot';
 
-    public static function initialize() {
+    public static function initialize()
+    {
         add_filter('wp_nav_menu_items', array(get_class(), 'addMenuItem'), 1, 1);
         add_filter('posts_search', array(get_class(), 'alterSearchQuery'), 99, 2);
         add_filter('template_include', array(get_class(), 'overrideTemplate'));
@@ -36,8 +36,8 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         add_filter('CMDM_admin_settings', array(get_class(), 'processDefaultScreenshot'), 1, 1);
         add_filter('manage_edit-' . CMDM_GroupDownloadPage::POST_TYPE . '_columns', array(get_class(), 'registerAdminColumns'));
         add_filter('manage_' . CMDM_GroupDownloadPage::POST_TYPE . '_posts_custom_column', array(get_class(), 'adminColumnDisplay'), 10, 2);
-                do_action('CMDM_custom_post_type_nav', CMDM_GroupDownloadPage::POST_TYPE);
-                do_action('CMDM_custom_taxonomy_nav', CMDM_GroupDownloadPage::CAT_TAXONOMY);
+        do_action('CMDM_custom_post_type_nav', CMDM_GroupDownloadPage::POST_TYPE);
+        do_action('CMDM_custom_taxonomy_nav', CMDM_GroupDownloadPage::CAT_TAXONOMY);
         CMDM_SupportThread::init();
         register_sidebar(array(
             'id' => 'cm-download-manager-sidebar',
@@ -45,56 +45,74 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
             'description' => 'This sidebar is shown on CM Download Manager pages'
         ));
     }
-    public static function overrideControllerTitle($title) {
-        if ($title=='Cmdownload') return 'CM Download';
+
+    public static function overrideControllerTitle($title)
+    {
+        if($title == 'Cmdownload') return 'CM Download';
         return $title;
     }
-    public static function processAddonsTitlePage($params = array()) {
-        if (!empty($_POST['addons_title'])) {
+
+    public static function processAddonsTitlePage($params = array())
+    {
+        if(!empty($_POST['addons_title']))
+        {
             update_option(CMDM_GroupDownloadPage::OPTION_ADDONS_TITLE, $_POST['addons_title']);
         }
         $params['addons_title'] = CMDM_GroupDownloadPage::getAddonsTitle();
         return $params;
     }
 
-    public static function processMenuSetting($params = array()) {
-        if (!empty($_POST)) {
+    public static function processMenuSetting($params = array())
+    {
+        if(!empty($_POST))
+        {
             update_option(self::OPTION_ADD_ADDONS_MENU, isset($_POST['add_addons_menu']) ? 1 : 0);
             update_option(self::OPTION_ADD_DASHBOARD_MENU, isset($_POST['add_dashboard_menu']) ? 1 : 0);
-
         }
-        $params['add_addons_menu'] = self::addAddonsMenu();
+        $params['add_addons_menu']    = self::addAddonsMenu();
         $params['add_dashboard_menu'] = self::addDashboardMenu();
         return $params;
     }
 
-    public static function addAddonsMenu() {
+    public static function addAddonsMenu()
+    {
         return get_option(self::OPTION_ADD_ADDONS_MENU, 1);
     }
 
-    public static function addDashboardMenu() {
+    public static function addDashboardMenu()
+    {
         return get_option(self::OPTION_ADD_DASHBOARD_MENU, 1);
     }
 
-    public static function processSearchPlaceholderSetting($params = array()) {
-        if (!empty($_POST['search_placeholder_text'])) {
+    public static function processSearchPlaceholderSetting($params = array())
+    {
+        if(!empty($_POST['search_placeholder_text']))
+        {
             update_option(self::OPTION_SEARCH_PLACEHOLDER, $_POST['search_placeholder_text']);
         }
         $params['searchPlaceholder'] = self::getSearchPlaceholder();
         return $params;
     }
-    public static function getDefaultScreenshot() {
-        return get_option(self::DEFAULT_SCREENSHOT_OPTION, CMDM_URL.'/views/resources/imgs/no_screenshot.png');
+
+    public static function getDefaultScreenshot()
+    {
+        return get_option(self::DEFAULT_SCREENSHOT_OPTION, CMDM_URL . '/views/resources/imgs/no_screenshot.png');
     }
-    public static function processDefaultScreenshot($params = array()) {
-        if (!empty($_POST['upload_default_screenshot'])) {
+
+    public static function processDefaultScreenshot($params = array())
+    {
+        if(!empty($_POST['upload_default_screenshot']))
+        {
             update_option(self::DEFAULT_SCREENSHOT_OPTION, $_POST['upload_default_screenshot']);
         }
         $params['default_screenshot'] = self::getDefaultScreenshot();
         return $params;
     }
-    public static function processExtensionsSetting($params = array()) {
-        if (!empty($_POST['allowed_extensions'])) {
+
+    public static function processExtensionsSetting($params = array())
+    {
+        if(!empty($_POST['allowed_extensions']))
+        {
             $extensions = explode(',', $_POST['allowed_extensions']);
             array_walk($extensions, 'trim');
             update_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, $extensions);
@@ -102,23 +120,26 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         $params['allowed_extensions'] = get_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, array('zip', 'doc', 'docx', 'pdf'));
         return $params;
     }
-    
 
-    public static function alterSearchQuery($search, $query) {
-        if ($query->query_vars['post_type'] == CMDM_GroupDownloadPage::POST_TYPE && $query->query_vars['widget'] !== true && !$query->is_single && !$query->is_404 && !$query->is_author && isset($_GET['CMDsearch'])) {
+    public static function alterSearchQuery($search, $query)
+    {
+        if($query->query_vars['post_type'] == CMDM_GroupDownloadPage::POST_TYPE && $query->query_vars['widget'] !== true && !$query->is_single && !$query->is_404 && !$query->is_author && isset($_GET['CMDsearch']))
+        {
             global $wpdb;
             $search_term = $_GET['CMDsearch'];
-            if (!empty($search_term)) {
-                $search = '';
+            if(!empty($search_term))
+            {
+                $search           = '';
                 $query->is_search = true;
                 // added slashes screw with quote grouping when done early, so done later
-                $search_term = stripslashes($search_term);
+                $search_term      = stripslashes($search_term);
                 preg_match_all('/".*?("|$)|((?<=[\r\n\t ",+])|^)[^\r\n\t ",+]+/', $search_term, $matches);
-                $terms = array_map('_search_terms_tidy', $matches[0]);
+                $terms            = array_map('_search_terms_tidy', $matches[0]);
 
-                $n = '%';
+                $n         = '%';
                 $searchand = ' AND ';
-                foreach ((array) $terms as $term) {
+                foreach((array) $terms as $term)
+                {
                     $term = esc_sql(like_escape($term));
                     $search .= "{$searchand}(($wpdb->posts.post_title LIKE '{$n}{$term}{$n}') OR ($wpdb->posts.post_content LIKE '{$n}{$term}{$n}'))";
                 }
@@ -130,100 +151,119 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         return $search;
     }
 
-    public static function adminResources() {
+    public static function adminResources()
+    {
         global $pagenow;
         $post_id = isset($_GET['post']) ? (int) $_GET['post'] : -1;
-        if (CMDM_GroupDownloadPage::POST_TYPE == get_post_type($post_id) && $_GET['action'] == 'edit') {
+        if(CMDM_GroupDownloadPage::POST_TYPE == get_post_type($post_id) && $_GET['action'] == 'edit')
+        {
             wp_redirect(self::getUrl('cmdownload', 'edit', array('id' => $post_id)), 301);
             exit;
-        } elseif (isset($_GET['post_type']) && $_GET['post_type'] == CMDM_GroupDownloadPage::POST_TYPE && $pagenow == 'post-new.php') {
+        }
+        elseif(isset($_GET['post_type']) && $_GET['post_type'] == CMDM_GroupDownloadPage::POST_TYPE && $pagenow == 'post-new.php')
+        {
             wp_redirect(self::getUrl('cmdownload', 'add'), 301);
             exit;
         }
     }
 
-    protected static function _processAddThread() {
+    protected static function _processAddThread()
+    {
         global $wp_query;
-        $post = $wp_query->post;
-        $title = $_POST['thread_title'];
-        $content = $_POST['thread_comment'];
-        $notify = (bool) $_POST['thread_notify'];
+        $post      = $wp_query->post;
+        $title     = $_POST['thread_title'];
+        $content   = $_POST['thread_comment'];
+        $notify    = (bool) $_POST['thread_notify'];
         $author_id = get_current_user_id();
-        $error = false;
-        $messages = array();
-        try {
+        $error     = false;
+        $messages  = array();
+        try
+        {
             $comment_id = CMDM_SupportThread::addThread($post->ID, $title, $content, $author_id, $notify);
-        } catch (Exception $e) {
-            $messages = unserialize($e->getMessage());
-            $error = true;
         }
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-                && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+        catch(Exception $e)
+        {
+            $messages = unserialize($e->getMessage());
+            $error    = true;
+        }
+        if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+        {
 
             header('Content-type: application/json');
             echo json_encode(array('success' => (int) (!$error), 'comment_id' => $comment_id, 'message' => $messages));
             exit;
-        } else {
+        }
+        else
+        {
             wp_redirect(get_permalink($post->ID) . '#support', 303);
             exit;
         }
     }
 
-    protected static function _processAddCommentToThread() {
+    protected static function _processAddCommentToThread()
+    {
         global $wp_query;
-        $post = $wp_query->post;
-        $parent = get_query_var('CMDM-parent-id');
-        $content = $_POST['thread_comment'];
-        $notify = (bool) $_POST['thread_notify'];
-        $resolved = (bool) $_POST['thread_resolved'];
+        $post      = $wp_query->post;
+        $parent    = get_query_var('CMDM-parent-id');
+        $content   = $_POST['thread_comment'];
+        $notify    = (bool) $_POST['thread_notify'];
+        $resolved  = (bool) $_POST['thread_resolved'];
         $author_id = get_current_user_id();
-        $error = false;
-        $messages = array();
-        try {
+        $error     = false;
+        $messages  = array();
+        try
+        {
             $comment_id = CMDM_SupportThread::addCommentToThread($post->ID, $parent, $content, $author_id, $notify, $resolved);
-        } catch (Exception $e) {
-            $messages = unserialize($e->getMessage());
-            $error = true;
         }
-        if (isset($_SERVER['HTTP_X_REQUESTED_WITH'])
-                && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
+        catch(Exception $e)
+        {
+            $messages = unserialize($e->getMessage());
+            $error    = true;
+        }
+        if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest')
+        {
 
             header('Content-type: application/json');
             echo json_encode(array('success' => (int) (!$error), 'comment_id' => $comment_id, 'commentData' => CMDM_SupportThread::getCommentData($comment_id), 'message' => $messages));
             exit;
-        } else {
+        }
+        else
+        {
             wp_redirect(get_permalink($post->ID) . 'topic/' . $parent . '/#comment-' . $comment_id, 303);
             exit;
         }
     }
 
-    protected static function _processListThread() {
+    protected static function _processListThread()
+    {
         global $wp_query;
-        $post = $wp_query->post;
-        $page = $wp_query->query_vars['CMDM-comment-page'];
+        $post    = $wp_query->post;
+        $page    = $wp_query->query_vars['CMDM-comment-page'];
         $threads = CMDM_SupportThread::getThreadsForDownload($post->ID, $page);
         do_action('CMDM_show_support_threads_list', $threads['items']);
         exit;
     }
 
-    protected static function _showThreadDetails() {
+    protected static function _showThreadDetails()
+    {
         global $wp_query;
-        $post = $wp_query->post;
+        $post      = $wp_query->post;
         $thread_id = $wp_query->query_vars['CMDM-comment-id'];
-        $thread = CMDM_SupportThread::getThread($thread_id);
+        $thread    = CMDM_SupportThread::getThread($thread_id);
         echo self::_loadView('cmdownload/thread', array('thread' => $thread));
         exit;
     }
 
-    public static function processQueryVars() {
+    public static function processQueryVars()
+    {
         $action = get_query_var('CMDM-comment-action');
-        if (!empty($action)) {
-            switch ($action) {
+        if(!empty($action))
+        {
+            switch($action)
+            {
                 case 'add':
-                    if (get_query_var('CMDM-parent-id') > 0)
-                        self::_processAddCommentToThread();
-                    else
-                        self::_processAddThread();
+                    if(get_query_var('CMDM-parent-id') > 0) self::_processAddCommentToThread();
+                    else self::_processAddThread();
                     break;
                 case 'show':
                     self::_showThreadDetails();
@@ -236,21 +276,29 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         }
     }
 
-    public static function overrideTemplate($template) {
-        if (get_query_var('post_type') == CMDM_GroupDownloadPage::POST_TYPE || is_tax(CMDM_GroupDownloadPage::CAT_TAXONOMY)) {
-            if (is_single() || is_404()) {
-                wp_enqueue_script('CMDM-jquery-form', CMDM_URL . '/views/resources/js/jquery.form.js', '', array());
+    public static function overrideTemplate($template)
+    {
+        if(get_query_var('post_type') == CMDM_GroupDownloadPage::POST_TYPE || is_tax(CMDM_GroupDownloadPage::CAT_TAXONOMY))
+        {
+            if(is_single() || is_404())
+            {
+                wp_enqueue_script('CMDM-jquery-form', CMDM_URL . '/views/resources/js/jquery.form.js', array('jquery'));
+                wp_enqueue_script('jquery-tools', 'http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js', array('jquery'));
+                wp_enqueue_script('cmdm-single', CMDM_URL . '/views/resources/js/single.js', array('jquery-tools'));
                 self::processQueryVars();
                 $template = self::locateTemplate(array(
                             'cmdownload/single'
                                 ), $template);
-            } else {
-                if (isset($_GET['show']) && $_GET['show'] == 'contributors') {
+            }
+            else
+            {
+                if(isset($_GET['show']) && $_GET['show'] == 'contributors')
+                {
                     $template = self::locateTemplate(array(
                                 'cmdownload/authors',
                                     ), $template);
-                } else
-                    $template = self::locateTemplate(array(
+                }
+                else $template = self::locateTemplate(array(
                                 'cmdownload/index'
                                     ), $template);
             }
@@ -259,165 +307,197 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         return $template;
     }
 
-    public static function adjustBodyClass($wp_classes, $extra_classes) {
-        foreach ($wp_classes as $key => $value) {
-            if ($value == 'singular')
-                unset($wp_classes[$key]);
+    public static function adjustBodyClass($wp_classes, $extra_classes)
+    {
+        foreach($wp_classes as $key => $value)
+        {
+            if($value == 'singular') unset($wp_classes[$key]);
         }
         return array_merge($wp_classes, (array) $extra_classes);
     }
 
-    public static function addMenuItem($items) {
+    public static function addMenuItem($items)
+    {
         $link = self::_loadView('cmdownload/meta/menu-item', array('dashboardUrl' => self::addDashboardMenu() ? self::getUrl('cmdownload', 'dashboard') : null,
                     'categoriesUrl' => self::addAddonsMenu() ? self::getUrl('cmdownloads', '') : null));
         return $items . $link;
     }
 
-    public static function showRating($id) {
+    public static function showRating($id)
+    {
         $download = CMDM_GroupDownloadPage::getInstance($id);
-        if ($download instanceof CMDM_GroupDownloadPage) {
+        if($download instanceof CMDM_GroupDownloadPage)
+        {
             $ratingCounter = 0;
-            $allowed = is_user_logged_in() ? $download->isRatingAllowed(get_current_user_id()) : false;
-            $stats = $download->getRatingStats();
+            $allowed       = is_user_logged_in() ? $download->isRatingAllowed(get_current_user_id()) : false;
+            $stats         = $download->getRatingStats();
             $ratingCounter = $stats['ratingsCount'];
-            $avgRating = round($stats['ratingAvg']);
+            $avgRating     = round($stats['ratingAvg']);
 
             echo self::_loadView('cmdownload/meta/rating', compact('id', 'ratingCounter', 'avgRating', 'allowed'));
         }
     }
 
-    public static function rateHeader() {
-        $id = self::_getParam('id');
-        $rating = intval(self::_getParam('rating'));
+    public static function rateHeader()
+    {
+        $id       = self::_getParam('id');
+        $rating   = intval(self::_getParam('rating'));
         $download = CMDM_GroupDownloadPage::getInstance($id);
-        $user = is_user_logged_in() ? get_current_user_id() : null;
-        $allowed = $download->isRatingAllowed($user);
-        if (!$allowed) {
+        $user     = is_user_logged_in() ? get_current_user_id() : null;
+        $allowed  = $download->isRatingAllowed($user);
+        if(!$allowed)
+        {
             header('HTTP/1.1 403 Forbidden');
             exit;
-        } elseif (self::_isPost() && $download instanceof CMDM_GroupDownloadPage && !empty($user) && $rating > 0 && $rating <= 5) {
+        }
+        elseif(self::_isPost() && $download instanceof CMDM_GroupDownloadPage && !empty($user) && $rating > 0 && $rating <= 5)
+        {
             $download->addRating($user, $rating);
-            $stats = $download->getRatingStats();
+            $stats         = $download->getRatingStats();
             $ratingCounter = $stats['ratingsCount'];
-            $avgRating = round($stats['ratingAvg']);
+            $avgRating     = round($stats['ratingAvg']);
             header('Content-type: application/json');
             echo json_encode(compact('ratingCounter', 'avgRating'));
             exit;
-        } else {
+        }
+        else
+        {
             header('HTTP/1.1 400 Bad Request');
             exit;
         }
     }
 
-    public static function getSearchPlaceholder() {
+    public static function getSearchPlaceholder()
+    {
         return get_option(self::OPTION_SEARCH_PLACEHOLDER, 'Search...');
     }
 
-    public static function showDetails($id) {
+    public static function showDetails($id)
+    {
         $download = CMDM_GroupDownloadPage::getInstance($id);
-        if ($download instanceof CMDM_GroupDownloadPage) {
-            $author = $download->getAuthor()->display_name;
-            $version = $download->getVersion();
-            $updated = $download->getUpdated('M j, Y');
+        if($download instanceof CMDM_GroupDownloadPage)
+        {
+            $author         = $download->getAuthor()->display_name;
+            $version        = $download->getVersion();
+            $updated        = $download->getUpdated('M j, Y');
             $adminSupported = $download->isRecommended();
             echo self::_loadView('cmdownload/meta/details', compact('author', 'version', 'updated', 'adminSupported'));
         }
     }
 
-    public static function showDownloadButton($id) {
+    public static function showDownloadButton($id)
+    {
         $nonce = wp_create_nonce(self::DOWNLOAD_NONCE);
         echo self::_loadView('cmdownload/meta/download-form', array('action_url' => self::getUrl('cmdownload', 'get'), 'nonce' => $nonce, 'download_id' => $id));
     }
 
-    public static function showSupport($id) {
+    public static function showSupport($id)
+    {
         $items = CMDM_SupportThread::getThreadsForDownload($id, false);
         echo self::_loadView('cmdownload/meta/support', $items);
     }
 
-    public static function showSupportThreadList($items) {
-        if (!is_array($items))
-            $items = array($items);
+    public static function showSupportThreadList($items)
+    {
+        if(!is_array($items)) $items = array($items);
         echo self::_loadView('cmdownload/meta/support-thread-list', compact('items'));
     }
 
-    public static function showScreenshots($id) {
+    public static function showScreenshots($id)
+    {
         echo self::_loadView('cmdownload/meta/screenshots');
     }
 
-    public static function showSize($id) {
+    public static function showSize($id)
+    {
         $download = CMDM_GroupDownloadPage::getInstance($id);
-        $units = array('B', 'KB', 'MB', 'GB', 'TB');
-        $bytes = max(intval($download->getFileSize()), 0);
-        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
-        $pow = min($pow, count($units) - 1);
-        $pow = max($pow, 1);
+        $units    = array('B', 'KB', 'MB', 'GB', 'TB');
+        $bytes    = max(intval($download->getFileSize()), 0);
+        $pow      = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow      = min($pow, count($units) - 1);
+        $pow      = max($pow, 1);
         $bytes /= (1 << (10 * $pow));
         echo number_format(round($bytes, 2), 2) . ' ' . $units[$pow];
     }
 
-    public static function showNumberOfDownloads($id) {
+    public static function showNumberOfDownloads($id)
+    {
         echo CMDM_GroupDownloadPage::getInstance($id)->getNumberOfDownloads();
     }
 
-    public static function showEditLink($id) {
+    public static function showEditLink($id)
+    {
         $download = CMDM_GroupDownloadPage::getInstance($id);
-        if ($download instanceof CMDM_GroupDownloadPage && $download->isEditAllowed(get_current_user_id()))
-            echo self::_loadView('cmdownload/meta/edit-link', array('url' => self::getUrl('cmdownload', 'edit', array('id' => $id))));
+        if($download instanceof CMDM_GroupDownloadPage && $download->isEditAllowed(get_current_user_id())) echo self::_loadView('cmdownload/meta/edit-link', array('url' => self::getUrl('cmdownload', 'edit', array('id' => $id))));
     }
 
-    public static function showItemCategories($id) {
+    public static function showItemCategories($id)
+    {
         $download = CMDM_GroupDownloadPage::getInstance($id);
-        if ($download instanceof CMDM_GroupDownloadPage) {
+        if($download instanceof CMDM_GroupDownloadPage)
+        {
             echo self::_loadView('cmdownload/meta/categories', array('categories' => $download->getCategories(true), 'taxonomy' => CMDM_GroupDownloadPage::CAT_TAXONOMY));
         }
     }
 
-    public static function showCategories() {
+    public static function showCategories()
+    {
         echo self::_loadView('cmdownload/categories');
     }
 
-    public static function addHeader() {
-        if (self::_userRequired()) {
+    public static function addHeader()
+    {
+        if(self::_userRequired())
+        {
 
             $form = CMDM_Form::getInstance('AddDownloadForm');
-            if (self::_isPost() && $form->isValid($_POST)) {
+            if(self::_isPost() && $form->isValid($_POST))
+            {
                 $item = CMDM_GroupDownloadPage::newInstance($form->getValues());
-                if ($item instanceof CMDM_GroupDownloadPage)
-                    self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully added', 'cm-download-manager'), $item->getTitle()).' - <a href="' . get_permalink($item->getId()) . '">'.__('View', 'cm-download-manager').' &raquo;</a>');
-
-                else
-                    self::_addMessage(self::MESSAGE_ERROR, __('There was an error while adding new element', 'cm-download-manager').': "' . $item . '"');
+                if($item instanceof CMDM_GroupDownloadPage) self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully added', 'cm-download-manager'), $item->getTitle()) . ' - <a href="' . get_permalink($item->getId()) . '">' . __('View', 'cm-download-manager') . ' &raquo;</a>');
+                else self::_addMessage(self::MESSAGE_ERROR, __('There was an error while adding new element', 'cm-download-manager') . ': "' . $item . '"');
                 wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                 exit;
             }
         }
     }
 
-    public static function addAction() {
+    public static function addAction()
+    {
         $form = CMDM_Form::getInstance('AddDownloadForm');
-        if (self::_isPost() && !$form->isValid($_POST, true)) {
+        if(self::_isPost() && !$form->isValid($_POST, true))
+        {
             $form->populate($_POST);
         }
         return array('form' => $form);
     }
 
-    public static function editHeader() {
-        if (self::_userRequired()) {
+    public static function editHeader()
+    {
+        if(self::_userRequired())
+        {
             $id = self::_getParam('id');
-            if (empty($id) || !is_numeric($id)) {
+            if(empty($id) || !is_numeric($id))
+            {
                 wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                 exit;
-            } else {
+            }
+            else
+            {
                 $download = CMDM_GroupDownloadPage::getInstance($id);
-                $name = $download->getTitle();
-                if (!$download->isEditAllowed(get_current_user_id())) {
+                $name     = $download->getTitle();
+                if(!$download->isEditAllowed(get_current_user_id()))
+                {
                     self::_addError('You are not allowed to edit this element');
                     return;
-                } else {
+                }
+                else
+                {
                     $form = CMDM_Form::getInstance('AddDownloadForm', array('edit_id' => $id));
-                    if (self::_isPost() && $form->isValid($_POST)) {
+                    if(self::_isPost() && $form->isValid($_POST))
+                    {
                         $download->update($form->getValues());
-                        self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully updated', 'cm-download-manager'), $name).' - <a href="' . get_permalink($id) . '">View &raquo;</a>');
+                        self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully updated', 'cm-download-manager'), $name) . ' - <a href="' . get_permalink($id) . '">View &raquo;</a>');
                         wp_redirect(self::getUrl('cmdownload', 'edit', array('id' => $id)), 303);
                         exit;
                     }
@@ -426,15 +506,14 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         }
     }
 
-    public static function editAction() {
-        $id = self::_getParam('id');
+    public static function editAction()
+    {
+        $id       = self::_getParam('id');
         $instance = CMDM_GroupDownloadPage::getInstance($id);
-        $form = CMDM_Form::getInstance('AddDownloadForm', array('edit_id' => $id));
+        $form     = CMDM_Form::getInstance('AddDownloadForm', array('edit_id' => $id));
 
-        if (self::_isPost() && !$form->isValid($_POST, true))
-            $form->populate($_POST);
-        else
-            $form->setDefaults(array(
+        if(self::_isPost() && !$form->isValid($_POST, true)) $form->populate($_POST);
+        else $form->setDefaults(array(
                 'title' => $instance->getTitle(),
                 'version' => $instance->getVersion(),
                 'categories' => $instance->getCategories(),
@@ -447,49 +526,61 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         return array('form' => $form);
     }
 
-    public static function dashboardHeader() {
+    public static function dashboardHeader()
+    {
         self::_userRequired();
     }
 
-    public static function dashboardAction() {
+    public static function dashboardAction()
+    {
         return array('myDownloads' => CMDM_GroupDownloadPage::getDownloadsByUser(get_current_user_id()));
     }
 
-    public static function showSearchForm() {
+    public static function showSearchForm()
+    {
         echo self::_loadView('cmdownload/widget/search', array('searchAction' => home_url(CMDM_GroupDownloadPage::REWRITE_SLUG), 'searchQuery' => get_search_query(), 'placeholder' => self::getSearchPlaceholder()));
     }
 
-    public static function getHeader() {
-        if (self::_userRequired()) {
-            if (isset($_POST['_wpnonce']) /* && wp_verify_nonce($_POST['_wpnonce'], self::DOWNLOAD_NONCE) */ && is_numeric($_POST['id'])) {
-                $p = $_POST['id'];
+    public static function getHeader()
+    {
+        if(self::_userRequired())
+        {
+            if(isset($_POST['_wpnonce']) /* && wp_verify_nonce($_POST['_wpnonce'], self::DOWNLOAD_NONCE) */ && is_numeric($_POST['id']))
+            {
+                $p        = $_POST['id'];
                 $download = CMDM_GroupDownloadPage::getInstance($p);
-                if (!empty($download) && $download instanceof CMDM_GroupDownloadPage)
-                    $download->download();
-            } else {
+                if(!empty($download) && $download instanceof CMDM_GroupDownloadPage) $download->download();
+            } else
+            {
                 wp_redirect(self::getUrl('downloads', ''), 303);
                 exit;
             }
         }
     }
 
-    public static function delHeader() {
-        if (self::_userRequired()) {
+    public static function delHeader()
+    {
+        if(self::_userRequired())
+        {
             $id = self::_getParam('id');
-            if (empty($id) || !is_numeric($id)) {
+            if(empty($id) || !is_numeric($id))
+            {
                 wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                 exit;
-            } else {
+            }
+            else
+            {
                 $download = CMDM_GroupDownloadPage::getInstance($id);
-                if (!$download->isEditAllowed(get_current_user_id())) {
+                if(!$download->isEditAllowed(get_current_user_id()))
+                {
                     self::_addError(__('You are not allowed to delete this element', 'cm-download-manager'));
                     return;
-                } else {
+                }
+                else
+                {
                     $name = $download->getTitle();
-                    if ($download->delete())
-                        self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully deleted', 'cm-download-manager'), $name));
-                    else
-                        self::_addMessage(self::MESSAGE_ERROR, sprintf(__('There was an error while deleting "%s"', 'cm-download-manager'), $name));
+                    if($download->delete()) self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully deleted', 'cm-download-manager'), $name));
+                    else self::_addMessage(self::MESSAGE_ERROR, sprintf(__('There was an error while deleting "%s"', 'cm-download-manager'), $name));
                     wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                     exit;
                 }
@@ -497,19 +588,27 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         }
     }
 
-    public static function publishHeader() {
-        if (self::_userRequired()) {
+    public static function publishHeader()
+    {
+        if(self::_userRequired())
+        {
             $id = self::_getParam('id');
-            if (empty($id) || !is_numeric($id)) {
+            if(empty($id) || !is_numeric($id))
+            {
                 wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                 exit;
-            } else {
+            }
+            else
+            {
                 $download = CMDM_GroupDownloadPage::getInstance($id);
-                $name = $download->getTitle();
-                if (!$download->isEditAllowed(get_current_user_id())) {
+                $name     = $download->getTitle();
+                if(!$download->isEditAllowed(get_current_user_id()))
+                {
                     self::_addError(__('You are not allowed to change status of this element', 'cm-download-manager'));
                     return;
-                } else {
+                }
+                else
+                {
                     $download->setStatus('publish', true);
                     self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully published', 'cm-download-manager'), $name));
                     wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
@@ -519,19 +618,27 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         }
     }
 
-    public static function unpublishHeader() {
-        if (self::_userRequired()) {
+    public static function unpublishHeader()
+    {
+        if(self::_userRequired())
+        {
             $id = self::_getParam('id');
-            if (empty($id) || !is_numeric($id)) {
+            if(empty($id) || !is_numeric($id))
+            {
                 wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                 exit;
-            } else {
+            }
+            else
+            {
                 $download = CMDM_GroupDownloadPage::getInstance($id);
-                $name = $download->getTitle();
-                if (!$download->isEditAllowed(get_current_user_id())) {
+                $name     = $download->getTitle();
+                if(!$download->isEditAllowed(get_current_user_id()))
+                {
                     self::_addError(__('You are not allowed to change status of this element', 'cm-download-manager'));
                     return;
-                } else {
+                }
+                else
+                {
                     $download->setStatus('draft', true);
                     self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully unpublished', 'cm-download-manager'), $name));
                     wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
@@ -541,28 +648,31 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
         }
     }
 
-    public static function screenshotsHeader() {
-        if (self::_isPost()) {
+    public static function screenshotsHeader()
+    {
+        if(self::_isPost())
+        {
             // Check post_max_size (http://us3.php.net/manual/en/features.file-upload.php#73762)
             $POST_MAX_SIZE = ini_get('post_max_size');
-            $unit = strtoupper(substr($POST_MAX_SIZE, -1));
-            $multiplier = ($unit == 'M' ? 1048576 : ($unit == 'K' ? 1024 : ($unit == 'G' ? 1073741824 : 1)));
+            $unit          = strtoupper(substr($POST_MAX_SIZE, -1));
+            $multiplier    = ($unit == 'M' ? 1048576 : ($unit == 'K' ? 1024 : ($unit == 'G' ? 1073741824 : 1)));
 
-            if ((int) $_SERVER['CONTENT_LENGTH'] > $multiplier * (int) $POST_MAX_SIZE && $POST_MAX_SIZE) {
+            if((int) $_SERVER['CONTENT_LENGTH'] > $multiplier * (int) $POST_MAX_SIZE && $POST_MAX_SIZE)
+            {
                 self::handleUploadError(__("POST exceeded maximum allowed size.", 'cm-download-manager'));
                 exit;
             }
 
 // Settings
-            $upload_name = "upload";
+            $upload_name            = "upload";
             $max_file_size_in_bytes = 1048576;    // 1MB in bytes
-            $extension_whitelist = array("jpg", "gif", "png"); // Allowed file extensions
-            $valid_chars_regex = '.A-Z0-9_ !@#$%^&()+={}\[\]\',~`-';    // Characters allowed in the file name (in a Regular Expression format)
-// Other variables	
-            $MAX_FILENAME_LENGTH = 260;
-            $file_name = "";
-            $file_extension = "";
-            $uploadErrors = array(
+            $extension_whitelist    = array("jpg", "gif", "png"); // Allowed file extensions
+            $valid_chars_regex      = '.A-Z0-9_ !@#$%^&()+={}\[\]\',~`-';    // Characters allowed in the file name (in a Regular Expression format)
+// Other variables
+            $MAX_FILENAME_LENGTH    = 260;
+            $file_name              = "";
+            $file_extension         = "";
+            $uploadErrors           = array(
                 0 => __("There is no error, the file uploaded with success", 'cm-download-manager'),
                 1 => __("The uploaded file exceeds the upload_max_filesize directive in php.ini", 'cm-download-manager'),
                 2 => __("The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form", 'cm-download-manager'),
@@ -573,28 +683,37 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
 
 
 // Validate the upload
-            if (!isset($_FILES[$upload_name])) {
+            if(!isset($_FILES[$upload_name]))
+            {
                 self::handleUploadError("No upload found in \$_FILES for " . $upload_name);
                 exit;
-            } else if (isset($_FILES[$upload_name]["error"]) && $_FILES[$upload_name]["error"] != 0) {
+            }
+            else if(isset($_FILES[$upload_name]["error"]) && $_FILES[$upload_name]["error"] != 0)
+            {
                 self::handleUploadError($uploadErrors[$_FILES[$upload_name]["error"]]);
                 exit;
-            } else if (!isset($_FILES[$upload_name]["tmp_name"]) || !@is_uploaded_file($_FILES[$upload_name]["tmp_name"])) {
+            }
+            else if(!isset($_FILES[$upload_name]["tmp_name"]) || !@is_uploaded_file($_FILES[$upload_name]["tmp_name"]))
+            {
                 self::handleUploadError("Upload failed is_uploaded_file test.");
                 exit;
-            } else if (!isset($_FILES[$upload_name]['name'])) {
+            }
+            else if(!isset($_FILES[$upload_name]['name']))
+            {
                 self::handleUploadError("File has no name.");
                 exit;
             }
 
 // Validate the file size (Warning: the largest files supported by this code is 2GB)
             $file_size = @filesize($_FILES[$upload_name]["tmp_name"]);
-            if (!$file_size || $file_size > $max_file_size_in_bytes) {
+            if(!$file_size || $file_size > $max_file_size_in_bytes)
+            {
                 self::handleUploadError(__("File exceeds the maximum allowed size", 'cm-download-manager'));
                 exit;
             }
 
-            if ($file_size <= 0) {
+            if($file_size <= 0)
+            {
                 self::handleUploadError("File size outside allowed lower bound");
                 exit;
             }
@@ -603,70 +722,85 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
 // Validate file name (for our purposes we'll just remove invalid characters)
             $file_name = preg_replace('/[^' . $valid_chars_regex . ']|\.+$/i', "", basename($_FILES[$upload_name]['name']));
             $file_name = sanitize_file_name($file_name);
-            if (strlen($file_name) == 0 || strlen($file_name) > $MAX_FILENAME_LENGTH) {
+            if(strlen($file_name) == 0 || strlen($file_name) > $MAX_FILENAME_LENGTH)
+            {
                 self::handleUploadError(__("Invalid file name", 'cm-download-manager'));
                 exit;
             }
 
 
 // Validate that we won't over-write an existing file
-            if (file_exists($save_path . $file_name)) {
+            if(file_exists($save_path . $file_name))
+            {
                 self::handleUploadError(__("File with this name already exists", 'cm-download-manager'));
                 exit;
             }
 
 // Validate file extension
-            $path_info = pathinfo($_FILES[$upload_name]['name']);
-            $file_extension = $path_info["extension"];
+            $path_info          = pathinfo($_FILES[$upload_name]['name']);
+            $file_extension     = $path_info["extension"];
             $is_valid_extension = false;
-            foreach ($extension_whitelist as $extension) {
-                if (strcasecmp($file_extension, $extension) == 0) {
+            foreach($extension_whitelist as $extension)
+            {
+                if(strcasecmp($file_extension, $extension) == 0)
+                {
                     $is_valid_extension = true;
                     break;
                 }
             }
-            if (!$is_valid_extension) {
+            if(!$is_valid_extension)
+            {
                 self::handleUploadError(__("Invalid file extension", 'cm-download-manager'));
                 exit;
             }
-            try {
+            try
+            {
                 $img = CMDM_GroupDownloadPage::saveScreenshot($_FILES[$upload_name]);
-            } catch (Exception $e) {
+            }
+            catch(Exception $e)
+            {
                 self::handleUploadError($e->getMessage());
             }
+
+            $imgSrc = CMDM_get_url('cmdownload', 'screenshot', array('size' => '196x60', 'img' => $img));
+
             header('Content-type: application/json');
-            echo json_encode(array('success' => 1, 'message' => $img));
+            echo json_encode(array('jsonrpc' => 2.0, 'result' => null, 'id' => "id", 'fileName' => $img, 'imgSrc' => $imgSrc));
             exit;
         }
     }
 
-    protected static function handleUploadError($message) {
+    protected static function handleUploadError($message)
+    {
         header("HTTP/1.1 500 Internal Server Error");
         $response = array('success' => 0, 'message' => $message);
         echo json_encode($response);
         exit;
     }
 
-    public static function screenshotHeader() {
+    public static function screenshotHeader()
+    {
         $image = self::_getParam('img');
-        $size = self::_getParam('size');
+        $size  = self::_getParam('size');
 //        wp_redirect(CMDM_GroupDownloadPage::getScreenshotsUrl() . $image, 303);
         CMDM_GroupDownloadPage::processImage($image, $size);
         exit;
     }
 
-    public static function registerAdminColumns($columns) {
-        $columns['author'] = 'Author';
+    public static function registerAdminColumns($columns)
+    {
+        $columns['author']              = 'Author';
         $columns['number_of_downloads'] = 'Number of downloads';
-        $columns['status'] = 'Status';
+        $columns['status']              = 'Status';
         return $columns;
     }
 
-    public static function adminColumnDisplay($columnName, $id) {
+    public static function adminColumnDisplay($columnName, $id)
+    {
         $download = CMDM_GroupDownloadPage::getInstance($id);
-        if (!$download)
-            return;
-        switch ($columnName) {
+        if(!$download) return;
+        switch($columnName)
+        {
             case 'author':
                 echo $download->getAuthor()->display_name;
                 break;
@@ -680,5 +814,4 @@ class CMDM_CmdownloadController extends CMDM_BaseController {
     }
 
 }
-
 ?>

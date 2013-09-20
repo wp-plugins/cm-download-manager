@@ -126,7 +126,7 @@ list-style-type: none;}
 .CMDM .CMDM-app .butPost { background: url(imgs/butPost.png) 0 0 no-repeat; border: 0; display: block; height: 24px; margin: auto; padding-bottom: 5px; text-align: center; width: 97px; }
 .CMDM .CMDM-app .butPost:hover { background-position: 0 -26px; }
 .CMDM .progressWrapper {float:left;width:200px;margin:3px;}
-.CMDM .progressCancel {position:absolute;top:0;right:0;width:10px;height:10px;background-color:#ddd;border-radius:4px;padding:4px;line-height:0.6em;z-index:5}
+.CMDM .progressCancel {cursor:pointer;position:absolute;top:0;right:0;width:10px;height:10px;background-color:#ddd;border-radius:4px;padding:4px;line-height:0.6em;z-index:5}
 .CMDM .progressName {white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:80%}
 .CMDM .progressImg {display:none;width:196px;height:60px;text-align:center;border:solid 1px #ccc;position:relative;}
 .CMDM .progressImg img {border-radius:4px;}
@@ -148,7 +148,7 @@ div.CMDM_loadingOverlay {
     background-color:#f5f5f5; border-radius:6px;padding:10px;
 }
 .CMDM .CMDM-dashboard th {text-transform:uppercase;font-size:0.9em;padding:3px;}
-.CMDM .CMDM-edit-form table {padding:10px; border-radius:6px; background-color:#f5f5f5;vertical-align: top}
+.CMDM .CMDM-edit-form table {display:block; max-width:600px; padding:10px; border-radius:6px; background-color:#f5f5f5;vertical-align: top}
 .CMDM .CMDM-form-hidden {display:none}
 .CMDM .CMDM-form .error {border:solid 1px red;}
 .CMDM .CMDM-form ul.error {padding:3px;}
@@ -163,7 +163,7 @@ background: 0 none;
 padding-left: 0px;
 list-style: none;}
 .CMDM .CMDM-edit-form input[type=checkbox] {margin-right:2px;}
-.CMDM .CMDM-edit-form input[type=submit] {color: buttontext;padding: 5px;border: 2px outset buttonface;width:30%;font-weight:bold;font-size:1.2em;float:right;}
+.CMDM .CMDM-edit-form input[type=submit] {color: buttontext;padding: 5px;border: 2px outset buttonface;width:30%;font-weight:bold;font-size:1.2em;float:left;}
 
 .CMDM_thread_title {font-size:15px;font-weight:bold;}
 .CMDM_comment {line-height:1.5em;}
@@ -203,7 +203,7 @@ font-weight: bold;
 padding: 0;
 }
 .CMDM .CMDM-rating label {width:22px;height:22px;margin-left:3px;font-size:0}
-/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
    follow these rules. Every browser that supports :checked also supports :not(), so
    it doesn’t make the test unnecessarily selective */
 .CMDM .CMDM-rating:not(:checked) > input {
@@ -234,7 +234,7 @@ padding: 0;
 .CMDM .CMDM-rating:not(:checked) > label:hover ~ label {
     background-position:left -44px;
         cursor:pointer;
-            
+
 }
 
 .CMDM .CMDM-rating > input:checked + label:hover,
@@ -243,7 +243,7 @@ padding: 0;
 .CMDM .CMDM-rating > input:checked ~ label:hover ~ label,
 .CMDM .CMDM-rating > label:hover ~ input:checked ~ label {
     background-position:left -44px;
-    
+
 }
 
 .CMDM .CMDM-rating > label:active {
@@ -252,3 +252,6 @@ padding: 0;
     left:2px;
     background-position:left -22px;
 }​
+
+
+.wp-editor-wrap {width:400px;)

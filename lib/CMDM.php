@@ -17,7 +17,7 @@ class CMDM {
         update_option('CMDM_afterActivation', 1);
     }
     public static function uninstall() {
-        
+
     }
    function showProMessages() {
 

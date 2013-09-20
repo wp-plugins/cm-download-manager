@@ -2,13 +2,13 @@
 Name: CM Download Manager
 Contributors: CreativeMindsSolutions
 Donate link: http://downloadsmanager.cminds.com
-Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,download tracker,download counter,download manager,download monitor,file management plugin,file manager,mp3,music 
+Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,download tracker,download counter,download manager,download monitor,file management plugin,file manager,mp3,music
 Requires at least: 3.2
 Tested up to: 3.6
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 
-Enables you to upload, manage, track and support documents or files in a directory listing structure for others to use and comment 
- 
+Enables you to upload, manage, track and support documents or files in a directory listing structure for others to use and comment
+
 == Description ==
 CM Downloads Manager is a plug-in for WordPress that enables you to specify which users are allowed to upload, manage, track and support music, documents or files in a directory listing structure that others can use and comment upon. This plugin also supports downloads password protection, integration with retail store checkout, and has preview options for different file formats and for preview listening of music files before downloading.
 
@@ -16,10 +16,10 @@ With this plugin you can create a directory where users can upload and manage Fi
 
 **Use-Cases**
 
-* Plugin Directory - Creates a plugin directory that is similar to any other WordPress Plugins Directory. 
+* Plugin Directory - Creates a plugin directory that is similar to any other WordPress Plugins Directory.
 * Download Counter - Counts the number of downloads for each download.
 * Support forum - Supports your users by letting them vote and answer existing topics that relate to each download.
-* Customer Support - Support for retail customer's questions. 
+* Customer Support - Support for retail customer's questions.
 * File Manager - Manages files in a directory structure.
 * MP3 and Music file directory - Manages music downloads and allow users to listen to audio files before downloading.
 
@@ -29,7 +29,7 @@ With this plugin you can create a directory where users can upload and manage Fi
 * Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
 * [User Guide](http://www.cminds.com/cm-download-manager-user-guide/)
 
-**Pro Version Video**	
+**Pro Version Video**
 
 [youtube http://www.youtube.com/watch?v=IZNX9zmz4rM]
 
@@ -48,7 +48,7 @@ With this plugin you can create a directory where users can upload and manage Fi
 * User can receive email notifications on newly submitted support questions.
 
 
-**Pro Version Features**	
+**Pro Version Features**
 
 [Pro Version](http://downloadsmanager.cminds.com)
 The Pro version adds a layer of powerful features to the CM Download Manager giving administrators better tools to customize their Downloads system behavior, with added login support from social networks, added password protection support, and a lot more...
@@ -62,7 +62,7 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 * Related Downloads- Show Related downloads on the Download page. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-45-53.jpg), [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Downloads Page Tabs- Shows more tabs for detailed download descriptions on the Download page, which the admin can control in the settings. [View Demo](http://www.cminds.com/cmdownloads/cm-answers-pro/)
 * Search- Filters search results by date, download type and username. [View Demo](http://www.cminds.com/cmdownloads/)
-* Moderate User Comments- Administators can moderate user comments. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg) 
+* Moderate User Comments- Administators can moderate user comments. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg)
 * Auto-Approve Comments and Answers from Users- Administrators can define a list of users who do not need any moderation. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-47-33.jpg)
 * Multisite- Supports multisite.
 * Public User Profile- Automatically generates a public profile page that contains the number of downloads each user has posted with a link to his or her social media profile. [View Image](http://www.cminds.com/wp-content/uploads/edd/22-06-2013-22-49-22.jpg)
@@ -85,16 +85,16 @@ The Pro version adds a layer of powerful features to the CM Download Manager giv
 
 
 **More About this Plugin**
-	
+
 You can find more information about CM Download Manager at [CreativeMinds Website](http://downloadsmanager.cminds.com).
 
 **More Plugins by CreativeMinds**
 
-* [CM Super ToolTip Glossary](http://wordpress.org/extend/plugins/enhanced-tooltipglossary/) - Easily creates a Glossary, Encyclopedia or Dictionary of your website's terms and shows them as a tooltip in posts and pages when hovering. With many more powerful features. 
-* [CM Answers](http://wordpress.org/extend/plugins/cm-answers/) - Allows users to post questions and answers (Q&A) in a Stackoverflow style community forum which is easy to use, customize and install. Comes with Social integration Shortcodes. 
-* [CM Invitation Codes](http://wordpress.org/extend/plugins/cm-invitation-codes/) - Allows more control over site registration by adding managed groups of invitation codes. 
-* [CM Email Blacklist](http://wordpress.org/extend/plugins/cm-email-blacklist/) - Blocks users using blacklists of domains and prevents them from registering to your WordPress site. 
-* [CM Multi MailChimp List Manager](http://wordpress.org/extend/plugins/multi-mailchimp-list-manager/) - Allows users to subscribe and unsubscribe from multiple MailChimp email lists. 
+* [CM Super ToolTip Glossary](http://wordpress.org/extend/plugins/enhanced-tooltipglossary/) - Easily creates a Glossary, Encyclopedia or Dictionary of your website's terms and shows them as a tooltip in posts and pages when hovering. With many more powerful features.
+* [CM Answers](http://wordpress.org/extend/plugins/cm-answers/) - Allows users to post questions and answers (Q&A) in a Stackoverflow style community forum which is easy to use, customize and install. Comes with Social integration Shortcodes.
+* [CM Invitation Codes](http://wordpress.org/extend/plugins/cm-invitation-codes/) - Allows more control over site registration by adding managed groups of invitation codes.
+* [CM Email Blacklist](http://wordpress.org/extend/plugins/cm-email-blacklist/) - Blocks users using blacklists of domains and prevents them from registering to your WordPress site.
+* [CM Multi MailChimp List Manager](http://wordpress.org/extend/plugins/multi-mailchimp-list-manager/) - Allows users to subscribe and unsubscribe from multiple MailChimp email lists.
 
 
 == Installation ==
@@ -125,9 +125,12 @@ In your template you can create a directory called "CMDM". Inside this you can p
 
 
 == Changelog ==
+= 1.5.5 =
+* Changed SWFUploader to PLUpload for screenshot uploads
+
+
 = 1.5.3 =
 * Update readme and plugin homepage
-
 
 = 1.5.2 =
 * Update readme file
@@ -135,13 +138,13 @@ In your template you can create a directory called "CMDM". Inside this you can p
 = 1.3.6 =
 * Changed search param name to avoid conflicts
 
-= 1.3.5 = 
+= 1.3.5 =
 * Added User Guide
 
-= 1.3.3 = 
+= 1.3.3 =
 * Fix display and css related issues
 
-= 1.3 = 
+= 1.3 =
 * Added info about PRO version
 
 = 1.2 =

@@ -1,11 +1,12 @@
 <?php
-
 include_once CMDM_PATH . '/lib/helpers/Form.php';
+class CMDM_AddDownloadForm extends CMDM_Form
+{
 
-class CMDM_AddDownloadForm extends CMDM_Form {
-
-    public function init($params = array()) {
-        if (isset($params['edit_id'])) {
+    public function init($params = array())
+    {
+        if(isset($params['edit_id']))
+        {
             $editId = $params['edit_id'];
             $this->addElement(
                     CMDM_Form_Element::factory('hidden', 'edit_id')
@@ -28,7 +29,7 @@ class CMDM_AddDownloadForm extends CMDM_Form {
                 ->addElement(
                         CMDM_Form_Element::factory('fileUploader', 'package')
                         ->setLabel(__('File', 'cm-download-manager'))
-                        ->setDescription('('.__('Allowed extensions', 'cm-download-manager').': '.implode(', ', get_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, array('zip', 'doc', 'docx', 'pdf'))).')')
+                        ->setDescription('(' . __('Allowed extensions', 'cm-download-manager') . ': ' . implode(', ', get_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, array('zip', 'doc', 'docx', 'pdf'))) . ')')
                         ->addValidator('fileExtension', get_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, array('zip', 'doc', 'docx', 'pdf')))
                         ->setRequired()
                 )
@@ -44,19 +45,19 @@ class CMDM_AddDownloadForm extends CMDM_Form {
                         ->setRequired()
                 )
                 ->addElement(
-                        CMDM_Form_Element::factory('SWFUploader', 'screenshots')
+                        CMDM_Form_Element::factory('PLUploader', 'screenshots')
                         ->setLabel(__('Screenshots', 'cm-download-manager'))
-                        ->setDescription(sprintf(__('(Max. %d, Size: H: %dpx W: %dpx)','cm-download-manager'), 4, 220, 720))
-//                        ->setRequired()
+                        ->setDescription(sprintf(__('(Max. %d, Size: H: %dpx W: %dpx)', 'cm-download-manager'), 4, 220, 720))
                         ->setAttribs(array(
                             'uploadUrl' => home_url('/cmdownload/screenshots'),
-                            'fileSizeLimit' => '1 MB',
-                            'fileTypes' => '*.jpg;*.gif;*.png',
+                            'fileSizeLimit' => '1mb',
+                            'fileTypes' => 'jpg,gif,png',
                             'fileTypesDescription' => __('Images', 'cm-download-manager'),
-                            'fileUploadLimit' => 4
                         ))
         );
-        if (current_user_can('manage_options')) {
+
+        if(current_user_can('manage_options'))
+        {
             $this->addElement(
                     CMDM_Form_Element::factory('checkbox', 'admin_supported')
                             ->setLabel(__('Admin Recommended', 'cm-download-manager'))
@@ -70,11 +71,10 @@ class CMDM_AddDownloadForm extends CMDM_Form {
                 CMDM_Form_Element::factory('submit', 'submit')
                         ->setValue(isset($editId) ? __('Update', 'cm-download-manager') : __('Add', 'cm-download-manager'))
         );
-        if (isset($editId)) {
+        if(isset($editId))
+        {
             $this->getElement('package')->setRequired(false);
         }
     }
 
 }
-
-?>

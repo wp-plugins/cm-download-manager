@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: CM Download Manager v1.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-06 08:56+0100\n"
-"PO-Revision-Date: 2013-06-06 08:58+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2013-09-05 18:19+0100\n"
+"Last-Translator: roberto <roberto@latinosparis.com>\n"
 "Language-Team: \n"
 "Language: pl_PL\n"
 "MIME-Version: 1.0\n"
@@ -23,293 +23,296 @@ msgstr ""
 # @ cm-download-manager
 #: lib/controllers/BaseController.php:454
 msgid "You have to be logged in to see this page"
-msgstr "Musisz być zalogowany, aby zobaczyć tę stronę"
+msgstr "Vous devez être connecté pour voir cette page"
 
 #: lib/controllers/BaseController.php:454
 msgid "Log in"
-msgstr "Zaloguj się"
+msgstr "Connexion"
 
 # @ cm-download-manager
 #: lib/controllers/CmdownloadController.php:384
 #, php-format
 msgid "\"%s\" has been succesfully added"
-msgstr "\"%s\" zostało dodane"
+msgstr "\"%s\" a été ajouté avec succès"
 
 # @ cm-download-manager
 #: lib/controllers/CmdownloadController.php:384
 msgid "View"
-msgstr "Pokaż"
+msgstr "Voir"
 
 # @ cm-download-manager
 #: lib/controllers/CmdownloadController.php:387
 msgid "There was an error while adding new element"
-msgstr "Podczas dodawania wystąpił błąd"
+msgstr "Il ya eu une erreur lors de l'ajout de nouveaux éléments"
 
 # @ cm-download-manager
 #: lib/controllers/CmdownloadController.php:418
 #, php-format
 msgid "\"%s\" has been succesfully updated"
-msgstr "\"%s\" zostało zaktualizowane"
+msgstr "\"%s\" a été mise à jour avec succès"
 
 # @ cm-download-manager
 #: lib/controllers/CmdownloadController.php:483
 msgid "You are not allowed to delete this element"
-msgstr "Nie masz uprawnień do usunięcia tego elementu"
+msgstr "Vous n'êtes pas autorisé à supprimer cet élément"
 
 # @ cm-download-manager
 #: lib/controllers/CmdownloadController.php:488
 #, php-format
 msgid "\"%s\" has been succesfully deleted"
-msgstr "\"%s\" zostało usunięte"
+msgstr "\"%s\" a été supprimé avec succès"
 
 # @ cm-download-manager
 #: lib/controllers/CmdownloadController.php:490
 #, php-format
 msgid "There was an error while deleting \"%s\""
-msgstr "Wystąpił błąd podczas usuwania \"%s\""
+msgstr "Il ya eu une erreur lors de la suppression \"%s\""
 
 #: lib/controllers/CmdownloadController.php:508
 #: lib/controllers/CmdownloadController.php:530
 msgid "You are not allowed to change status of this element"
-msgstr "Nie masz uprawnień by zmienić status tego elementu"
+msgstr "Vous n'êtes pas autorisé à modifier le statut de cet élément"
 
 # @ cm-download-manager
 #: lib/controllers/CmdownloadController.php:512
 #, php-format
 msgid "\"%s\" has been succesfully published"
-msgstr "\"%s\" zostało opublikowane"
+msgstr "\"%s\" a été publié avec succès"
 
 # @ cm-download-manager
 #: lib/controllers/CmdownloadController.php:534
 #, php-format
 msgid "\"%s\" has been succesfully unpublished"
-msgstr "\"%s\" zostało odpublikowane"
+msgstr "\"%s\" a été avec succès inédit"
 
 #: lib/controllers/CmdownloadController.php:550
 msgid "POST exceeded maximum allowed size."
-msgstr "POST przekroczyło maksymalny dopuszczalny rozmiar"
+msgstr "POST dépassé la taille maximale autorisée."
 
 #: lib/controllers/CmdownloadController.php:564
 msgid "There is no error, the file uploaded with success"
-msgstr "Nie wystąpił błąd, plik dodany pomyślnie"
+msgstr "Il n'y a pas d'erreur, le fichier téléchargé avec succès"
 
 #: lib/controllers/CmdownloadController.php:565
 msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
-msgstr "Plik przekracza rozmiar dyrektywy upload_max_filesize z php.ini"
+msgstr ""
+"Le fichier téléchargé excède la directive upload_max_filesize dans php.ini"
 
 #: lib/controllers/CmdownloadController.php:566
 msgid ""
 "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
 "the HTML form"
-msgstr "Plik przekracza dyrektywę MAX_FILE_SIZE podaną w formularzu"
+msgstr ""
+"Le fichier téléchargé excède la MAX_FILE_SIZE qui a été spécifié dans le "
+"formulaire HTML"
 
 #: lib/controllers/CmdownloadController.php:567
 msgid "The uploaded file was only partially uploaded"
-msgstr "Plik został przesłany tylko częściowo"
+msgstr "Le fichier n'a été que partiellement envoyé"
 
 #: lib/controllers/CmdownloadController.php:568
 msgid "No file was uploaded"
-msgstr "Plik nie został przesłany"
+msgstr "Aucun fichier a été téléchargé"
 
 #: lib/controllers/CmdownloadController.php:569
 msgid "Missing a temporary folder"
-msgstr "Folder tymczasowy niedostępny"
+msgstr "Manquer un dossier temporaire"
 
 #: lib/controllers/CmdownloadController.php:591
 msgid "File exceeds the maximum allowed size"
-msgstr "Plik przekracza maksymalny dopuszczalny rozmiar"
+msgstr "Fichier dépasse la taille maximale autorisée"
 
 #: lib/controllers/CmdownloadController.php:605
 msgid "Invalid file name"
-msgstr "Błędna nazwa pliku"
+msgstr "Nom de fichier non valide"
 
 #: lib/controllers/CmdownloadController.php:612
 msgid "File with this name already exists"
-msgstr "Plik o tej nazwie już istnieje"
+msgstr "Fichier portant ce nom existe déjà"
 
 #: lib/controllers/CmdownloadController.php:627
 msgid "Invalid file extension"
-msgstr "Błędne rozszerzenie pliku"
+msgstr "Extension de fichier invalide"
 
 #: lib/helpers/Form/Element.php:22
 #, php-format
 msgid "%s is required"
-msgstr "%s to pole wymagane"
+msgstr "%s est nécessaire"
 
 #: lib/helpers/Form/Element/PLUploader.php:39
 #, php-format
 msgid "%s needs to be uploaded"
-msgstr "%s musi zostać przesłany"
+msgstr "%s doit être téléchargé"
 
 #: lib/helpers/Form/Element/PLUploader.php:128
 msgid "Completed"
-msgstr "Zakończone"
+msgstr "Terminé"
 
 #: lib/helpers/Form/Element/PLUploader.php:131
 msgid "Upload failed"
-msgstr "Przesyłanie zakończone błędem"
+msgstr "échec de l'envoi"
 
 #: lib/helpers/Form/Element/PLUploader.php:177
 msgid "Upload"
-msgstr "Prześlij"
+msgstr "Téléchargez"
 
 #: lib/models/GroupDownloadPage.php:185
 msgid "not published"
-msgstr "nieopublikowane"
+msgstr "non publiée"
 
 #: lib/models/GroupDownloadPage.php:187
 msgid "published"
-msgstr "opublikowane"
+msgstr "publié"
 
 #: lib/models/SupportThread.php:64
 msgid "some time ago"
-msgstr "jakiś czas temu"
+msgstr "il ya quelque temps"
 
 # @ cm-download-manager
 #: lib/models/SupportThread.php:67
 #, php-format
 msgid "1 second ago"
 msgid_plural "%d seconds ago"
-msgstr[0] "sekundę temu"
-msgstr[1] "%d sekundy temu"
-msgstr[2] "%d sekund temu"
+msgstr[0] "il ya seconde"
+msgstr[1] "Il ya %d secondes"
+msgstr[2] "Il ya %d secondes"
 
 # @ cm-download-manager
 #: lib/models/SupportThread.php:72
 #, php-format
 msgid "1 minute ago"
 msgid_plural "%d minutes ago"
-msgstr[0] "minutę temu"
-msgstr[1] "%d minuty temu"
-msgstr[2] "%d minut temu"
+msgstr[0] "il ya 1 minute"
+msgstr[1] "Il ya %d minutes"
+msgstr[2] "Il ya %d minutes"
 
 # @ cm-download-manager
 #: lib/models/SupportThread.php:78
 #, php-format
 msgid "1 hour ago"
 msgid_plural "%d hours ago"
-msgstr[0] "godzinę temu"
-msgstr[1] "%d godziny temu"
-msgstr[2] "%d godzin temu"
+msgstr[0] "il ya une heure"
+msgstr[1] "il ya %d heures"
+msgstr[2] "il ya %d heures"
 
 # @ cm-download-manager
 #: lib/models/SupportThread.php:84
 #, php-format
 msgid "1 day ago"
 msgid_plural "%d days ago"
-msgstr[0] "wczoraj"
-msgstr[1] "%d dni temu"
-msgstr[2] "%d dni temu"
+msgstr[0] "hier"
+msgstr[1] "il ya %d jours"
+msgstr[2] "il ya %d jours"
 
 # @ cm-download-manager
 #: lib/models/SupportThread.php:90
 #, php-format
 msgid "1 week ago"
 msgid_plural "%d weeks ago"
-msgstr[0] "tydzień temu"
-msgstr[1] "%d tygodnie temu"
-msgstr[2] "%d tygodni temu"
+msgstr[0] "il ya une semaine"
+msgstr[1] "il ya %d semaines"
+msgstr[2] "il ya %d semaines"
 
 # @ cm-download-manager
 #: lib/models/SupportThread.php:96
 #, php-format
 msgid "1 month ago"
 msgid_plural "%d months ago"
-msgstr[0] "miesiąc temu"
-msgstr[1] "%d miesiące temu"
-msgstr[2] "%d miesięcy temu"
+msgstr[0] "il ya un moi"
+msgstr[1] "il ya %d mois"
+msgstr[2] "il ya %d mois"
 
 # @ cm-download-manager
 #: lib/models/SupportThread.php:103
 #, php-format
 msgid "1 year ago"
 msgid_plural "%d years ago"
-msgstr[0] "rok temu"
-msgstr[1] "%d lata temu"
-msgstr[2] "%d lat temu"
+msgstr[0] "il ya un an"
+msgstr[1] "il ya un %d ans"
+msgstr[2] "il ya un %d ans"
 
 # @ cm-download-manager
 #: lib/models/SupportThread.php:252 lib/models/SupportThread.php:287
 msgid "Content cannot be empty"
-msgstr "Treść nie może być pusta"
+msgstr "Le contenu peut pas être vide"
 
 # @ cm-download-manager
 #: lib/models/SupportThread.php:285
 msgid "Title cannot be empty"
-msgstr "Tytuł nie może być pusty"
+msgstr "Titre ne peut être vide"
 
 #: lib/models/forms/AddDownloadForm.php:20
 #: views/frontend/cmdownload/dashboard.phtml:10
 #: views/frontend/cmdownload/meta/support.phtml:41
 msgid "Title"
-msgstr "Tytuł"
+msgstr "Titre"
 
 #: lib/models/forms/AddDownloadForm.php:25
 #: views/frontend/cmdownload/meta/details.phtml:6
 msgid "Version"
-msgstr "Wersja"
+msgstr "Version"
 
 #: lib/models/forms/AddDownloadForm.php:30
 msgid "File"
-msgstr "Plik"
+msgstr "Fichier"
 
 # @ cm-download-manager
 #: lib/models/forms/AddDownloadForm.php:31
 msgid "Allowed extensions"
-msgstr "Dozwolone rozszerzenia"
+msgstr "Extensions autorisées"
 
 #: lib/models/forms/AddDownloadForm.php:36
 msgid "Category (max. 3)"
-msgstr "Kategoria (max. 3)"
+msgstr "Catégorie (max. 3)"
 
 # @ cm-download-manager
 #: lib/models/forms/AddDownloadForm.php:42
 #: views/frontend/cmdownload/single.phtml:50
 msgid "Description"
-msgstr "Opis"
+msgstr "Description"
 
 #: lib/models/forms/AddDownloadForm.php:48
 msgid "Screenshots"
-msgstr "Zrzuty ekranu"
+msgstr "Captures d'écran"
 
 #: lib/models/forms/AddDownloadForm.php:49
 #, php-format
 msgid "(Max. %d, Size: H: %dpx W: %dpx)"
-msgstr "(Max. %d, Rozmiar: Wys: %dpx Szer: %dpx)"
+msgstr "(Max. %d, Dimensions: H : %dpx W : %dpx)"
 
 #: lib/models/forms/AddDownloadForm.php:55
 msgid "Images"
-msgstr "Obrazki"
+msgstr "Images"
 
 #: lib/models/forms/AddDownloadForm.php:62
 msgid "Admin Recommended"
-msgstr "Rekomendowane przez admina"
+msgstr "Administrateur recommandée"
 
 #: lib/models/forms/AddDownloadForm.php:67
 msgid "Notify me on new support topics"
-msgstr "Powiadom mnie o nowych tematach w dziale wsparcia"
+msgstr "Avertissez-moi des nouveaux sujets de soutien"
 
 #: lib/models/forms/AddDownloadForm.php:71
 msgid "Update"
-msgstr "Zaktualizuj"
+msgstr "mettre à jour"
 
 #: lib/models/forms/AddDownloadForm.php:71
 msgid "Add"
-msgstr "Dodaj"
+msgstr "Ajouter"
 
 # @ cm-download-manager
 #: views/frontend/error.phtml:8
 msgid "Go back to previous page"
-msgstr "Wróć do poprzedniej odpowiedzi"
+msgstr "Retour à la page précédente"
 
 #: views/frontend/cmdownload/categories.phtml:4
 #: views/frontend/cmdownload/index.phtml:57
 msgid "All Downloads"
-msgstr "Wszystkie Pliki"
+msgstr "Tous les téléchargements"
 
 #: views/frontend/cmdownload/dashboard.phtml:6
 msgid "Add new"
-msgstr "Dodaj nowy"
+msgstr "Ajouter un nouveau"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/dashboard.phtml:11
@@ -321,186 +324,186 @@ msgstr "Status"
 #: views/frontend/cmdownload/meta/details.phtml:8
 #: views/frontend/cmdownload/meta/menu-item.phtml:2
 msgid "Downloads"
-msgstr "Pliki"
+msgstr "Téléchargements"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/dashboard.phtml:13
 msgid "Actions"
-msgstr "Akcje"
+msgstr "Actions"
 
 #: views/frontend/cmdownload/dashboard.phtml:18
 msgid "You haven't added any downloads yet"
-msgstr "Nie dodałeś jeszcze żadnych plików"
+msgstr "Vous n'avez pas encore ajouté de téléchargements"
 
 #: views/frontend/cmdownload/dashboard.phtml:30
 msgid "Unpublish"
-msgstr "Odpublikuj"
+msgstr "dépublier"
 
 #: views/frontend/cmdownload/dashboard.phtml:34
 msgid "Publish"
-msgstr "Opublikuj"
+msgstr "publier"
 
 #: views/frontend/cmdownload/dashboard.phtml:38
 #: views/frontend/cmdownload/meta/edit-link.phtml:1
 msgid "Edit"
-msgstr "Edytuj"
+msgstr "éditer"
 
 #: views/frontend/cmdownload/dashboard.phtml:39
 msgid "Are you sure you want to delete?"
-msgstr "Czy jesteś pewny, że chcesz usunąć?"
+msgstr "Etes-vous sûr de vouloir supprimer?"
 
 #: views/frontend/cmdownload/dashboard.phtml:39
 msgid "Delete"
-msgstr "Usuń"
+msgstr "Supprimer"
 
 #: views/frontend/cmdownload/index.phtml:22
 msgid "Manage my Downloads"
-msgstr "Zarządzaj moimi plikami"
+msgstr "Gérer mes téléchargements"
 
 #: views/frontend/cmdownload/index.phtml:55
 msgid "Search Results for"
-msgstr "Wyniki wyszukiwania dla"
+msgstr "Résultats de la recherche"
 
 #: views/frontend/cmdownload/index.phtml:73
 #, php-format
 msgid "Showing %d-%d of %d"
-msgstr "Wyświetlanie %d-%d z %d"
+msgstr "%d-%d de %d"
 
 #: views/frontend/cmdownload/index.phtml:77
 #: views/frontend/cmdownload/meta/download-form.phtml:12
 msgid "Download"
-msgstr "Ściągnij"
+msgstr "Télécharger"
 
 #: views/frontend/cmdownload/index.phtml:77
 msgid "Info"
-msgstr "Informacje"
+msgstr "Info"
 
 #: views/frontend/cmdownload/index.phtml:99
 msgid "No results has been found"
-msgstr "Nie znaleziono wyników"
+msgstr "Aucun résultat n'a été trouvé"
 
 #: views/frontend/cmdownload/single.phtml:11
 #: views/frontend/cmdownload/thread.phtml:11
 msgid "Back to All Downloads"
-msgstr "Powróć do wszystkich plików"
+msgstr "Retour à Tous les téléchargements"
 
 #: views/frontend/cmdownload/single.phtml:51
 msgid "Support"
-msgstr "Wsparcie"
+msgstr "Support"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/thread.phtml:30
 #: views/frontend/cmdownload/meta/support-thread-list.phtml:7
 msgid "RESOLVED"
-msgstr "ROZWIĄZANE"
+msgstr "RÉSOLU"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/thread.phtml:31
 msgid "Back to Support Page"
-msgstr "Wróć do strony wsparcia"
+msgstr "Retour au Support page"
 
 #: views/frontend/cmdownload/thread.phtml:57
 #: views/frontend/cmdownload/meta/details.phtml:4
 msgid "Author"
-msgstr "Autor"
+msgstr "auteur"
 
 #: views/frontend/cmdownload/thread.phtml:74
 msgid "Leave your comment"
-msgstr "Dodaj komentarz"
+msgstr "Laissez votre commentaire"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/thread.phtml:77
 #: views/frontend/cmdownload/meta/support.phtml:38
 msgid "Allow markup"
-msgstr "Dopuszczalne tagi"
+msgstr "Laisser balisage"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/thread.phtml:78
 #: views/frontend/cmdownload/meta/support.phtml:39
 msgid "Wrap your code using"
-msgstr "Otocz kod używając"
+msgstr "Enveloppez votre code à l'aide"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/thread.phtml:80
 msgid "What is your comment about?"
-msgstr "O czym jest Twoje pytanie?"
+msgstr "Quel est votre commentaire?"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/thread.phtml:83
 #: views/frontend/cmdownload/meta/support.phtml:45
 msgid "Notify me of follow"
-msgstr "Powiadom mnie o odpowiedzi"
+msgstr "Prévenez moi de tous"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/thread.phtml:86
 msgid "Mark this topic as resolved"
-msgstr "Oznacz jako rozwiązane"
+msgstr "Marquer ce sujet comme résolu"
 
 #: views/frontend/cmdownload/thread.phtml:87
 #: views/frontend/cmdownload/meta/support.phtml:46
 msgid "Post"
-msgstr "Wyślij"
+msgstr "Envoyer"
 
 #: views/frontend/cmdownload/meta/details.phtml:2
 msgid "Download Info"
-msgstr "Informacje"
+msgstr "Télécharger infos"
 
 #: views/frontend/cmdownload/meta/details.phtml:9
 #, php-format
 msgid "1 Download"
 msgid_plural "%d Downloads"
-msgstr[0] "1 ściągnięcie"
-msgstr[1] "%d ściągnięcia"
-msgstr[2] "%d ściągnięć"
+msgstr[0] "1 téléchargement"
+msgstr[1] "%d téléchargements"
+msgstr[2] "%d téléchargements"
 
 #: views/frontend/cmdownload/meta/details.phtml:10
 #: views/frontend/cmdownload/meta/support.phtml:8
 msgid "Updated"
-msgstr "Zaktualizowano"
+msgstr "Mise à jour"
 
 #: views/frontend/cmdownload/meta/details.phtml:15
 msgid "Recommended"
-msgstr "Rekomendowane"
+msgstr "Recommandé"
 
 #: views/frontend/cmdownload/meta/menu-item.phtml:1
 msgid "My Downloads"
-msgstr "Moje pliki"
+msgstr "mes Téléchargements"
 
 #: views/frontend/cmdownload/meta/rating.phtml:8
 #, php-format
 msgid "%d Stars"
-msgstr "%d gwiazdek"
+msgstr "%d etoils"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/meta/rating.phtml:30
 msgid "Thanks for rating!"
-msgstr "Dziękujemy za ocenę!"
+msgstr "Merci de votre évaluation!"
 
 #: views/frontend/cmdownload/meta/support-thread-list.phtml:17
 msgid "No topics"
-msgstr "Brak tematów"
+msgstr "Pas de sujets"
 
 #: views/frontend/cmdownload/meta/support-thread-list.phtml:18
 msgid "would you like to create one?"
-msgstr "chciałbyś jakiś utworzyć?"
+msgstr "aimeriez-vous créer un?"
 
 #: views/frontend/cmdownload/meta/support.phtml:5
 msgid "Topic"
-msgstr "Temat"
+msgstr "sujet"
 
 #: views/frontend/cmdownload/meta/support.phtml:6
 msgid "Posts"
-msgstr "Wpisy"
+msgstr "messages"
 
 #: views/frontend/cmdownload/meta/support.phtml:7
 msgid "Last Poster"
-msgstr "Ostatni poster"
+msgstr "Dernier posteur"
 
 #: views/frontend/cmdownload/meta/support.phtml:35
 msgid "Leave your comment/question"
-msgstr "Dodaj swój komentarz/pytanie"
+msgstr "Laissez votre commentaire / question"
 
 # @ cm-download-manager
 #: views/frontend/cmdownload/meta/support.phtml:42
 msgid "What is your comment about?\""
-msgstr "O czym jest Twoje pytanie?"
+msgstr "Quel est votre commentaire?"
