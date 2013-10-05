@@ -29,7 +29,7 @@ $currentPage = 1;
 <!--/paging -->
 <script>
 </script>
-<?  if ( is_user_logged_in() ) {  ?>     
+<?php  if ( is_user_logged_in() ) {  ?>     
 <div class="boxWhite694">
     <form id="addThreadForm" action="<?php the_permalink($post->ID); ?>/topic/add" method="post" style="position:relative">
         <h5><?php _e('Leave your comment/question', 'cm-download-manager'); ?></h5>
@@ -46,7 +46,7 @@ $currentPage = 1;
         <button class="butPost"><?php _e('Post', 'cm-download-manager'); ?> &gt;</button>
     </form>
 </div>
-<? } ?>
+<?php } ?>
 <script>
     var totalSupportPages = <?php echo $pages; ?>;
     jQuery(document).ready(function($) {
