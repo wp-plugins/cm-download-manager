@@ -23,13 +23,13 @@ $currentPage = 1;
 <div class="paging"><a href="#" class="prev">&laquo;</a>
     <a href="#" class="currentPage" data-page="1">1</a>
     <?php for ($i = 2; $i <= $pages; $i++): ?>
-        <a href="#" data-page="<?php echo $i; ?>"><?php echo $i; ?></a> 
+        <a href="#" data-page="<?php echo $i; ?>"><?php echo $i; ?></a>
     <?php endfor; ?>
     <a href="#" class="next">&raquo;</a></div>
 <!--/paging -->
 <script>
 </script>
-<?php  if ( is_user_logged_in() ) {  ?>     
+<?php  if ( is_user_logged_in() ) {  ?>
 <div class="boxWhite694">
     <form id="addThreadForm" action="<?php the_permalink($post->ID); ?>/topic/add" method="post" style="position:relative">
         <h5><?php _e('Leave your comment/question', 'cm-download-manager'); ?></h5>
@@ -62,13 +62,13 @@ $currentPage = 1;
             } else {
                 showSupportPage(selectedItem.data('page'));
             }
-            
+
         });
         function showSupportPage(pageNum, force) {
             force = typeof force !== 'undefined' ? force : false;
             var currentPageItem = $('.tabItemSupport .paging a.currentPage');
             var currentPage = parseInt(currentPageItem.data('page'));
-            
+
             if (pageNum<1) pageNum=1;
             if (pageNum>totalSupportPages) pageNum=totalSupportPages;
             if (!force && pageNum==currentPage) return false;
@@ -86,7 +86,7 @@ $currentPage = 1;
                     }
                 });
             }
-            
+
         }
         $('#addThreadForm').ajaxForm({
             dataType: 'json',
@@ -95,12 +95,12 @@ $currentPage = 1;
                 $form.find('.CMDM_error').empty().hide();
             },
             success: function(data, status, xhr, $form) {
-            
+
                 if (data.success==1) {
                     $form.find('.CMDM_loadingOverlay').remove();
                     $form.resetForm();
                     showSupportPage(1, true);
-                    
+
                 } else {
                     for (var i=0; i<data.message.length; i++)
                         $form.find('.CMDM_error').append('<li>'+data.message[i]+'</li>').show().delay(5000).fadeOut('slow');

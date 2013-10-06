@@ -8,9 +8,9 @@
 .CMDM .CMDM_success {color:#4f8a10; background-color: #dff2bf; background-image:url(imgs/success.png);}
 .CMDM .CMDM_error {color:#d8000c; background-color:#ffbaba; background-image:url(imgs/error.png);}
 .CMDM .CMDM_success li, .CMDM .CMDM_error li {display: block;
-line-height: 20px;
-margin:0;
-list-style-type: none;}
+                                              line-height: 20px;
+                                              margin:0;
+                                              list-style-type: none;}
 .CMDM .CMDM-app { width: 984px; margin: auto; font-size:13px;}
 .CMDM .CMDM-app .aside { float: right; width: 250px; }
 .CMDM .CMDM-app .main { float: left; width: 724px; }
@@ -89,7 +89,6 @@ list-style-type: none;}
 .CMDM .paging .navi a { width: 9px; height: 10px; margin: 4px 1px 0; background: url(imgs/navigator.png) 0 0 no-repeat; display: inline-block; font-size: 1px; }
 .CMDM .paging .navi a:hover { background-position: 0 -10px; }
 .CMDM .paging .navi a.active { background-position: 0 -20px; }
-
 .CMDM .tabNav { height: 19px; padding: 0 12px; margin:0}
 .CMDM .tabNav li { float: left; width: 100px; border-left: 2px solid #f2f2f2; list-style: none;}
 .CMDM .tabNav li:first-child { border-color: transparent; }
@@ -158,13 +157,12 @@ div.CMDM_loadingOverlay {
 .CMDM .CMDM-edit-form input[type=text], .CMDM-edit-form textarea, .CMDM-edit-form .mceLayout {background-color:#fff;}
 .CMDM .CMDM-edit-form table ul {margin:0;display:inline-block;}
 .CMDM li, .CMDM .CMDM-edit-form li {margin-top: 0;
-list-style-type: none;
-background: 0 none;
-padding-left: 0px;
-list-style: none;}
+                                    list-style-type: none;
+                                    background: 0 none;
+                                    padding-left: 0px;
+                                    list-style: none;}
 .CMDM .CMDM-edit-form input[type=checkbox] {margin-right:2px;}
 .CMDM .CMDM-edit-form input[type=submit] {color: buttontext;padding: 5px;border: 2px outset buttonface;width:30%;font-weight:bold;font-size:1.2em;float:left;}
-
 .CMDM_thread_title {font-size:15px;font-weight:bold;}
 .CMDM_comment {line-height:1.5em;}
 .CMDM_comment_main {}
@@ -194,13 +192,13 @@ list-style: none;}
     text-align:center;
     z-index:10;
     padding-top: 5px;
-font-size: 1.1em;
-font-weight: bold;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 .CMDM .CMDM-rating {
     float:left;
     border: 0;
-padding: 0;
+    padding: 0;
 }
 .CMDM .CMDM-rating label {width:22px;height:22px;margin-left:3px;font-size:0}
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
@@ -211,47 +209,35 @@ padding: 0;
     top:-9999px;
     clip:rect(0,0,0,0);
 }
-
 .CMDM .CMDM-rating:not(:checked) > label {
     float:right;
     overflow:hidden;
     white-space:nowrap;
-
 }
-
 .CMDM .CMDM-rating:not(:checked) > label {
     background-image:url(imgs/stars.png);
     background-repeat:no-repeat;
     background-position:left top;
 }
-
 .CMDM .CMDM-rating > input:checked ~ label {
     background-position:left -22px;
-
 }
-
 .CMDM .CMDM-rating:not(:checked) > label:hover,
 .CMDM .CMDM-rating:not(:checked) > label:hover ~ label {
     background-position:left -44px;
-        cursor:pointer;
-
+    cursor:pointer;
 }
-
 .CMDM .CMDM-rating > input:checked + label:hover,
 .CMDM .CMDM-rating > input:checked + label:hover ~ label,
 .CMDM .CMDM-rating > input:checked ~ label:hover,
 .CMDM .CMDM-rating > input:checked ~ label:hover ~ label,
 .CMDM .CMDM-rating > label:hover ~ input:checked ~ label {
     background-position:left -44px;
-
 }
-
 .CMDM .CMDM-rating > label:active {
     position:relative;
     top:2px;
     left:2px;
     background-position:left -22px;
 }​
-
-
-.wp-editor-wrap {width:400px;)
+.wp-editor-wrap {width:400px;}

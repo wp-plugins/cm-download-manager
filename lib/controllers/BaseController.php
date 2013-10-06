@@ -558,7 +558,11 @@ abstract class CMDM_BaseController
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'About', 'About', 'manage_options', self::ADMIN_ABOUT, array(get_class(), 'displayAboutPage'));
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'Pro Version', 'Pro Version', 'manage_options', self::ADMIN_PRO, array(get_class(), 'displayProPage'));
         global $submenu;
-        $submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][500] = array('User Guide', 'manage_options', 'http://www.cminds.com/cm-download-manager-user-guide/');
+        $current_user = wp_get_current_user();
+        if(user_can($current_user, 'edit_posts'))
+        {
+            $submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][500] = array('User Guide', 'manage_options', 'http://www.cminds.com/cm-download-manager-user-guide/');
+        }
     }
 
     public static function displaySettingsPage()

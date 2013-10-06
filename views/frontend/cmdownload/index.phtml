@@ -16,11 +16,11 @@ get_header();
 <div class="CMDM">
 <div class="CMDM-app">
     <div class="aside">
-		<?php  if ( is_user_logged_in() ) {  ?> 
+		<?php if ( is_user_logged_in() ) {  ?>
             <div class="sideBox">
                 <div class="manageAddOns">
                     <a class="manageAddOnsA" href="<?php echo CMDM_get_url('cmdownload', 'dashboard'); ?>"><?php _e('Manage my Downloads', 'cm-download-manager'); ?> <img src="<?php echo CMDM_URL; ?>/views/resources/imgs/uploadIcon.png" alt="" style="vertical-align:middle;"></a>
-                    
+
                 </div>
             </div>
 			<?php } ?>
@@ -94,7 +94,7 @@ get_header();
                     }
                     ?>
                     <a href="<?php echo $next_link; ?>" class="next">&raquo;</a></div>
-                <!--/paging --> 
+                <!--/paging -->
             <?php else: ?>
                 <div class="searchTitle"><?php _e('No results has been found', 'cm-download-manager'); ?></div>
                 <div class="paging">
@@ -106,7 +106,7 @@ get_header();
         </div>
         <!--/searchResItems -->
     </div>
-    <!--/main --> 
+    <!--/main -->
 </div>
 <span class="cma_poweredby"><a href="http://plugins.cminds.com/" target="_new" class="cma_poweredbylink">CreativeMinds WordPress Plugins</a> <a href="http://downloadsmanager.cminds.com" target="_new" class="cma_poweredbylink">CM Downloads Manager</a></span>
 </div>
