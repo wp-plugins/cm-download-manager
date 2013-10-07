@@ -20,19 +20,19 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
     /**
      * Directory for uploads
      */
-    const UPLOAD_DIR      = 'cmdm';
-    const SCREENSHOTS_DIR = 'screenshots';
+    const UPLOAD_DIR                = 'cmdm';
+    const SCREENSHOTS_DIR           = 'screenshots';
     const OPTION_ADDONS_TITLE       = 'CMDM_addons_title';
     const ALLOWED_EXTENSIONS_OPTION = 'CMDM_allowed_extensions';
 
     /**
      * @var CMDM_GroupDownloadPage[] singletones cache
      */
-    protected static $instances                = array();
+    protected static $instances = array();
     /**
      * @var array meta keys mapping
      */
-    protected static $_meta = array(
+    protected static $_meta     = array(
         'version' => '_version',
         'screenshots' => '_screenshots',
         'download_file' => '_download_file',
@@ -478,16 +478,18 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
 
     public function download()
     {
-//        $this->addNumberOfDownloads();
-//        wp_redirect($this->getUploadUrl() . $this->getDownloadFile(), 303);
-//        exit;
         $this->addNumberOfDownloads();
+        error_reporting(0);
         header('Content-type: ' . $this->getMimeType());
         $filepath = $this->getFilePath();
         $ext      = pathinfo($filepath, PATHINFO_EXTENSION);
-        ob_clean();
-        ob_end_flush();
-        if(!empty($ext)) $ext      = '.' . $ext;
+
+        if(ob_get_level())
+        {
+            ob_clean();
+            ob_end_flush();
+        }
+        if(!empty($ext)) $ext = '.' . $ext;
         header('Content-Disposition: attachment; filename="' . sanitize_file_name($this->getTitle()) . $ext . '"');
         readfile($filepath);
         exit;
