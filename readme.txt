@@ -14,6 +14,8 @@ CM Downloads Manager is a plug-in for WordPress that enables you to specify whic
 
 With this plugin you can create a directory where users can upload and manage Files / Downloads / Apps / Add-on / Packages / Plugins / Archives, where each posting contains its own detailed description. The CM Download Manager plugin tracks downloads with a counter and supports forum comments for each download page (similar to a WP Plugin Directory)
 
+[youtube http://www.youtube.com/watch?v=y-TDdgpWE4w]
+
 **Use-Cases**
 
 * Plugin Directory - Creates a plugin directory that is similar to any other WordPress Plugins Directory.
@@ -28,10 +30,6 @@ With this plugin you can create a directory where users can upload and manage Fi
 * [Plugin Site](http://downloadsmanager.cminds.com/).
 * Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
 * [User Guide](http://www.cminds.com/cm-download-manager-user-guide/)
-
-**Pro Version Video**
-
-[youtube http://www.youtube.com/watch?v=IZNX9zmz4rM]
 
 **Features**
 
