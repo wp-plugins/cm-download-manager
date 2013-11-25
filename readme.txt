@@ -5,7 +5,7 @@ Donate link: http://downloadsmanager.cminds.com
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,download tracker,download counter,download manager,download monitor,file management plugin,file manager,mp3,music
 Requires at least: 3.2
 Tested up to: 3.7.1
-Stable tag: 1.5.8
+Stable tag: 1.6.0
 
 Enables you to upload, manage, track and support documents or files in a directory listing structure for others to use and comment
 
@@ -124,6 +124,12 @@ In your template you can create a directory called "CMDM". Inside this you can p
 
 
 == Changelog ==
+= 1.6.0 =
+* Fixed issues with js files not being loaded using https
+* Fixed options "Add Downloads" to site menu and "Add My downloads" to site menu
+* Added error reports when uploads fails
+* Fixed the uploads directory mechanisms
+
 = 1.5.8 =
 * Fixed the download issue which occured with the error_reporting being on
 

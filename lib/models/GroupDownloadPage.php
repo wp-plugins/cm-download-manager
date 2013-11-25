@@ -6,17 +6,18 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
     /**
      * Post type name
      */
-    const POST_TYPE    = 'cmdm_page';
+    const POST_TYPE = 'cmdm_page';
+
     /**
      * Rewrite slug
      */
-    const REWRITE_SLUG = 'cmdownloads';
-    const ADMIN_MENU   = 'CMDM_downloads_menu';
+    public static $rewriteSlug = 'cmdownloads';
+
+    const ADMIN_MENU                = 'CMDM_downloads_menu';
     /**
      * Name of category taxonomy
      */
-    const CAT_TAXONOMY = 'cmdm_category';
-
+    const CAT_TAXONOMY              = 'cmdm_category';
     /**
      * Directory for uploads
      */
@@ -55,7 +56,7 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
 //            'menu_position' => 4,
             'show_in_menu' => self::ADMIN_MENU,
             'rewrite' => array(
-                'slug' => self::REWRITE_SLUG,
+                'slug' => self::$rewriteSlug,
                 'with_front' => FALSE,
             ),
             'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions', 'post-formats'),
@@ -71,7 +72,7 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
         $plural        = 'Categories';
         $taxonomy_args = array(
             'rewrite' => array(
-                'slug' => self::REWRITE_SLUG . '/categories',
+                'slug' => self::$rewriteSlug . '/categories',
                 'with_front' => FALSE,
                 'show_ui' => TRUE,
                 'hierarchical' => FALSE,
@@ -86,8 +87,8 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
     public static function fixCategorySlugs($wp_rewrite)
     {
         $wp_rewrite->rules = array(
-            self::REWRITE_SLUG . '/categories/([^/]+)/?$' => $wp_rewrite->index . '?post_type=' . self::POST_TYPE . '&' . self::CAT_TAXONOMY . '=' . $wp_rewrite->preg_index(1),
-            self::REWRITE_SLUG . '/categories/([^/]+)/page/?([0-9]{1,})/?$' => $wp_rewrite->index . '?post_type=' . self::POST_TYPE . '&' . self::CAT_TAXONOMY . '=' . $wp_rewrite->preg_index(1) . '&paged=' . $wp_rewrite->preg_index(2),
+            self::$rewriteSlug . '/categories/([^/]+)/?$' => $wp_rewrite->index . '?post_type=' . self::POST_TYPE . '&' . self::CAT_TAXONOMY . '=' . $wp_rewrite->preg_index(1),
+            self::$rewriteSlug . '/categories/([^/]+)/page/?([0-9]{1,})/?$' => $wp_rewrite->index . '?post_type=' . self::POST_TYPE . '&' . self::CAT_TAXONOMY . '=' . $wp_rewrite->preg_index(1) . '&paged=' . $wp_rewrite->preg_index(2),
                 ) + $wp_rewrite->rules;
     }
 
@@ -326,16 +327,39 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
 
     public function setDownloadFile($_download_file)
     {
-        $name   = time() . '_' . sanitize_file_name($_download_file['name']);
-        $target = $this->getUploadPath() . $name;
-        if(move_uploaded_file($_download_file['tmp_name'], $target))
+        $name         = time() . '_' . sanitize_file_name($_download_file['name']);
+        $uploadFolder = $this->getUploadPath();
+        if($uploadFolder)
         {
-            $this->setMimeType($_download_file['type'])
-                    ->setFileSize($_download_file['size']);
+            $target = $uploadFolder . $name;
+            if(move_uploaded_file($_download_file['tmp_name'], $target))
+            {
+                $this->setMimeType($_download_file['type'])
+                        ->setFileSize($_download_file['size']);
 
-            $this->savePostMeta(array(self::$_meta['download_file'] => $name));
+                $this->savePostMeta(array(self::$_meta['package_type'] => 'file',
+                    self::$_meta['download_file'] => $name));
+            }
+            else
+            {
+                $this->addError(__('File upload failed!'));
+            }
         }
         return $this;
+    }
+
+    protected function addError($errorMsg)
+    {
+        $this->_errors[] = $errorMsg;
+    }
+
+    protected function getErrors()
+    {
+        if($this->_errors)
+        {
+            return $this->_errors;
+        }
+        return null;
     }
 
     public function isOwnerNotified()
@@ -351,13 +375,30 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
 
     public function getMimeType()
     {
-        return $this->post->post_mime_type;
+        $filename = $this->getFilePath();
+        $mimeType = $this->post->post_mime_type;
+        if(!$mimeType)
+        {
+            $mimeType = get_post_mime_type($this->post);
+        }
+        if(!$mimeType)
+        {
+            $finfo    = finfo_open(FILEINFO_MIME_TYPE);
+            $mimeType = finfo_file($finfo, $filename);
+            finfo_close($finfo);
+            $this->setMimeType($mimeType);
+        }
+        return $mimeType;
     }
 
     public function setMimeType($_mime, $save = false)
     {
+        global $wpdb;
         $this->post->_post_mime_type = $_mime;
-        if($save) $this->savePost();
+        if(isset($this->post->ID))
+        // had to use $wpdb, because wp_update_post does not update post_mime_type field
+            $wpdb->query('UPDATE ' . $wpdb->base_prefix . 'posts SET post_mime_type="' . $_mime . '" WHERE ID="' . $this->post->ID . '"');
+//        if($save) $this->savePost();
         return $this;
     }
 
@@ -426,26 +467,39 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
         $uploadDir = wp_upload_dir();
         $baseDir   = $uploadDir['baseurl'] . '/' . self::UPLOAD_DIR . '/';
         $dir       = $baseDir . $this->getId() . '/';
+        wp_mkdir_p($dir);
         return $dir;
     }
 
     public function getUploadPath()
     {
         $uploadDir = wp_upload_dir();
-        $baseDir   = $uploadDir['basedir'] . '/' . self::UPLOAD_DIR . '/';
-        if(!file_exists($baseDir)) mkdir($baseDir);
-        $dir       = $baseDir . $this->getId() . '/';
-        if(!file_exists($dir)) mkdir($dir);
-        return $dir;
+        if($uploadDir['error'])
+        {
+            $this->addError(__('Error while getting wp_upload_dir():' . $uploadDir['error']));
+            return '';
+        }
+        else
+        {
+            $dir = $uploadDir['basedir'] . '/' . self::UPLOAD_DIR . '/' . $this->getId() . '/';
+            if(!is_dir($dir))
+            {
+                if(!wp_mkdir_p($dir))
+                {
+                    $this->addError(__('Script couldn\'t create the upload folder:' . $dir));
+                    return '';
+                }
+            }
+            return $dir;
+        }
     }
 
     public static function getScreenshotsPath()
     {
         $uploadDir = wp_upload_dir();
         $baseDir   = $uploadDir['basedir'] . '/' . self::UPLOAD_DIR . '/';
-        if(!file_exists($baseDir)) mkdir($baseDir);
         $dir       = $baseDir . self::SCREENSHOTS_DIR . '/';
-        if(!file_exists($dir)) mkdir($dir);
+        wp_mkdir_p($dir);
         return $dir;
     }
 
@@ -469,29 +523,113 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
         else throw new Exception('File could not be saved.');
     }
 
+    /**
+     * New download method
+     * @since 1.6.0
+     * @author Marcin
+     */
+    public function download()
+    {
+        error_reporting(0);
+
+        $filepath = $this->getFilePath();
+        if(is_file($filepath))
+        {
+            $this->addNumberOfDownloads();
+
+            $ext = pathinfo($filepath, PATHINFO_EXTENSION);
+            if(!empty($ext))
+            {
+                $ext = '.' . $ext;
+            }
+
+            $fileName = sanitize_file_name($this->getTitle()) . $ext;
+            $mimeType = $this->getMimeType();
+            $fileSize = filesize($filepath);
+
+            while(ob_get_level())
+            {
+                @ob_end_clean();
+            }
+
+            if(strpos($ext, 'mp3'))
+            {
+                $mimeType = 'application/octet-stream';
+            }
+
+            $mimeType = 'application/octet-stream';
+
+            if(headers_sent($headersFile, $headersLine))
+            {
+                die('Headers file:' . $headersFile . ' on line: ' . $headersLine);
+            }
+
+            header('Content-Description: File Transfer');
+            header("Pragma: public");
+            header("Expires: 0");
+            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+            header("Cache-Control: private", false); // required for certain browsers
+            header("Content-type: " . $mimeType);
+            header("Content-Disposition: attachment; filename=\"" . $fileName . "\";");
+            header("Content-Transfer-Encoding: binary");
+            header("Content-Length: " . $fileSize);
+            readfile($filepath);
+            exit;
+        }
+        else
+        {
+            /*
+             * Broken download - new name to easily nail down the issue
+             */
+            header("Pragma: public");
+            header("Expires: -1");
+            header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+            header("Content-Transfer-Encoding: binary");
+            header("Content-Length: 0");
+            header('Content-Disposition: attachment; filename="broken-download.txt"');
+            exit;
+        }
+        exit;
+    }
+
     public function getFilePath()
     {
         $file = $this->getDownloadFile();
-        $dir  = $this->getUploadPath() . $file;
-        return $dir;
+        if($file)
+        {
+            $dir = $this->getUploadPath();
+            if($dir)
+            {
+                $filepath = $dir . $file;
+                return $filepath;
+            }
+        }
+        return '';
     }
 
-    public function download()
+    public function old_download()
     {
-        $this->addNumberOfDownloads();
-        error_reporting(0);
-        header('Content-type: ' . $this->getMimeType());
-        $filepath = $this->getFilePath();
-        $ext      = pathinfo($filepath, PATHINFO_EXTENSION);
-
-        if(ob_get_level())
+        if($this->getPackageType() == 'file')
         {
-            ob_clean();
-            ob_end_flush();
+            error_reporting(0);
+            header('Content-type: ' . $this->getMimeType());
+            $filepath = $this->getFilePath();
+            $ext      = pathinfo($filepath, PATHINFO_EXTENSION);
+
+            if(ob_get_level())
+            {
+                ob_clean();
+                ob_end_flush();
+            }
+            if(!empty($ext)) $ext = '.' . $ext;
+            header('Content-Disposition: attachment; filename="' . sanitize_file_name($this->getTitle()) . $ext . '"');
+            readfile($filepath);
+            exit;
         }
-        if(!empty($ext)) $ext = '.' . $ext;
-        header('Content-Disposition: attachment; filename="' . sanitize_file_name($this->getTitle()) . $ext . '"');
-        readfile($filepath);
+        else
+        {
+            wp_redirect($this->getDownloadUrl(), 303);
+        }
         exit;
     }
 
@@ -517,10 +655,23 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
                     ->setDownloadFile($data['package'])
                     ->setScreenshots($data['screenshots'])
                     ->setRecommended($data['admin_supported'])
-                    ->setOwnerNotified($data['support_notifications'])
-                    ->setUpdated()
-                    ->savePost();
-            return $instance;
+                    ->setOwnerNotified($data['support_notifications']);
+            if(isset($data['visibility']))
+            {
+                $instance->setVisibility($data['visibility']);
+            }
+
+            $errors = $instance->getErrors();
+            if(empty($errors))
+            {
+                $instance->setUpdated()
+                        ->savePost();
+                return $instance;
+            }
+            else
+            {
+                return implode('<br/>', $errors);
+            }
         }
     }
 
@@ -542,8 +693,19 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
         else $this->setRecommended('false');
         if(isset($data['support_notifications'])) $this->setOwnerNotified($data['support_notifications']);
         else $this->setOwnerNotified('false');
-        $this->setUpdated();
-        return $this;
+
+        if(isset($data['visibility'])) $this->setVisibility($data['visibility']);
+
+        $errors = $this->getErrors();
+        if(empty($errors))
+        {
+            $this->setUpdated();
+            return $this;
+        }
+        else
+        {
+            return implode('<br/>', $errors);
+        }
     }
 
     public function delete()

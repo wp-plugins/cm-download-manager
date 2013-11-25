@@ -142,10 +142,10 @@ Click to see: [comment_link]';
 
     public static function fixThreadSlugs($wp_rewrite) {
         $wp_rewrite->rules = array(
-            CMDM_GroupDownloadPage::REWRITE_SLUG . '/(.+?)/topic/add/?$' => $wp_rewrite->index . '?' . CMDM_GroupDownloadPage::POST_TYPE . '=' . $wp_rewrite->preg_index(1) . '&CMDM-comment-action=add',
-            CMDM_GroupDownloadPage::REWRITE_SLUG . '/(.+?)/topic/([0-9]{1,})/?$' => $wp_rewrite->index . '?' . CMDM_GroupDownloadPage::POST_TYPE . '=' . $wp_rewrite->preg_index(1) . '&CMDM-comment-action=show&CMDM-comment-id=' . $wp_rewrite->preg_index(2),
-            CMDM_GroupDownloadPage::REWRITE_SLUG . '/(.+?)/topic/([0-9]{1,})/add/?$' => $wp_rewrite->index . '?' . CMDM_GroupDownloadPage::POST_TYPE . '=' . $wp_rewrite->preg_index(1) . '&CMDM-comment-action=add&CMDM-parent-id=' . $wp_rewrite->preg_index(2),
-            CMDM_GroupDownloadPage::REWRITE_SLUG . '/(.+?)/topic/page/([0-9]{1,})/?$' => $wp_rewrite->index . '?' . CMDM_GroupDownloadPage::POST_TYPE . '=' . $wp_rewrite->preg_index(1) . '&CMDM-comment-action=list&CMDM-comment-page=' . $wp_rewrite->preg_index(2),
+            CMDM_GroupDownloadPage::$rewriteSlug . '/(.+?)/topic/add/?$' => $wp_rewrite->index . '?' . CMDM_GroupDownloadPage::POST_TYPE . '=' . $wp_rewrite->preg_index(1) . '&CMDM-comment-action=add',
+            CMDM_GroupDownloadPage::$rewriteSlug . '/(.+?)/topic/([0-9]{1,})/?$' => $wp_rewrite->index . '?' . CMDM_GroupDownloadPage::POST_TYPE . '=' . $wp_rewrite->preg_index(1) . '&CMDM-comment-action=show&CMDM-comment-id=' . $wp_rewrite->preg_index(2),
+            CMDM_GroupDownloadPage::$rewriteSlug . '/(.+?)/topic/([0-9]{1,})/add/?$' => $wp_rewrite->index . '?' . CMDM_GroupDownloadPage::POST_TYPE . '=' . $wp_rewrite->preg_index(1) . '&CMDM-comment-action=add&CMDM-parent-id=' . $wp_rewrite->preg_index(2),
+            CMDM_GroupDownloadPage::$rewriteSlug . '/(.+?)/topic/page/([0-9]{1,})/?$' => $wp_rewrite->index . '?' . CMDM_GroupDownloadPage::POST_TYPE . '=' . $wp_rewrite->preg_index(1) . '&CMDM-comment-action=list&CMDM-comment-page=' . $wp_rewrite->preg_index(2),
                 ) + $wp_rewrite->rules;
     }
 

@@ -1,11 +1,12 @@
 (function($){
     $(document).ready(function($){
+        var q = window.location.hash.substring(1);
+
         // initialize scrollable
         $(".scrollable").scrollable({circular: true}).navigator().autoscroll({
             interval: 5000
         });
 
-        var q = window.location.hash.substring(1);
         $('a[href="#' + q + '"]').trigger('click');
 
         window.onhashchange = function(){
@@ -24,5 +25,4 @@
         });
         $(".tabNav li a:first").trigger('click');
     });
-
 })(jQuery);

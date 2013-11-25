@@ -697,12 +697,13 @@ abstract class CMDM_BaseController
                 $slug               = $item[2];
                 $isCurrent          = ($slug == $plugin_page || strpos($item[2], '.php') === strpos($currentUri, '.php'));
                 $url                = (strpos($item[2], '.php') !== false || strpos($slug, 'http://') !== false) ? $slug : get_admin_url('', 'admin.php?page=' . $slug);
-                $submenus[$item[0]] =
-                        '<a href="' . $url . '" class="' . ($isCurrent ? 'current' : '') . '">' . $item[0] . '</a>';
+                $submenus[$item[0]] = '<a href="' . $url . '" class="' . ($isCurrent ? 'current' : '') . '">' . $item[0] . '</a>';
             }
         }
         return $submenus;
     }
 
+    /*
+     *  AJAX
+     */
 }
-?>

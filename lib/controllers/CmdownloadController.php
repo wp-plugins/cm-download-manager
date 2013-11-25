@@ -12,6 +12,9 @@ class CMDM_CmdownloadController extends CMDM_BaseController
 
     public static function initialize()
     {
+        /*
+         * FREE
+         */
         add_filter('wp_nav_menu_items', array(get_class(), 'addMenuItem'), 1, 1);
         add_filter('posts_search', array(get_class(), 'alterSearchQuery'), 99, 2);
         add_filter('template_include', array(get_class(), 'overrideTemplate'));
@@ -21,7 +24,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         add_action('CMDM_show_item_categories', array(get_class(), 'showItemCategories'), 1, 1);
         add_action('CMDM_show_rating', array(get_class(), 'showRating'), 1, 1);
         add_action('CMDM_show_details', array(get_class(), 'showDetails'), 1, 1);
-        add_action('CMDM_show_download_button', array(get_class(), 'showDownloadButton'), 1, 1);
+        add_action('CMDM_show_download_button', array(get_class(), 'showDownloadButton'), 1, 2);
         add_action('CMDM_show_support_threads_list', array(get_class(), 'showSupportThreadList'), 1, 1);
         add_action('CMDM_show_support', array(get_class(), 'showSupport'), 1, 1);
         add_action('CMDM_show_screenshots', array(get_class(), 'showScreenshots'), 1, 1);
@@ -42,14 +45,8 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         register_sidebar(array(
             'id' => 'cm-download-manager-sidebar',
             'name' => 'CM Download Manager Sidebar',
-            'description' => 'This sidebar is shown on CM Download Manager pages'
+            'description' => 'This sidebar is shown on CM Download Manager Index'
         ));
-    }
-
-    public static function overrideControllerTitle($title)
-    {
-        if($title == 'Cmdownload') return 'CM Download';
-        return $title;
     }
 
     public static function processAddonsTitlePage($params = array())
@@ -74,16 +71,6 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         return $params;
     }
 
-    public static function addAddonsMenu()
-    {
-        return get_option(self::OPTION_ADD_ADDONS_MENU, 1);
-    }
-
-    public static function addDashboardMenu()
-    {
-        return get_option(self::OPTION_ADD_DASHBOARD_MENU, 1);
-    }
-
     public static function processSearchPlaceholderSetting($params = array())
     {
         if(!empty($_POST['search_placeholder_text']))
@@ -92,11 +79,6 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         }
         $params['searchPlaceholder'] = self::getSearchPlaceholder();
         return $params;
-    }
-
-    public static function getDefaultScreenshot()
-    {
-        return get_option(self::DEFAULT_SCREENSHOT_OPTION, CMDM_URL . '/views/resources/imgs/no_screenshot.png');
     }
 
     public static function processDefaultScreenshot($params = array())
@@ -119,6 +101,16 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         }
         $params['allowed_extensions'] = get_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, array('zip', 'doc', 'docx', 'pdf'));
         return $params;
+    }
+
+    public static function addAddonsMenu()
+    {
+        return get_option(self::OPTION_ADD_ADDONS_MENU, 1);
+    }
+
+    public static function addDashboardMenu()
+    {
+        return get_option(self::OPTION_ADD_DASHBOARD_MENU, 1);
     }
 
     public static function alterSearchQuery($search, $query)
@@ -165,6 +157,17 @@ class CMDM_CmdownloadController extends CMDM_BaseController
             wp_redirect(self::getUrl('cmdownload', 'add'), 301);
             exit;
         }
+    }
+
+    public static function getDefaultScreenshot()
+    {
+        return get_option(self::DEFAULT_SCREENSHOT_OPTION, CMDM_URL . '/views/resources/imgs/no_screenshot.png');
+    }
+
+    public static function overrideControllerTitle($title)
+    {
+        if($title == 'Cmdownload') return 'CM Download';
+        return $title;
     }
 
     protected static function _processAddThread()
@@ -318,8 +321,10 @@ class CMDM_CmdownloadController extends CMDM_BaseController
 
     public static function addMenuItem($items)
     {
-        $link = self::_loadView('cmdownload/meta/menu-item', array('dashboardUrl' => self::addDashboardMenu() ? self::getUrl('cmdownload', 'dashboard') : null,
-                    'categoriesUrl' => self::addAddonsMenu() ? self::getUrl('cmdownloads', '') : null));
+        $link = self::_loadView('cmdownload/meta/menu-item', array(
+            'dashboardUrl' => self::addDashboardMenu() ? self::getUrl('cmdownload', 'dashboard') : null,
+            'categoriesUrl' => self::addAddonsMenu() ? self::getUrl(CMDM_GroupDownloadPage::$rewriteSlug, '') : null)
+            );
         return $items . $link;
     }
 
@@ -454,8 +459,15 @@ class CMDM_CmdownloadController extends CMDM_BaseController
             if(self::_isPost() && $form->isValid($_POST))
             {
                 $item = CMDM_GroupDownloadPage::newInstance($form->getValues());
-                if($item instanceof CMDM_GroupDownloadPage) self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully added', 'cm-download-manager'), $item->getTitle()) . ' - <a href="' . get_permalink($item->getId()) . '">' . __('View', 'cm-download-manager') . ' &raquo;</a>');
-                else self::_addMessage(self::MESSAGE_ERROR, __('There was an error while adding new element', 'cm-download-manager') . ': "' . $item . '"');
+
+                if($item instanceof CMDM_GroupDownloadPage)
+                {
+                    self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully added', 'cm-download-manager'), $item->getTitle()) . ' - <a href="' . get_permalink($item->getId()) . '">' . __('View', 'cm-download-manager') . ' &raquo;</a>');
+                }
+                else
+                {
+                    self::_addMessage(self::MESSAGE_ERROR, __('There was an error while adding new element', 'cm-download-manager') . ': "' . $item . '"');
+                }
                 wp_redirect(self::getUrl('cmdownload', 'dashboard'), 303);
                 exit;
             }
@@ -496,8 +508,17 @@ class CMDM_CmdownloadController extends CMDM_BaseController
                     $form = CMDM_Form::getInstance('AddDownloadForm', array('edit_id' => $id));
                     if(self::_isPost() && $form->isValid($_POST))
                     {
-                        $download->update($form->getValues());
-                        self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully updated', 'cm-download-manager'), $name) . ' - <a href="' . get_permalink($id) . '">View &raquo;</a>');
+                        $item = $download->update($form->getValues());
+
+                        if($item instanceof CMDM_GroupDownloadPage)
+                        {
+                            self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully updated', 'cm-download-manager'), $name) . ' - <a href="' . get_permalink($id) . '">View &raquo;</a>');
+                        }
+                        else
+                        {
+                            self::_addMessage(self::MESSAGE_ERROR, __('There was an error while editing element', 'cm-download-manager') . ': "' . $item . '"');
+                        }
+
                         wp_redirect(self::getUrl('cmdownload', 'edit', array('id' => $id)), 303);
                         exit;
                     }
@@ -538,7 +559,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
 
     public static function showSearchForm()
     {
-        echo self::_loadView('cmdownload/widget/search', array('searchAction' => home_url(CMDM_GroupDownloadPage::REWRITE_SLUG), 'searchQuery' => get_search_query(), 'placeholder' => self::getSearchPlaceholder()));
+        echo self::_loadView('cmdownload/widget/search', array('searchAction' => home_url(CMDM_GroupDownloadPage::$rewriteSlug), 'searchQuery' => get_search_query(), 'placeholder' => self::getSearchPlaceholder()));
     }
 
     public static function getHeader()
@@ -814,4 +835,3 @@ class CMDM_CmdownloadController extends CMDM_BaseController
     }
 
 }
-?>
