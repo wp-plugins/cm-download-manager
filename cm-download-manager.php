@@ -5,7 +5,7 @@
   Plugin URI: http://downloadsmanager.cminds.com
   Description: Allow users to upload,manage,track and support documents or files in a directory listing structure for others to use and comment
   Author: CreativeMindsSolutions
-  Version: 1.6.0
+  Version: 1.6.1
  */
 
 /*
@@ -38,4 +38,3 @@ require_once CMDM_PATH . '/lib/CMDM.php';
 register_activation_hook(__FILE__, array('CMDM', 'install'));
 register_uninstall_hook(__FILE__, array('CMDM', 'uninstall'));
 CMDM::init();
-?>

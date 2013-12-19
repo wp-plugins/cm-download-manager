@@ -28,8 +28,8 @@ class CMDM_Form_Element_MultiCheckbox extends CMDM_Form_Element {
 
     public function render() {
 
-        $html .='<script type="text/javascript">
- jQuery(document).ready(function ($) { 
+        $html ='<script type="text/javascript">
+ jQuery(document).ready(function ($) {
  $("input[type=checkbox][name=\''.$this->getId().'[]\']").click(function() {
  if ($("input[type=checkbox][name=\''.$this->getId().'[]\']:checked").length>3) {
  $(this).prop("checked", false);

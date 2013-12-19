@@ -1,26 +1,18 @@
 <?php
-if(!isset($_GET['ajax'])):
+if( !isset($_GET['ajax']) ):
     get_header();
 endif;
-?><div class="CMDM"><?php
-if(have_posts()):
+?><div class="CMDM site-content"><?php
+if( have_posts() ):
     while(have_posts()):
         the_post();
-        $download    = CMDM_GroupDownloadPage::getInstance(get_the_id());
+        $download = CMDM_GroupDownloadPage::getInstance(get_the_id());
         ?>
             <div class="CMDM-app">
                 <div class="rating"><?php do_action('CMDM_show_rating', get_the_id()); ?></div>
                 <div class="backtolib"><a href="<?php echo home_url('/cmdownloads'); ?>">&laquo;&nbsp;<?php _e('Back to All Downloads', 'cm-download-manager'); ?></a></div>
                 <h2><?php the_title(); ?></h2>
                 <!--/h2 -->
-                <div class="aside">
-                    <?php do_action('CMDM_show_details', get_the_id()); ?>
-                    <!--/sideBox -->
-                    <?php do_action('CMDM_show_download_button', get_the_id()); ?>
-                    <!--/sideBox -->
-                    <?php dynamic_sidebar('cm-download-manager-sidebar'); ?>
-                </div>
-                <!--/aside -->
                 <div class="main">
                     <?php
                     $screenshots = CMDM_get_screenshots();
@@ -29,7 +21,7 @@ if(have_posts()):
                         <div class="scrollable">
                             <div class="items">
                                 <?php
-                                if(!empty($screenshots)):
+                                if( !empty($screenshots) ):
                                     foreach($screenshots as $screenshot):
                                         ?>
                                         <div> <img src="<?php echo CMDM_get_url('cmdownload', 'screenshot', array('size' => '720x220', 'img' => $screenshot)); ?>" height="220" /> </div>
@@ -65,6 +57,14 @@ if(have_posts()):
                     <!--/boxGrey724 -->
                 </div>
                 <!--/main -->
+                <div class="aside">
+                    <?php do_action('CMDM_show_details', get_the_id()); ?>
+                    <!--/sideBox -->
+                    <?php do_action('CMDM_show_download_button', get_the_id()); ?>
+                    <!--/sideBox -->
+                    <?php dynamic_sidebar('cm-download-manager-sidebar'); ?>
+                </div>
+                <!--/aside -->
             </div>
             <!-- javascript coding -->
             <?php
@@ -76,4 +76,4 @@ if(have_posts()):
         <a href="http://downloadsmanager.cminds.com" target="_blank" class="cma_poweredbylink">CM Downloads Manager</a>
     </span>
 </div><?php
-if(!isset($_GET['ajax'])) get_footer();
+if( !isset($_GET['ajax']) ) get_footer();

@@ -115,7 +115,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
 
     public static function alterSearchQuery($search, $query)
     {
-        if($query->query_vars['post_type'] == CMDM_GroupDownloadPage::POST_TYPE && $query->query_vars['widget'] !== true && !$query->is_single && !$query->is_404 && !$query->is_author && isset($_GET['CMDsearch']))
+        if( ( (isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == CMDM_GroupDownloadPage::POST_TYPE) && (!isset($query->query_vars['widget']) || $query->query_vars['widget'] !== true) ) && !$query->is_single && !$query->is_404 && !$query->is_author && isset($_GET['CMDsearch']))
         {
             global $wpdb;
             $search_term = $_GET['CMDsearch'];

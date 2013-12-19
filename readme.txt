@@ -4,8 +4,8 @@ Contributors: CreativeMindsSolutions
 Donate link: http://downloadsmanager.cminds.com
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,download tracker,download counter,download manager,download monitor,file management plugin,file manager,mp3,music
 Requires at least: 3.2
-Tested up to: 3.7.1
-Stable tag: 1.6.0
+Tested up to: 3.8.0
+Stable tag: 1.6.1
 
 Enables you to upload, manage, track and support documents or files in a directory listing structure for others to use and comment
 
@@ -26,6 +26,8 @@ With this plugin you can create a directory where users can upload and manage Fi
 * Customer Support - Support for retail customer's questions.
 * File Manager - Manages files in a directory structure.
 * MP3 and Music file directory - Manages music downloads and allow users to listen to audio files before downloading.
+* Videos file directory - Manages video downloads and allow users to preview before downloading.
+* Users Groups Permission  - Manage user groups permission to access downloads.
 
 **Demo & User Guide**
 
@@ -53,6 +55,7 @@ With this plugin you can create a directory where users can upload and manage Fi
 [Pro Version](http://downloadsmanager.cminds.com)
 The Pro version adds a layer of powerful features to the CM Download Manager giving administrators better tools to customize their Downloads system behavior, with added login support from social networks, added password protection support, and a lot more...
 
+* NEW: User Groups Permissions- Set access control based on users groups. Admin can define global settings while user can define access settings per each download : [View Image 1](http://downloadsmanager.cminds.com/wp-content/uploads/edd/downloadsA2-43184_x410.png) [View Image 2](http://downloadsmanager.cminds.com/wp-content/uploads/edd/downloadsA1-43184_x410.png) 
 * Social Media Registration Integration- Integrates with Facebook, Google+ and LinkedIn. [View Image One](http://www.cminds.com/wp-content/uploads/edd/image1.png), [View Image 2](http://www.cminds.com/wp-content/uploads/edd/cm-answers-image2.png)
 * Shortcodes/Widgets- Generates top level contributors list, recent updates, and in most cases, a download items list.
 * View Restriction- Defines according to each download whether or not it is open to non-logged in users. If only logged in users are allowed, administrators can also define whose user roles can view specific downloads. This can be set by Admin or you can give the user ability to custom define their view. [View Image](http://static.cminds.com/wp-content/uploads/cmdm/CMDM91.png)
@@ -123,6 +126,10 @@ In your template you can create a directory called "CMDM". Inside this you can p
 
 
 == Changelog ==
+= 1.6.1 =
+* Fixed notifications appearing on some plugin installations
+* Fixed WP "Twenty Thirteen" theme appearance
+
 = 1.6.0 =
 * Fixed issues with js files not being loaded using https
 * Fixed options "Add Downloads" to site menu and "Add My downloads" to site menu

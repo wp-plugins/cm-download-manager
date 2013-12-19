@@ -99,7 +99,7 @@ abstract class CMDM_BaseController
         $rules = get_option('rewrite_rules');
         foreach(self::$_pages as $page)
         {
-            if(!isset($rules['^' . $slug . '(?=\/|$)']))
+            if(is_string($page['slug']) && !isset($rules['^' . $page['slug'] . '(?=\/|$)']))
             {
                 global $wp_rewrite;
                 $wp_rewrite->flush_rules();
@@ -210,7 +210,7 @@ abstract class CMDM_BaseController
 //create a fake post
                     $post                 = new stdClass;
                     $post->post_author    = 1;
-                    $post->post_name      = $page_slug;
+                    $post->post_name      = $page['slug'];
                     $post->guid           = get_bloginfo('wpurl' . '/' . $page['slug']);
                     $post->post_title     = self::_showPageTitle($page['title']);
 //put your custom content here

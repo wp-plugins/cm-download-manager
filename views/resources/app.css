@@ -48,7 +48,7 @@
 .CMDM .CMDM-app h2 .num { color: #808080; font-size: 18px; font-weight: normal; }
 .CMDM .searchAddOns { float: right; margin: 2px 0 0; position: relative; z-index: 1; border:0;padding:0;}
 .CMDM .searchAddOns input[type=text] { margin: 0;list-style: none;font-family: Arial;font-size: 13px;color: #333;line-height: 1.4;border: 1px solid #e6e6e6; padding: 2px 3px; width: 172px; -webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none; background-color:0;}
-.CMDM .searchAddOns input[type=submit] { background: url(imgs/find.png) 0 0; border: 0 none; cursor: pointer; height: 24px; vertical-align: top; width: 28px; }
+.CMDM .searchAddOns input[type=submit] { background: url(imgs/find.png) 0 0; border: 0 none; cursor: pointer; height: 24px; vertical-align: top; width: 28px; padding: 0; }
 .CMDM .searchAddOns input[type=submit]:hover { background-position: 0 -26px; }
 .CMDM .typeFilter {float: right;margin: 2px 0 0;position: relative;z-index: 1;border: 0;padding: 0;}
 .CMDM .typeFilter select {margin: 0 10px 0 0;list-style: none;font-family: Arial;font-size: 13px;color: #333;line-height: 1.4;border: 1px solid #E6E6E6;padding: 2px 3px;width: 172px;-webkit-box-shadow: none;-moz-box-shadow: none;box-shadow: none;background-color: 0;}
