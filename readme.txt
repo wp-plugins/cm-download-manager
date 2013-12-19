@@ -33,7 +33,7 @@ With this plugin you can create a directory where users can upload and manage Fi
 
 * [Plugin Site](http://downloadsmanager.cminds.com/).
 * Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
-* [User Guide](http://www.cminds.com/cm-download-manager-user-guide/)
+* [User Guide](http://downloadsmanager.cminds.com/cm-downloads-manager-user-guide/)
 
 **Features**
 
