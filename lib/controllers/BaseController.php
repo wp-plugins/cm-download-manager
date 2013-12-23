@@ -561,7 +561,7 @@ abstract class CMDM_BaseController
         $current_user = wp_get_current_user();
         if(user_can($current_user, 'edit_posts'))
         {
-            $submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][500] = array('User Guide', 'manage_options', 'http://www.cminds.com/cm-download-manager-user-guide/');
+            $submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][500] = array('User Guide', 'manage_options', 'http://downloadsmanager.cminds.com/cm-downloads-manager-user-guide/');
         }
     }
 
