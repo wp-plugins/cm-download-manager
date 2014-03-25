@@ -1,0 +1,562 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2013-06-06 09:02+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ cm-download-manager
+#: lib/controllers/BaseController.php:454
+msgid "You have to be logged in to see this page"
+msgstr "U dient ingelogd te zijn om deze pagina te mogen bekijken"
+
+# @ cm-download-manager
+#: lib/controllers/BaseController.php:454
+msgid "Log in"
+msgstr "Aanmelden"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:384
+#, php-format
+msgid "\"%s\" has been succesfully added"
+msgstr "\"%s\" is succesvol toegevoegd"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:384
+msgid "View"
+msgstr "Bekijken"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:387
+msgid "There was an error while adding new element"
+msgstr "Er is een fout opgetreden tijdens het toevoegen van het nieuwe element"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:418
+#, php-format
+msgid "\"%s\" has been succesfully updated"
+msgstr "\"%s\" is succesvol bijgewerkt"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:483
+msgid "You are not allowed to delete this element"
+msgstr "U bent niet gemachtigd om dit element te verwijderen"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:488
+#, php-format
+msgid "\"%s\" has been succesfully deleted"
+msgstr "\"%s\" is succesvol verwijderd"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:490
+#, php-format
+msgid "There was an error while deleting \"%s\""
+msgstr "Er is een fout opgetreden tijdens het verwijderen van \"%s\""
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:508
+#: lib/controllers/CmdownloadController.php:530
+msgid "You are not allowed to change status of this element"
+msgstr "U bent niet gemachtigd dit element te wijzigen"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:512
+#, php-format
+msgid "\"%s\" has been succesfully published"
+msgstr "\"%s\" is succesvol gepubliceerd"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:534
+#, php-format
+msgid "\"%s\" has been succesfully unpublished"
+msgstr "\"%s\" is succesvol gedepubliceerd"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:550
+msgid "POST exceeded maximum allowed size."
+msgstr "POST heeft de maximale grootte overschreden"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:564
+msgid "There is no error, the file uploaded with success"
+msgstr "Uw bestand is succesvol geüpload"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:565
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini"
+msgstr ""
+"Het opgeladen bestand overschreidt de maximale upload bestandsgrootte uit php.ini"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:566
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form"
+msgstr ""
+"Het opgeladen bestand overschreidt de maximale upload bestandsgrootte zoals gespecificeerd in "
+"het HTML formulier"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:567
+msgid "The uploaded file was only partially uploaded"
+msgstr "Het opgeladen bestand is slechts gedeeltelijk geüpload"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:568
+msgid "No file was uploaded"
+msgstr "Het bestand is niet geüpload"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:569
+msgid "Missing a temporary folder"
+msgstr "Er ontbreekt een tijdelijke map"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:591
+msgid "File exceeds the maximum allowed size"
+msgstr "Bestand is groter dan de maximaal toegestane grootte"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:605
+msgid "Invalid file name"
+msgstr "Ongeldig bestandsnaam"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:612
+msgid "File with this name already exists"
+msgstr "Er bestaat reeds een bestand met deze naam"
+
+# @ cm-download-manager
+#: lib/controllers/CmdownloadController.php:627
+msgid "Invalid file extension"
+msgstr "Ongeldige bestandsextensie"
+
+# @ cm-download-manager
+#: lib/helpers/Form/Element.php:22
+#, php-format
+msgid "%s is required"
+msgstr "%s is vereist"
+
+# @ cm-download-manager
+#: lib/helpers/Form/Element/PLUploader.php:39
+#, php-format
+msgid "%s needs to be uploaded"
+msgstr "%s moet geüpload worden"
+
+# @ cm-download-manager
+#: lib/helpers/Form/Element/PLUploader.php:128
+msgid "Completed"
+msgstr "Voltooid"
+
+# @ cm-download-manager
+#: lib/helpers/Form/Element/PLUploader.php:131
+msgid "Upload failed"
+msgstr "Upload gefaald"
+
+# @ cm-download-manager
+#: lib/helpers/Form/Element/PLUploader.php:177
+msgid "Upload"
+msgstr "Uploaden"
+
+# @ cm-download-manager
+#: lib/models/GroupDownloadPage.php:185
+msgid "not published"
+msgstr "niet gepubliceerd"
+
+# @ cm-download-manager
+#: lib/models/GroupDownloadPage.php:187
+msgid "published"
+msgstr "gepubliceerd"
+
+#: lib/models/SupportThread.php:64
+msgid "some time ago"
+msgstr "enige tijd geleden"
+
+# @ cm-download-manager
+#: lib/models/SupportThread.php:67
+#, php-format
+msgid "1 second ago"
+msgid_plural "%d seconds ago"
+msgstr[0] "1 Seconde geleden"
+msgstr[1] "%d Seconden geleden"
+
+# @ cm-download-manager
+#: lib/models/SupportThread.php:72
+#, php-format
+msgid "1 minute ago"
+msgid_plural "%d minutes ago"
+msgstr[0] "1 Minuut geleden"
+msgstr[1] "%d Minuten geleden"
+
+# @ cm-download-manager
+#: lib/models/SupportThread.php:78
+#, php-format
+msgid "1 hour ago"
+msgid_plural "%d hours ago"
+msgstr[0] "1 Uur geleden"
+msgstr[1] "%d Uren geleden"
+
+# @ cm-download-manager
+#: lib/models/SupportThread.php:84
+#, php-format
+msgid "1 day ago"
+msgid_plural "%d days ago"
+msgstr[0] "Gisteren"
+msgstr[1] "%d dagen geleden"
+
+# @ cm-download-manager
+#: lib/models/SupportThread.php:90
+#, php-format
+msgid "1 week ago"
+msgid_plural "%d weeks ago"
+msgstr[0] "Vorige week"
+msgstr[1] "%d Weken geleden"
+
+# @ cm-download-manager
+#: lib/models/SupportThread.php:96
+#, php-format
+msgid "1 month ago"
+msgid_plural "%d months ago"
+msgstr[0] "Vorige maand"
+msgstr[1] "%d Maanden geleden"
+
+# @ cm-download-manager
+#: lib/models/SupportThread.php:103
+#, php-format
+msgid "1 year ago"
+msgid_plural "%d years ago"
+msgstr[0] "Vorig jaar"
+msgstr[1] "%d Jaar geleden"
+
+# @ cm-download-manager
+#: lib/models/SupportThread.php:252 lib/models/SupportThread.php:287
+msgid "Content cannot be empty"
+msgstr "Inhoud mag niet leeg zijn"
+
+# @ cm-download-manager
+#: lib/models/SupportThread.php:285
+msgid "Title cannot be empty"
+msgstr "Title mag niet leeg zijn"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:20
+#: views/frontend/cmdownload/dashboard.phtml:10
+#: views/frontend/cmdownload/meta/support.phtml:41
+msgid "Title"
+msgstr "Titel"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:25
+#: views/frontend/cmdownload/meta/details.phtml:6
+msgid "Version"
+msgstr "Versie"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:30
+msgid "File"
+msgstr "Bestand"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:31
+msgid "Allowed extensions"
+msgstr "Toegestane extensies"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:36
+msgid "Category (max. 3)"
+msgstr "Categorie (max. 3)"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:42
+#: views/frontend/cmdownload/single.phtml:50
+msgid "Description"
+msgstr "Omschrijving"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:48
+msgid "Screenshots"
+msgstr "Screenshots"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:49
+#, php-format
+msgid "(Max. %d, Size: H: %dpx W: %dpx)"
+msgstr "(Max.%d, Grootte: H: %dpx W: %dpx)"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:55
+msgid "Images"
+msgstr "Afbeeldingen"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:62
+msgid "Admin Recommended"
+msgstr "Admin Aanbevolen"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:67
+msgid "Notify me on new support topics"
+msgstr "Verwittig mij bij nieuwe support onderwerpen"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:71
+msgid "Update"
+msgstr "Update"
+
+# @ cm-download-manager
+#: lib/models/forms/AddDownloadForm.php:71
+msgid "Add"
+msgstr "toevoegen"
+
+# @ cm-download-manager
+#: views/frontend/error.phtml:8
+msgid "Go back to previous page"
+msgstr "Terug naar de vorige pagina"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/categories.phtml:4
+#: views/frontend/cmdownload/index.phtml:57
+msgid "All Downloads"
+msgstr "Alle Downloads"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:6
+msgid "Add new"
+msgstr "Nieuwe toevoegen"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:11
+msgid "Status"
+msgstr "Status"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:12
+#: views/frontend/cmdownload/index.phtml:77
+#: views/frontend/cmdownload/meta/details.phtml:8
+#: views/frontend/cmdownload/meta/menu-item.phtml:2
+msgid "Downloads"
+msgstr "Downloads"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:13
+msgid "Actions"
+msgstr "Acties"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:18
+msgid "You haven't added any downloads yet"
+msgstr "U heeft nog geen downloads toegevoegd"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:30
+msgid "Unpublish"
+msgstr "Depubliceren"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:34
+msgid "Publish"
+msgstr "Publiceren"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:38
+#: views/frontend/cmdownload/meta/edit-link.phtml:1
+msgid "Edit"
+msgstr "Wijzigen"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:39
+msgid "Are you sure you want to delete?"
+msgstr "Weet u zeker dat u dit wilt verwijderen?"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/dashboard.phtml:39
+msgid "Delete"
+msgstr "Verwijderen"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/index.phtml:22
+msgid "Manage my Downloads"
+msgstr "Mijn Downloads beheren"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/index.phtml:55
+msgid "Search Results for"
+msgstr "Zoekresultaten voor"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/index.phtml:73
+#, php-format
+msgid "Showing %d-%d of %d"
+msgstr "Getoond %d-%d van %d"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/index.phtml:77
+#: views/frontend/cmdownload/meta/download-form.phtml:12
+msgid "Download"
+msgstr "Download"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/index.phtml:77
+msgid "Info"
+msgstr "Informatie"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/index.phtml:99
+msgid "No results has been found"
+msgstr "Geen resultaat gevonden"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/single.phtml:11
+#: views/frontend/cmdownload/thread.phtml:11
+msgid "Back to All Downloads"
+msgstr "Terug naar alle downloads"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/single.phtml:51
+msgid "Support"
+msgstr "Support"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:30
+#: views/frontend/cmdownload/meta/support-thread-list.phtml:7
+msgid "RESOLVED"
+msgstr "OPGELOST"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:31
+msgid "Back to Support Page"
+msgstr "Terug naar support"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:57
+#: views/frontend/cmdownload/meta/details.phtml:4
+msgid "Author"
+msgstr "Auteur"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:74
+msgid "Leave your comment"
+msgstr "Laat uw opmerking achter"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:77
+#: views/frontend/cmdownload/meta/support.phtml:38
+msgid "Allow markup"
+msgstr "Markup toestaan"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:78
+#: views/frontend/cmdownload/meta/support.phtml:39
+msgid "Wrap your code using"
+msgstr "Uw code wrappen met"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:80
+msgid "What is your comment about?"
+msgstr "Uw opmerking?"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:83
+#: views/frontend/cmdownload/meta/support.phtml:45
+msgid "Notify me of follow"
+msgstr "Breng me op de hoogte bij wijzigingen"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:86
+msgid "Mark this topic as resolved"
+msgstr "Als opgelost markeren"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/thread.phtml:87
+#: views/frontend/cmdownload/meta/support.phtml:46
+msgid "Post"
+msgstr "Bijdrage"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/details.phtml:2
+msgid "Download Info"
+msgstr "Download informatie"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/details.phtml:9
+#, php-format
+msgid "1 Download"
+msgid_plural "%d Downloads"
+msgstr[0] "1 Download"
+msgstr[1] "%d Downloads"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/details.phtml:10
+#: views/frontend/cmdownload/meta/support.phtml:8
+msgid "Updated"
+msgstr "Geüpdate"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/details.phtml:15
+msgid "Recommended"
+msgstr "Aanbevolen"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/menu-item.phtml:1
+msgid "My Downloads"
+msgstr "Mijn Downloads"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/rating.phtml:8
+#, php-format
+msgid "%d Stars"
+msgstr "%d Sterren"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/rating.phtml:30
+msgid "Thanks for rating!"
+msgstr "Bedankt voor uw stem!"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/support-thread-list.phtml:17
+msgid "No topics"
+msgstr "Geen onderwerpen"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/support-thread-list.phtml:18
+msgid "would you like to create one?"
+msgstr "Wilt u er een aanmaken?"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/support.phtml:5
+msgid "Topic"
+msgstr "Onderwerp"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/support.phtml:6
+msgid "Posts"
+msgstr "Bijdrage"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/support.phtml:7
+msgid "Last Poster"
+msgstr "Laatste bijdrage"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/support.phtml:35
+msgid "Leave your comment/question"
+msgstr "Laat uw opmerking / vraag achter"
+
+# @ cm-download-manager
+#: views/frontend/cmdownload/meta/support.phtml:42
+msgid "What is your comment about?\""
+msgstr "Waar gaat uw vraag over?"
