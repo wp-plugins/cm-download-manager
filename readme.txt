@@ -18,15 +18,12 @@ With this plugin you can create a directory where users can upload and manage Fi
 [youtube http://www.youtube.com/watch?v=eyims93g8ck]
 
 > #### Plugin Site
->
 > * [Plugin Site](http://downloadsmanager.cminds.com/).
 >
 
 ---
  
 > #### Demo & User Guide
->
-> * [Plugin Site](http://downloadsmanager.cminds.com/).
 > * Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
 > * [User Guide](http://downloadsmanager.cminds.com/cm-downloads-manager-user-guide/)
 
