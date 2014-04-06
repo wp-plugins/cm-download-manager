@@ -18,7 +18,7 @@ With this plugin you can create a directory where users can upload and manage Fi
 [youtube http://www.youtube.com/watch?v=eyims93g8ck]
 
 > #### Plugin Site
-> * [Plugin Site](http://downloadsmanager.cminds.com/).
+> * [Plugin Site](http://downloadsmanager.cminds.com/)
 > * [Pro Version Detailed Feature List](http://downloadsmanager.cminds.com/features)
 >
 
@@ -93,8 +93,6 @@ With this plugin you can create a directory where users can upload and manage Fi
 > * MP3 Viewer - Adds an embedded mp3 player for listening to music files. [View Demo](http://www.cminds.com/cmdownloads/mp3-audio-example/]
 > * Downloads Index Views - Option to toggle between a list view and a tiles view of your downloads. [View Demo](http://www.cminds.com/cmdownloads/)
 > * Social Share - Includes a social share widget in the question page. [View Demo- Widget on the right](http://www.cminds.com/cmdownloads/mp3-audio-example/)
-
-#### [Visit Pro Version Page](http://downloadsmanager.cminds.com)
 
 
 **More Plugins by CreativeMinds**
