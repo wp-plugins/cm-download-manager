@@ -21,12 +21,21 @@ With this plugin you can create a directory where users can upload and manage Fi
 >
 > * [Plugin Site](http://downloadsmanager.cminds.com/).
 >
+
+---
+ 
 > #### Demo & User Guide
 >
 > * [Plugin Site](http://downloadsmanager.cminds.com/).
 > * Pro Version demo [Read Only mode](http://www.cminds.com/cmdownloads/).
 > * [User Guide](http://downloadsmanager.cminds.com/cm-downloads-manager-user-guide/)
 
+---
+ 
+> #### Follow Us
+> [Blog](http://plugin.cminds.com/blog/) | [Twitter](http://twitter.com/cmplugins)  | [Google+](https://plus.google.com/108513627228464018583/) | [LinkedIn](https://www.linkedin.com/company/creativeminds) | [YouTube](https://www.youtube.com/user/cmindschannel) | [Pinterest](http://www.pinterest.com/cmplugins/)
+
+---
 
 **Use-Cases**
 
