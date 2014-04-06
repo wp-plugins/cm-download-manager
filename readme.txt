@@ -97,10 +97,6 @@ With this plugin you can create a directory where users can upload and manage Fi
 #### [Visit Pro Version Page](http://downloadsmanager.cminds.com)
 
 
-**More About this Plugin**
-
-You can find more information about CM Download Manager at [CreativeMinds Website](http://downloadsmanager.cminds.com).
-
 **More Plugins by CreativeMinds**
 
 * [CM Ad Changer](http://wordpress.org/plugins/cm-ad-changer/) - Manage, Track and Report Advertising Campaigns Across Sites. Can turn your Turn your WP into an Ad Server
