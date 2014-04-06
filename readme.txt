@@ -19,6 +19,7 @@ With this plugin you can create a directory where users can upload and manage Fi
 
 > #### Plugin Site
 > * [Plugin Site](http://downloadsmanager.cminds.com/).
+> [Pro Version Detailed Feature List](http://downloadsmanager.cminds.com/features)
 >
 
 ---
@@ -63,8 +64,7 @@ With this plugin you can create a directory where users can upload and manage Fi
 
 > #### Pro Version Features
 >
-> [Pro Version](http://downloadsmanager.cminds.com)
-> The Pro version adds a layer of powerful features to the CM Download Manager giving administrators better tools to customize their Downloads system behavior, with added login support from social networks, added password protection support, and a lot more...
+> [Pro Version Detailed Feature List](http://downloadsmanager.cminds.com/features)
 >
 > * NEW: User Groups Permissions- Set access control based on users groups. Admin can define global settings while user can define access settings per each download : [View Image 1](http://downloadsmanager.cminds.com/wp-content/uploads/edd/downloadsA2-43184_x410.png) [View Image 2](http://downloadsmanager.cminds.com/wp-content/uploads/edd/downloadsA1-43184_x410.png) 
 > * Social Media Registration Integration- Integrates with Facebook, Google+ and LinkedIn. [View Image One](http://www.cminds.com/wp-content/uploads/edd/image1.png), [View Image 2](http://www.cminds.com/wp-content/uploads/edd/cm-answers-image2.png)
