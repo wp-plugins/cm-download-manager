@@ -104,6 +104,9 @@ With this plugin you can create a directory where users can upload and manage Fi
 
 == Installation ==
 
+> [Detailed User Guide](http://downloadsmanager.cminds.com/cm-downloads-manager-user-guide/)
+>
+
 1. Upload the plugin folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Manage your CM Download Manager from Left Side Admin Menu
@@ -114,6 +117,11 @@ With this plugin you can create a directory where users can upload and manage Fi
 Note: You must have a call to wp_head() in your template in order for the JS plugin files to work properly.  If your theme does not support this you will need to link to these files manually in your theme (not recommended).
 
 == Frequently Asked Questions ==
+
+> [More FAQ's](http://downloadsmanager.cminds.com/faq/)
+>
+> [Detailed User Guide](http://downloadsmanager.cminds.com/cm-downloads-manager-user-guide/)
+>
 
 = How can I customize the look & feel of the plugin? =
 In your template you can create a directory called "CMDM". Inside this you can place a structure that is similar to the one inside "cm-download-manager/views/frontend/". If the file can be found in your template directory, then it will have a priority. Otherwise, the default file from the plugin directory will be used.
@@ -130,74 +138,6 @@ In your template you can create a directory called "CMDM". Inside this you can p
 
 
 == Changelog ==
-= 1.6.7 =
-* Fixed clearing floats on the CMDM pages
 
-= 1.6.5 =
-* Add Permalink check in settings
-
-= 1.6.3 =
-* Fixed the bug with Download button
-
-= 1.6.2 =
-* Update user guide link
-
-= 1.6.1 =
-* Fixed notifications appearing on some plugin installations
-* Fixed WP "Twenty Thirteen" theme appearance
-
-= 1.6.0 =
-* Fixed issues with js files not being loaded using https
-* Fixed options "Add Downloads" to site menu and "Add My downloads" to site menu
-* Added error reports when uploads fails
-* Fixed the uploads directory mechanisms
-
-= 1.5.8 =
-* Fixed the download issue which occured with the error_reporting being on
-
-
-= 1.5.7 =
-* Fixed the issue with admin link showing for subscribers
-* Fixed the PHP short tags
-
-= 1.5.6 =
-* Fixed some layout issues when using standard Twenty Thirteen theme
-= 1.5.5 =
-* Changed SWFUploader to PLUpload for screenshot uploads
-
-= 1.5.3 =
-* Update readme and plugin homepage
-
-= 1.5.2 =
-* Update readme file
-
-= 1.3.6 =
-* Changed search param name to avoid conflicts
-
-= 1.3.5 =
-* Added User Guide
-
-= 1.3.3 =
-* Fix display and css related issues
-
-= 1.3 =
-* Added info about PRO version
-
-= 1.2 =
-* Fixed daysAgo function, added hours/minutes/seconds
-* Fixed translations
-* Fixed bug with default screenshot not being displayed
-
-= 1.1 =
-* Added German and Polish localizations for frontend
-
-= 1.0.3 =
-* Fixed bug with not allowing to insert media to posts
-
-= 1.0.2 =
-* Changed a bug with the comments display and max width
-
-
-= 1.0 =
-* Initial release
-
+> [View Release Notes in CM Download Manager Plugin Site](http://downloadsmanager.cminds.com/cm-download-manager-free-edition-release-notes/)
+>
