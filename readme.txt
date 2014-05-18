@@ -130,11 +130,18 @@ In your template you can create a directory called "CMDM". Inside this you can p
 == Screenshots ==
 
 1. Main Download Page
-2. Specific Download Page
+2. Specific Download Page - Password Protected
 3. Download Support Forum.
 4. Support Forum Functionality.
-5. Add download form
-6. Download dashboard in user profile
+5. Download Page with Audio Player
+6. Download Page with Video Player
+7. Downloads Dashboard in User Profile
+8. Add a New Download Form
+9. Plugin's Settings
+10. Admin's Download List
+11. Plugin's Log Screen
+12. Statistic Graphs
+13. User Group Definition for Access Control
 
 
 == Changelog ==
