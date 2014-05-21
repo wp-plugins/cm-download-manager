@@ -53,7 +53,8 @@ Click to see: [comment_link]';
         foreach ($results as $item) {
             $items[] = self::getThread($item);
         }
-        return compact('items', 'total');
+        $downloadId = $id;
+        return compact('items', 'total', 'downloadId');
     }
 
     public static function renderDaysAgo($date, $gmt = false)
