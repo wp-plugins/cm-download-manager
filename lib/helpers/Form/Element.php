@@ -54,7 +54,15 @@ class CMDM_Form_Element {
     }
 
     public function setValue($value) {
-        $this->_value = $this->filter($value);
+		if(is_array($value)){
+			$this->_value=array();		
+			foreach($value as $index=>$val){
+				$this->_value[$index] = $this->filter($val);
+			}
+		}
+		else {
+			$this->_value = $this->filter($value);
+		}
         return $this;
     }
 
@@ -137,12 +145,15 @@ class CMDM_Form_Element {
 
     protected function _renderError($error) {
         $error = str_replace('%label%', $this->getLabel(), $error);
-        $error = str_replace('%value%', $this->getValue(), $error);
+        $value = $this->getValue();
+        if (is_scalar($value)) {
+        	$error = str_replace('%value%', $value, $error);
+        }
         return $error;
     }
 
     public function addErrorClass($name = 'error') {
-        $this->_attribs['class'] = trim(implode(' ', array_merge(explode(' ', $this->_attribs['class']), array($name))));
+        $this->_attribs['class'] = trim(implode(' ', array_merge(explode(' ', (isset($this->_attribs['class']) ? $this->_attribs['class'] : '')), array($name))));
     }
 
     public function setErrors(array $errors) {
@@ -308,6 +319,7 @@ class CMDM_Form_Element {
 
     public function isValid($value, $context = null, $showError = false) {
         $req = $this->isRequired();
+		
         if ($this->isRequired() && empty($value) && strlen($value)==0) {
             if ($showError) $this->addError($this->_requiredError);
             return false;
@@ -359,7 +371,7 @@ class CMDM_Form_Element {
         $required = ($this->isRequired())?'<span class="required">*</span>':'';
         $label = $this->getLabel();
         $description = $this->getDescription();
-        $description = empty($description) ? '' : '<br /><br />'.$description;
+        $description = empty($description) ? '' : '<br/><p class="field_descr" >'.$description.'</p>';
         $label = empty($label)?'':'<label for="'.$this->getId().'" class="CMDM-form-label">'.$this->getLabel().$required.$description.'</label>';
         return '<tr><td>'.$label.'</td><td>'.$this->render().'</td></tr>';
     }

@@ -6,15 +6,18 @@ abstract class CMDM_BaseController
     const MESSAGE_ERROR   = 'error';
     const ADMIN_SETTINGS  = 'CMDM_admin_settings';
     const ADMIN_ABOUT     = 'CMDM_admin_about';
+    const ADMIN_ADDONS = 'CMDM_addons';
     const ADMIN_PRO       = 'CMDM_admin_pro';
     const OPTION_TITLES   = 'CMDM_panel_titles';
 
+    public static $_messages = array(self::MESSAGE_SUCCESS => array(), self::MESSAGE_ERROR => array());
+    public static $_messagesUsed = array();
+    
     protected static $_titles          = array();
     protected static $_fired           = false;
     protected static $_pages           = array();
     protected static $_params          = array();
     protected static $_errors          = array();
-    protected static $_messages        = array(self::MESSAGE_SUCCESS => array(), self::MESSAGE_ERROR => array());
     protected static $_customPostTypes = array();
 
     public static function init()
@@ -42,7 +45,22 @@ abstract class CMDM_BaseController
         }
         add_action('wp_logout', array(get_class(), 'endSessions'));
         add_action('wp_login', array(get_class(), 'endSessions'));
+        add_action('shutdown', array(get_class(), 'shutdown'));
     }
+    
+
+    public static function shutdown() {
+    	if (self::$_messagesUsed === true) {
+    		self::$_messages = array();
+    	}
+    	else if (is_array(self::$_messagesUsed)) {
+    		foreach (self::$_messagesUsed as $type) {
+    			self::$_messages[$type] = array();
+    		}
+    	}
+    	self::_saveMessages();
+    }
+    
 
     public static function endSessions()
     {
@@ -262,20 +280,14 @@ abstract class CMDM_BaseController
                 if(!empty(self::$_errors))
                 {
                     $viewParams = call_user_func(array('CMDM_ErrorController', 'errorAction'));
-                    ob_start();
-                    echo self::_loadView('error', $viewParams);
-                    $content    = ob_get_contents();
-                    ob_end_clean();
+                    $content = self::_loadView('error', $viewParams);
                 }
                 else
                 {
                     $viewParams = array();
                     if(!empty($page['contentCallback'])) $viewParams = call_user_func($page['contentCallback']);
-                    ob_start();
-                    echo self::_loadView('messages', array('messages' => self::_getMessages()));
-                    echo self::_loadView($page['viewPath'], $viewParams);
-                    $content    = ob_get_contents();
-                    ob_end_clean();
+                    $content = self::_loadView('messages', array('messages' => self::getMessages()));
+                    $content .= self::_loadView($page['viewPath'], $viewParams);
                 }
                 break;
             }
@@ -287,14 +299,10 @@ abstract class CMDM_BaseController
     {
         $path     = CMDM_PATH . '/views/frontend/' . $_name . '.phtml';
         $template = self::locateTemplate(array($_name), $path);
-//        if (!file_exists($path))
-//            throw new Exception('You do not have a view file for ' . $_name);
         if(!empty($_params)) extract($_params);
         ob_start();
         require($template);
-        $content  = ob_get_contents();
-        ob_end_clean();
-        return $content;
+        return ob_get_clean();
     }
 
     protected static function _getSlug($controller, $action, $single = false)
@@ -365,6 +373,9 @@ abstract class CMDM_BaseController
 
     public static function bootstrap()
     {
+    	
+    	self::initSessions();
+    	
         self::_addAdminPages();
         self::$_titles = get_option(self::OPTION_TITLES, array());
         $controllersDir = dirname(__FILE__);
@@ -439,7 +450,7 @@ abstract class CMDM_BaseController
         }
 
         self::registerPages();
-        self::initSessions();
+        
     }
 
     protected static function _getHelper($name, $params = array())
@@ -506,7 +517,7 @@ abstract class CMDM_BaseController
     protected static function _getErrors()
     {
         $errors = self::$_errors;
-        self::$_errors = array();
+//         self::$_errors = array();
         return $errors;
     }
 
@@ -515,30 +526,30 @@ abstract class CMDM_BaseController
         $_SESSION['CMDM_messages'] = self::$_messages;
     }
 
-    protected static function _getMessages($type = null)
+    public static function getMessages($type = null)
     {
         $list = array();
         if($type !== null && isset(self::$_messages[$type]))
         {
             $list = self::$_messages[$type];
-            self::$_messages[$type] = array();
+            if (is_array(self::$_messagesUsed)) self::$_messagesUsed[$type] = true;
+//             self::$_messages[$type] = array();
         }
         else
         {
             $list = self::$_messages;
-            self::$_messages = array(self::MESSAGE_SUCCESS => array(), self::MESSAGE_ERROR => array());
+            self::$_messagesUsed = true;
+//             self::$_messages = array(self::MESSAGE_SUCCESS => array(), self::MESSAGE_ERROR => array());
         }
-        self::_saveMessages();
+//         self::_saveMessages();
         return $list;
     }
 
     protected static function _addMessage($type, $msg)
     {
-        if(isset(self::$_messages[$type]))
-        {
-            self::$_messages[$type][] = $msg;
-            self::_saveMessages();
-        }
+        if( !isset(CMDM_BaseController::$_messages[$type]) ) self::$_messages[$type] = array();
+        self::$_messages[$type][] = $msg;
+        self::_saveMessages();
     }
 
     public static function _userRequired()
@@ -554,8 +565,9 @@ abstract class CMDM_BaseController
     public static function registerAdminPages()
     {
 
-        add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'CM Downloads Settings', 'Downloads Settings', 'manage_options', self::ADMIN_SETTINGS, array(get_class(), 'displaySettingsPage'));
+        add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'CM Downloads Settings', 'Settings', 'manage_options', self::ADMIN_SETTINGS, array(get_class(), 'displaySettingsPage'));
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'About', 'About', 'manage_options', self::ADMIN_ABOUT, array(get_class(), 'displayAboutPage'));
+        add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'Add-ons', 'Add-ons', 'manage_options', self::ADMIN_ADDONS, array(get_class(), 'displayAboutPage'));
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'Pro Version', 'Pro Version', 'manage_options', self::ADMIN_PRO, array(get_class(), 'displayProPage'));
         global $submenu;
         $current_user = wp_get_current_user();
@@ -625,13 +637,15 @@ abstract class CMDM_BaseController
         require(CMDM_PATH . '/views/backend/template.phtml');
     }
 
-    public static function displayAboutPage()
-    {
+	public static function displayAboutPage() {
         ob_start();
+        if ($_GET['page'] == self::ADMIN_ABOUT) {
+        	$iframeURL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&cat=Plugin&nitems=3';
+        } else {
+        	$iframeURL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&amp;tags=Download&amp;nitems=3';
+        }
         require(CMDM_PATH . '/views/backend/about.phtml');
-        $content = ob_get_contents();
-        ob_end_clean();
-        self::displayAdminPage($content);
+        self::displayAdminPage(ob_get_clean());
     }
 
     public static function displayProPage()
@@ -652,7 +666,7 @@ abstract class CMDM_BaseController
     {
         echo self::getAdminNav();
         ?>
-        <script>
+        <script type="text/javascript">
             jQuery(document).ready(function($){
                 $('#col-container').prepend($('#CMDM_admin_nav'));
             });
@@ -703,7 +717,4 @@ abstract class CMDM_BaseController
         return $submenus;
     }
 
-    /*
-     *  AJAX
-     */
 }

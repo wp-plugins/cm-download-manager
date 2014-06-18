@@ -175,11 +175,11 @@ div.CMDM_loadingOverlay {
 .CMDM_comment_content {vertical-align:top;text-align:left;line-height:1.0em}
 .CMDM .tabItem .CMDM_comment_content p {margin:0;line-height: 1.0em;}
 .CMDM .topicTbl a.CMDM_back_to_support {font-size:11px;float:right;}
-.cma_poweredby {clear:both;float:left;font-size:8px;line-height:1.5;margin:20px 0px 10px 40px;display: inline-block;text-align:left;color:#bbb;text-decoration:none;font-weight:bold}
-.cma_poweredbylink:link{color:#bbb;text-decoration:none;}
-.cma_poweredbylink:visited{color:#bbb;text-decoration:none;}
-.cma_poweredbylink:hover{color:#bbb;text-decoration:none;}
-.cma_poweredby:before {content:'Powered by ';}
+.cmdm_poweredby {clear:both;float:left;font-size:8px;line-height:1.5;margin:20px 0px 10px 40px;display: inline-block;text-align:left;color:#bbb;text-decoration:none;font-weight:bold}
+.cmdm_poweredbylink:link{color:#bbb;text-decoration:none;}
+.cmdm_poweredbylink:visited{color:#bbb;text-decoration:none;}
+.cmdm_poweredbylink:hover{color:#bbb;text-decoration:none;}
+.cmdm_poweredby:before {content:'Powered by ';}
 .CMDM #CMDM-rating-message {
     position:absolute;
     top:0;
@@ -241,3 +241,4 @@ div.CMDM_loadingOverlay {
     background-position:left -22px;
 }​
 .wp-editor-wrap {width:400px;}
+.CMDM-edit-form .wp-editor-tools {display:none}

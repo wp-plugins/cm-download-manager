@@ -145,7 +145,7 @@ class CMDM_Form {
         }
         $enctype = $this->getEnctype();
         if (!empty($enctype)) $enctype=' enctype="'.$enctype.'"';
-        $html .= '<form method="'.$this->getMethod().'" action="'.$this->getAction().'"'.$enctype.' class="CMDM-form"><table border="0">';
+        $html .= '<form method="'.$this->getMethod().'" action="'.$this->getAction().'"'.$enctype.' class="CMDM-form"><table style="border:none">';
         foreach ($this->getElements() as $element) {
             $html .= $element['elem'];
         }

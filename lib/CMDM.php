@@ -27,7 +27,7 @@ class CMDM
 
     }
 
-    function showProMessages()
+    public static function showProMessages()
     {
         /*
          *  Only show to admins

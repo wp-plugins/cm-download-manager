@@ -49,6 +49,8 @@ class CMDM_CmdownloadController extends CMDM_BaseController
             'description' => 'This sidebar is shown on CM Download Manager Index'
         ));
     }
+    
+
 
     public static function processAddonsTitlePage($params = array())
     {
@@ -162,7 +164,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
 
     public static function getDefaultScreenshot()
     {
-        return get_option(self::DEFAULT_SCREENSHOT_OPTION, CMDM_URL . '/views/resources/imgs/no_screenshot.png');
+        return CMDM_URL . get_option(self::DEFAULT_SCREENSHOT_OPTION, '/views/resources/imgs/no_screenshot.png');
     }
 
     public static function overrideControllerTitle($title)
@@ -400,6 +402,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
 
     public static function showSupport($id)
     {
+    	wp_register_script('cmdm-jquery-form', CMDM_RESOURCE_URL . '/js/jquery.form.js', array('jquery'));
         $items = CMDM_SupportThread::getThreadsForDownload($id, false);
         echo self::_loadView('cmdownload/meta/support', $items);
     }
@@ -572,7 +575,9 @@ class CMDM_CmdownloadController extends CMDM_BaseController
             {
                 $p = $_POST['id'];
                 $download = CMDM_GroupDownloadPage::getInstance($p);
-                if( !empty($download) && $download instanceof CMDM_GroupDownloadPage ) $download->download();
+                if( !empty($download) && $download instanceof CMDM_GroupDownloadPage ) {
+                	$download->download();
+                }
             } else
             {
                 wp_redirect(self::getUrl('downloads', ''), 303);

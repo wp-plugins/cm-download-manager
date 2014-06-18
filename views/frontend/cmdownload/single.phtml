@@ -29,7 +29,7 @@ if( have_posts() ):
                                     endforeach;
                                 else:
                                     ?>
-                                    <div> <img src="<?php echo CMDM_get_default_screenshot(); ?>" height="220" width="720" /> </div>
+                                    <div> <img src="<?php echo CMDM_get_default_screenshot(); ?>" height="220" width="720" alt="Screenshot" /> </div>
                                 <?php
                                 endif;
                                 ?>
@@ -72,9 +72,9 @@ if( have_posts() ):
         endwhile;
     endif;
     ?>
-    <span class="cma_poweredby">
-        <a href="http://plugins.cminds.com/" target="_blank" class="cma_poweredbylink">CreativeMinds WordPress Plugins</a>
-        <a href="http://downloadsmanager.cminds.com" target="_blank" class="cma_poweredbylink">CM Downloads Manager</a>
+    <span class="cmdm_poweredby">
+        <a href="http://plugins.cminds.com/" target="_blank" class="cmdm_poweredbylink">CreativeMinds WordPress Plugins</a>
+        <a href="http://downloadsmanager.cminds.com" target="_blank" class="cmdm_poweredbylink">CM Downloads Manager</a>
     </span>
 </div><?php
 if( !isset($_GET['ajax']) ) get_footer();

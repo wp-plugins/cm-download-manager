@@ -27,7 +27,7 @@ $currentPage = 1;
     <?php endfor; ?>
     <a href="#" class="next">&raquo;</a></div>
 <!--/paging -->
-<script>
+<script type="text/javascript">
 </script>
 <?php
 if( is_user_logged_in())
@@ -51,7 +51,7 @@ if( is_user_logged_in())
         </form>
     </div>
 <?php } ?>
-<script>
+<script type="text/javascript">
     var totalSupportPages = <?php echo $pages; ?>;
 
     (function ($) {
@@ -101,7 +101,7 @@ if( is_user_logged_in())
 
             }
 
-            if ($addThreadForm.length)
+            if ($addThreadForm.length && false)
             {
                 $addThreadForm.ajaxForm({
                     dataType: 'json',

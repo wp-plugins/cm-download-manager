@@ -12,6 +12,7 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
      * Rewrite slug
      */
     public static $rewriteSlug = 'cmdownloads';
+    private $_errors = array();
 
     const ADMIN_MENU                = 'CMDM_downloads_menu';
     /**
@@ -38,6 +39,7 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
         'screenshots' => '_screenshots',
         'download_file' => '_download_file',
         'file_size' => '_file_size',
+    	'package_type'           => '_package_type',
         'number_of_downloads' => '_number_of_downloads',
         'recommended' => '_recommendation',
         'categories' => '_categories',

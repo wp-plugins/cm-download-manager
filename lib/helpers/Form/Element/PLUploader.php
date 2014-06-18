@@ -2,6 +2,8 @@
 require_once CMDM_PATH . "/lib/helpers/Form/Element.php";
 class CMDM_Form_Element_PLUploader extends CMDM_Form_Element
 {
+	
+	public static $scriptsSent = array();
 
     public function _init()
     {
@@ -201,7 +203,14 @@ class CMDM_Form_Element_PLUploader extends CMDM_Form_Element
         </div>
         <?php
         $html = ob_get_clean();
-        $html .= $this->renderScript();
+        
+        if (empty(CMDM_Form_Element_PLUploader::$scriptsSent[$this->getId()])) {
+			CMDM_Form_Element_PLUploader::$scriptsSent[$this->getId()] = true;
+			$script = $this->renderScript();
+	        add_action('wp_footer', function() use ($script) {
+	       		echo $script;
+	        });
+        }
 
         return $html;
     }

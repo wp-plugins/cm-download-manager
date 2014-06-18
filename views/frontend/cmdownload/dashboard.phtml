@@ -21,9 +21,9 @@
             foreach ($myDownloads as $download):
                 ?>
             <tr>
-                <td><a href="<?php echo get_permalink($download->getId()); ?>"><?php echo $download->getTitle(); ?></a></td>
+                <td><a href="<?php echo esc_attr(get_permalink($download->getId())); ?>"><?php echo esc_html($download->getTitle()); ?></a></td>
                 <td><?php $status = $download->getStatus(); echo ucfirst($status); ?></td>
-                <td align="center"><?php echo $download->getNumberOfDownloads(); ?></td>
+                <td style="text-align:center"><?php echo $download->getNumberOfDownloads(); ?></td>
                 <?php
                 if ($status == 'published') {
                     $action = 'unpublish';

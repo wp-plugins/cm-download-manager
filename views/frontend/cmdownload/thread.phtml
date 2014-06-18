@@ -32,12 +32,12 @@ if( have_posts() ):
                                     </thead>
                                     <tbody id="threadTableContainer">
                                         <tr class="CMDM_comment CMDM_comment_main" id="comment-<?php echo $thread['thread_id']; ?>">
-                                            <td class="CMDM_comment_meta" align="left" valign="top">
+                                            <td class="CMDM_comment_meta" style="text-align:left;vertical-align:top">
                                                 <div class="CMDM_comment_author"><?php echo '<span class="CMDM_author_color">' . $thread['author'] . '</span>'; ?></div>
                                                 <div class="CMDM_comment_date"><?php echo ($thread['date']);
                     ?> <a href="#comment-<?php echo $thread['thread_id']; ?>">#</a></div>
                                             </td>
-                                            <td class="CMDM_comment_content" align="left" valign="top">
+                                            <td class="CMDM_comment_content" style="text-align:left;vertical-align:top">
                                                 <?php echo nl2br($thread['question']); ?>
                                             </td>
                                         </tr>
@@ -49,7 +49,7 @@ if( have_posts() ):
                                     <tbody id="threadTableContainer">
                                         <?php foreach($thread['comments'] as $comment): ?>
                                             <tr class="CMDM_comment" id="comment-<?php echo $comment->comment_ID; ?>">
-                                                <td class="CMDM_comment_meta" align="left" valign="top">
+                                                <td class="CMDM_comment_meta" style="text-align:left;vertical-align:top">
                                                     <div class="CMDM_comment_author">
                                                         <?php
                                                         if( get_comment_author($comment->comment_ID) == $thread['author'] ) echo '<span class="CMDM_author_color">' . get_comment_author($comment->comment_ID) . '</span>';
@@ -60,7 +60,7 @@ if( have_posts() ):
                                                     <div class="CMDM_comment_date"><?php echo (get_comment_date('Y-m-d H:i', $comment->comment_ID));
                                                         ?> <a href="#comment-<?php echo $comment->comment_ID; ?>">#</a></div>
                                                 </td>
-                                                <td class="CMDM_comment_content" align="left" valign="top">
+                                                <td class="CMDM_comment_content" style="text-align:left;vertical-align:top">
                                                     <?php echo nl2br($comment->comment_content); ?>
                                                 </td>
                                             </tr>
@@ -115,7 +115,7 @@ if( have_posts() ):
                                 {
                                     var $addThreadForm = $('#addThreadForm');
                                     $(document).ready(function () {
-                                        if ($addThreadForm.length)
+                                        if ($addThreadForm.length && false)
                                         {
                                             $addThreadForm.ajaxForm({
                                                 dataType: 'json',
@@ -151,7 +151,7 @@ if( have_posts() ):
         endwhile;
     endif;
     ?>
-    <span class="cma_poweredby"><a href="http://plugins.cminds.com/" target="_new" class="cma_poweredbylink">CreativeMinds WordPress Plugins</a> <a href="http://downloadsmanager.cminds.com" target="_new" class="cma_poweredbylink">CM Downloads Manager</a></span>
+    <span class="cmdm_poweredby"><a href="http://plugins.cminds.com/" target="_blank" class="cmdm_poweredbylink">CreativeMinds WordPress Plugins</a> <a href="http://downloadsmanager.cminds.com" target="_blank" class="cmdm_poweredbylink">CM Downloads Manager</a></span>
 </div>
 <?php
 get_footer();
