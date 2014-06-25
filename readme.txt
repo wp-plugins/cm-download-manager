@@ -108,7 +108,7 @@ With this plugin you can create a directory where users can upload and manage Fi
 * [CM Ad Changer](http://wordpress.org/plugins/cm-ad-changer/) - Manage, Track and Report Advertising Campaigns Across Sites. Can turn your Turn your WP into an Ad Server
 * [CM Super ToolTip Glossary](http://wordpress.org/extend/plugins/enhanced-tooltipglossary/) - Easily creates a Glossary, Encyclopaedia or Dictionary of your website's terms and shows them as a tooltip in posts and pages when hovering. With many more powerful features.
 * [CM Answers](http://wordpress.org/extend/plugins/cm-answers/) - Allows users to post questions and answers (Q&A) in a Stack-overflow style community forum which is easy to use, customize and install. Comes with Social integration Shortcodes.
-* [CM MicroPayments]((https://plugins.cminds.com/cm-micropayment-platform/)) - Adds the in-site support for your own “virtual currency“. The purpose of this plugin is to allow in-site transactions without the necessity of processing the external payments each time (quicker & easier). Developers can use it as a platform to integrate with their own plugins.
+* [CM MicroPayments](https://plugins.cminds.com/cm-micropayment-platform/) - Adds the in-site support for your own "virtual currency". The purpose of this plugin is to allow in-site transactions without the necessity of processing the external payments each time (quicker & easier). Developers can use it as a platform to integrate with their own plugins.
 
 
 == Installation ==
