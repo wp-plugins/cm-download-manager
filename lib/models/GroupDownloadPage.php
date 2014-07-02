@@ -26,6 +26,7 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
     const SCREENSHOTS_DIR           = 'screenshots';
     const OPTION_ADDONS_TITLE       = 'CMDM_addons_title';
     const ALLOWED_EXTENSIONS_OPTION = 'CMDM_allowed_extensions';
+    const OPTION_FORCE_BROWSER_DOWNLOAD_ENABLED = 'CMDM_force_browser_download_enabled';
 
     /**
      * @var CMDM_GroupDownloadPage[] singletones cache
@@ -545,7 +546,6 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
                 $ext = '.' . $ext;
             }
 
-            $fileName = sanitize_file_name($this->getTitle()) . $ext;
             $mimeType = $this->getMimeType();
             $fileSize = filesize($filepath);
 
@@ -559,22 +559,23 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
                 $mimeType = 'application/octet-stream';
             }
 
-            $mimeType = 'application/octet-stream';
-
             if(headers_sent($headersFile, $headersLine))
             {
                 die('Headers file:' . $headersFile . ' on line: ' . $headersLine);
             }
 
-            header('Content-Description: File Transfer');
             header("Pragma: public");
             header("Expires: 0");
             header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
             header("Cache-Control: private", false); // required for certain browsers
+            if (self::forceBrowserDownloadEnabled()) {
+            	$mimeType = 'application/octet-stream';
+            	header('Content-Description: File Transfer');
+            	header("Content-Disposition: attachment; filename=\"" . $this->getFileName() . "\";");
+            	header("Content-Transfer-Encoding: binary");
+            	header("Content-Length: " . $fileSize);
+            }
             header("Content-type: " . $mimeType);
-            header("Content-Disposition: attachment; filename=\"" . $fileName . "\";");
-            header("Content-Transfer-Encoding: binary");
-            header("Content-Length: " . $fileSize);
             readfile($filepath);
             exit;
         }
@@ -593,6 +594,24 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
         }
         exit;
     }
+    
+
+
+    public function getFileName() {
+    	$filepath = $this->getFilePath();
+    	if( is_file($filepath) ) {
+    		$ext = pathinfo($filepath, PATHINFO_EXTENSION);
+    		if( !empty($ext) ) $ext = '.' . $ext;
+    		return sanitize_file_name($this->getTitle()) . $ext;
+    	}
+    }
+    
+    
+    public static function forceBrowserDownloadEnabled() {
+    	return get_option(self::OPTION_FORCE_BROWSER_DOWNLOAD_ENABLED, 1);
+    }
+    
+    
 
     public function getFilePath()
     {

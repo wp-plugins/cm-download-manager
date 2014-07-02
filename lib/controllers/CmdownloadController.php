@@ -81,8 +81,18 @@ class CMDM_CmdownloadController extends CMDM_BaseController
             update_option(self::OPTION_SEARCH_PLACEHOLDER, $_POST['search_placeholder_text']);
         }
         $params['searchPlaceholder'] = self::getSearchPlaceholder();
+        
+        if( isset($_POST['forceBrowserDownload']) )
+        {
+        	update_option(CMDM_GroupDownloadPage::OPTION_FORCE_BROWSER_DOWNLOAD_ENABLED, intval($_POST['forceBrowserDownload']));
+        }
+        $params['forceBrowserDownload'] = CMDM_GroupDownloadPage::forceBrowserDownloadEnabled();
+        
         return $params;
     }
+    
+    
+    
 
     public static function processDefaultScreenshot($params = array())
     {
@@ -164,7 +174,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
 
     public static function getDefaultScreenshot()
     {
-        return CMDM_URL . get_option(self::DEFAULT_SCREENSHOT_OPTION, '/views/resources/imgs/no_screenshot.png');
+        return get_option(self::DEFAULT_SCREENSHOT_OPTION, CMDM_URL . '/views/resources/imgs/no_screenshot.png');
     }
 
     public static function overrideControllerTitle($title)
@@ -397,7 +407,9 @@ class CMDM_CmdownloadController extends CMDM_BaseController
     public static function showDownloadButton($id)
     {
         $nonce = wp_create_nonce(self::DOWNLOAD_NONCE);
-        echo self::_loadView('cmdownload/meta/download-form', array('action_url' => self::getUrl('cmdownload', 'get'), 'nonce' => $nonce, 'download_id' => $id));
+        $download = CMDM_GroupDownloadPage::getInstance($id);
+        $url = self::getUrl('cmdownload', 'get') . '/file/'. urlencode($download->getFileName());
+        echo self::_loadView('cmdownload/meta/download-form', array('action_url' => $url, 'nonce' => $nonce, 'download_id' => $id));
     }
 
     public static function showSupport($id)

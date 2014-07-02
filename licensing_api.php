@@ -38,7 +38,6 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
         private $messageError = FALSE;
         private static $instances = array();
         private $releaseNotesUrl = null;
-        private $licensePageContent = null;
 
         public function __construct($itemName, $pluginMenu, $pluginName, $pluginFile, $pluginSpecificUrls, $pluginSlug = '', $additionalValidItemNames = null)
         {
@@ -82,36 +81,28 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
 
             self::$instances[$this->optionGroup] = $this;
 
-            add_action('admin_menu', array($this, 'update_menu'), 21);
             add_action('admin_menu', array($this, 'license_menu'), 20);
+            add_action('admin_menu', array($this, 'update_menu'), 21);
 
             add_action('admin_init', array($this, 'register_license_option'));
 
-//            add_action('admin_init', array($this, 'activate_license'));
-//            add_action('admin_init', array($this, 'deactivate_license'));
-//            add_action('admin_notices', array($this, 'showMessage'));
-//            add_action('update_option_' . $this->optionLicenseKey, array($this, 'after_new_license_key'), 10, 2);
+            add_action('admin_init', array($this, 'activate_license'));
+            add_action('admin_init', array($this, 'deactivate_license'));
+
+            add_action('admin_notices', array($this, 'showMessage'));
+
+            add_action('update_option_' . $this->optionLicenseKey, array($this, 'after_new_license_key'), 10, 2);
         }
 
         public function license_menu()
         {
-            if( has_action('cminds-download-manager-license-page') )
-            {
-                add_submenu_page($this->pluginMenu, 'License', 'License', 'manage_options', $this->pluginMenuPage, array($this, 'license_page'));
-            }
+            add_submenu_page($this->pluginMenu, 'License', 'License', 'manage_options', $this->pluginMenuPage, array($this, 'license_page'));
         }
 
         public function license_page()
         {
             $license = get_option($this->optionLicenseKey);
             $status = get_option($this->optionLicenseStatus);
-
-            ob_start();
-            /*
-             * Call the action in the add-ons
-             */
-            do_action('cminds-download-manager-license-page');
-            $this->licensePageContent = ob_get_clean();
             ?>
 
             <div class="wrap">
@@ -123,8 +114,8 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
                     <ol>
                         <li>
                             <p>
-                                You can get your license keys by logging in the <a target="_blank" href="<?php echo self::$customerAreaLoginUrl ?>">Cminds Customer Area</a>. <br/>
-                                If you don't have an account yet. You have to first <a target="_blank" href="<?php echo self::$customerAreaRegisterUrl ?>">register</a> using the e-mail you've used for the purchase. <br/>
+                                You can get your license keys by logging in the <a target="_blank" href="<?php echo esc_url_raw(self::$customerAreaLoginUrl) ?>">Cminds Customer Area</a>. <br/>
+                                If you don't have an account yet. You have to first <a target="_blank" href="<?php echo esc_url_raw(self::$customerAreaRegisterUrl) ?>">register</a> using the e-mail you've used for the purchase. <br/>
                                 Your license key will be available as shown in the screenshot below.
                             </p>
                             <img title="Cminds Customer Area screenshot" alt="Example Cminds Customer Area screenshot" src="<?php echo plugin_dir_url(__FILE__) ?>cminds_user_area.png" />
@@ -140,7 +131,7 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
 
                     <p>
                         Your license key should be a string of 32 characters (letters and digits). <br/>
-                        If there's no license key on the customer page nor online receipt, please <a target="_blank" href="<?php echo self::$supportUrl ?>">contact support</a>.
+                        If there's no license key on the customer page nor online receipt, please <a target="_blank" href="<?php echo esc_url_raw(self::$supportUrl) ?>">contact support</a>.
                     </p>
                 </div>
 
@@ -156,8 +147,32 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
 
                     <table class="form-table">
                         <tbody>
+                            <tr valign="top">
+                                <th scope="row" valign="top">
+                                    <?php echo $this->pluginName ?>
+                                </th>
+                                <td>
+                                    <input id="cminds_license_key" name="<?php echo $this->optionLicenseKey ?>" type="text" class="regular-text" value="<?php esc_attr_e($license); ?>" />
+                                    <?php if( false !== $license ) : ?>
+                                        <?php
+                                        if( $status !== false && $status == 'valid' ) :
+                                            ?>
+                                            <span style="color:green;"><?php _e('active'); ?></span>
+                                            <input type="submit" class="button-secondary" name="<?php echo $this->optionLicenseDeactivateKey ?>" value="<?php _e('Deactivate License'); ?>"/>
+                                            <?php
+                                        else :
+                                            ?>
+                                            <input type="submit" class="button-secondary" name="<?php echo $this->optionLicenseActivateKey ?>" value="<?php _e('Activate License'); ?>"/>
+                                        <?php endif; ?>
+
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
                             <?php
-                            echo $this->licensePageContent;
+                            /*
+                             * Call the action in the add-ons
+                             */
+                            do_action('cminds-download-manager-license-page');
                             ?>
                         </tbody>
                     </table>
@@ -169,22 +184,12 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
 
         public function update_menu()
         {
-            if( has_action('cminds-download-manager-update-page') )
-            {
-                add_submenu_page($this->pluginMenu, 'Version Update', 'Version Update', 'manage_options', $this->pluginUpdateMenuPage, array($this, 'update_page'));
-            }
+            add_submenu_page($this->pluginMenu, 'Version Update', 'Version Update', 'manage_options', $this->pluginUpdateMenuPage, array($this, 'update_page'));
         }
 
         public function update_page()
         {
             $versionInfo = $this->getUpdateInfo();
-
-            ob_start();
-            /*
-             * Call the action in the add-ons
-             */
-            do_action('cminds-download-manager-update-page');
-            $this->updatePageContent = ob_get_clean();
             ?>
 
             <div class="wrap">
@@ -196,8 +201,8 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
                     <ol>
                         <li>
                             <p>
-                                You can get your downloads by logging in the <a target="_blank" href="<?php echo self::$customerAreaLoginUrl ?>">Cminds Customer Area</a>. <br/>
-                                If you don't have an account yet. You have to first <a target="_blank" href="<?php echo self::$customerAreaRegisterUrl ?>">register</a> using the e-mail you've used for the purchase. <br/>
+                                You can get your downloads by logging in the <a target="_blank" href="<?php echo esc_url_raw(self::$customerAreaLoginUrl) ?>">Cminds Customer Area</a>. <br/>
+                                If you don't have an account yet. You have to first <a target="_blank" href="<?php echo esc_url_raw(self::$customerAreaRegisterUrl) ?>">register</a> using the e-mail you've used for the purchase. <br/>
                                 Your download files will be available as shown in the screenshot below.
                             </p>
                             <img title="Example Customer area with download link" alt="Example Cminds update - download link" src="<?php echo plugin_dir_url(__FILE__) ?>cminds_update.png" />
@@ -230,11 +235,26 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
                     </ol>
                 </div>
 
+                <h3><strong><?php echo $this->pluginName ?></strong></h3>
+
+                <table>
+                    <tr>
+                        <th>Your version</th>
+                        <th>Newest version</th>
+                        <th>Check result</th>
+                    </tr>
+                    <tr>
+                        <td><?php echo $versionInfo['current-version']; ?></td>
+                        <td><?php echo $versionInfo['newest-version']; ?></td>
+                        <td><?php echo $versionInfo['needs-update'] ? '<a href="'.esc_url_raw(self::$apiEndpointUrl).'guest-account/" target="_blank">Update required</a>' : 'Up-to-date' ?></td>
+                    </tr>
+                </table>
+
                 <?php
                 /*
                  * Call the action in the add-ons
                  */
-                echo $this->updatePageContent;
+                do_action('cminds-download-manager-update-page');
                 ?>
             </div>
             <?php
@@ -311,7 +331,7 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
                     $apiCallResults[] = false;
                 }
 
-                $url = add_query_arg($params, self::$apiEndpointUrl);
+                $url = add_query_arg($params, esc_url_raw(self::$apiEndpointUrl));
                 $response = wp_remote_get($url, array('timeout' => 15, 'sslverify' => false));
 
                 if( is_wp_error($response) )
@@ -367,7 +387,7 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
                      * This license activation limit has beeen reached
                      */
                     $this->message = 'Your have reached your activation limit for "' . $this->pluginName . '"! <br/>'
-                            . 'Please, purchase a new license or contact <a target="_blank" href="' . self::$supportUrl . '">support</a>.';
+                            . 'Please, purchase a new license or contact <a target="_blank" href="' . esc_url_raw(self::$supportUrl) . '">support</a>.';
                     $this->messageError = TRUE;
                     break;
                 case 'deactivated':
@@ -611,8 +631,29 @@ if( !class_exists('CMDM_free_Cminds_Licensing_API') )
         {
             $licenseActivationCount = get_option($this->optionCountLicenseActivations, 0);
             $licenseMaxActivationCount = (int) get_option($this->optionCountLicenseMaxActivations, 1);
-            $licenseMaxActivationCount += self::MAX_ACTIVATION_COUNT;
-            $licenseOk = !empty($this->license) && in_array($this->licenseStatus, array('valid', 'expired', 'inactive', self::NO_ACTIVATIONS_STATUS)) && $licenseActivationCount < $licenseMaxActivationCount;
+
+            if($licenseMaxActivationCount > 0)
+            {
+                $licenseMaxActivationCount += self::MAX_ACTIVATION_COUNT;
+                $isLicenseActivationCountOk = $licenseActivationCount <= $licenseMaxActivationCount;
+            }
+            elseif($licenseMaxActivationCount == 0)
+            {
+                /*
+                 * Unlimited activations
+                 */
+                $isLicenseActivationCountOk = TRUE;
+            }
+
+            if(isset($_GET['cminds_debug']) && $_GET['cminds_debug'] == '2')
+            {
+                var_dump('License:'. $this->license);
+                var_dump('License status:'. $this->licenseStatus);
+                var_dump('License activations:'. $licenseActivationCount);
+                var_dump('License max activations:'. $licenseMaxActivationCount);
+            }
+
+            $licenseOk = !empty($this->license) && in_array($this->licenseStatus, array('valid', 'expired', 'inactive', self::NO_ACTIVATIONS_STATUS)) && $isLicenseActivationCountOk;
             return $licenseOk;
         }
 
