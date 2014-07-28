@@ -5,7 +5,7 @@
   Plugin URI: http://downloadsmanager.cminds.com
   Description: Allow users to upload,manage,track and support documents or files in a directory listing structure for others to use and comment
   Author: CreativeMindsSolutions
-  Version: 1.8.1
+  Version: 1.9.1
  */
 
 /*

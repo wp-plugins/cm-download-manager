@@ -63,7 +63,7 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
                 'with_front' => FALSE,
             ),
             'supports' => array('title', 'editor', 'thumbnail', 'custom-fields', 'revisions', 'post-formats'),
-            'hierarchical' => TRUE
+            'hierarchical' => false
         );
         $plural         = self::getAddonsTitle();
         self::registerPostType(self::POST_TYPE, 'Download', $plural, 'CM Downloads', $post_type_args);

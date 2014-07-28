@@ -40,6 +40,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         add_filter('CMDM_admin_settings', array(get_class(), 'processDefaultScreenshot'), 1, 1);
         add_filter('manage_edit-' . CMDM_GroupDownloadPage::POST_TYPE . '_columns', array(get_class(), 'registerAdminColumns'));
         add_filter('manage_' . CMDM_GroupDownloadPage::POST_TYPE . '_posts_custom_column', array(get_class(), 'adminColumnDisplay'), 10, 2);
+        add_action( 'admin_notices', array(get_class(), 'checkCategoriesAdminNotice'));
         do_action('CMDM_custom_post_type_nav', CMDM_GroupDownloadPage::POST_TYPE);
         do_action('CMDM_custom_taxonomy_nav', CMDM_GroupDownloadPage::CAT_TAXONOMY);
         CMDM_SupportThread::init();
@@ -852,5 +853,20 @@ class CMDM_CmdownloadController extends CMDM_BaseController
                 break;
         }
     }
+    
+
+	public static function checkCategoriesAdminNotice() {
+    	global $wpdb;
+        $categoriesCount = intval($wpdb->get_var($wpdb->prepare("SELECT count(*) FROM $wpdb->term_taxonomy x
+        	WHERE x.taxonomy = %s", CMDM_GroupDownloadPage::CAT_TAXONOMY)));
+        if ($categoriesCount == 0) {
+        	printf('<div class="error"><p>%s<a href="%s" class="button" style="margin-left:1em;">%s</a></p></div>',
+        		CMDM::__('CM Download Manager: you have to define at least one category.'),
+        		esc_attr('edit-tags.php?taxonomy=' . CMDM_GroupDownloadPage::CAT_TAXONOMY . '&post_type=' . CMDM_GroupDownloadPage::POST_TYPE),
+        		CMDM::__('Go to Categories')
+        	);
+        }
+    }
+    
 
 }

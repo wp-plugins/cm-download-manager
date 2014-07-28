@@ -3,6 +3,8 @@ include_once CMDM_PATH . '/lib/models/GroupDownloadPage.php';
 include_once CMDM_PATH . '/lib/controllers/BaseController.php';
 class CMDM
 {
+	
+	const TEXT_DOMAIN = 'cm-download-manager';
 
     public static function init()
     {
@@ -27,6 +29,11 @@ class CMDM
 
     }
 
+	public static function __($msg)
+    {
+        return __($msg, self::TEXT_DOMAIN);
+    }
+    
     public static function showProMessages()
     {
         /*
