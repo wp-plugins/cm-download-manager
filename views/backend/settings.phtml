@@ -17,6 +17,9 @@ if (get_option('permalink_structure') == '') {
 
 <?php include 'sharebox.phtml'; ?>
 
+<p>Link to downloads frontend list: <a href="<?php $url = CMDM_BaseController::getUrl('cmdownloads', 'index');
+	echo esc_attr($url); ?>"><?php echo esc_html($url); ?></a></p>
+
     <h3>Upgrade to Pro</h3>
     <table>
         <tr>

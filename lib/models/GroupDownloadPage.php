@@ -119,13 +119,15 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
 
     public static function registerAdminMenu()
     {
-        $page = add_menu_page('Downloads', 'CM Downloads', 'manage_options', self::ADMIN_MENU, create_function('$q', 'return;'));
-        add_submenu_page(self::ADMIN_MENU, 'Add New', 'Add New', 'manage_options', 'post-new.php?post_type=' . self::POST_TYPE);
-        add_submenu_page(self::ADMIN_MENU, 'Categories', 'Categories', 'manage_options', 'edit-tags.php?taxonomy=' . self::CAT_TAXONOMY . '&amp;post_type=' . self::POST_TYPE);
-        if(isset($_GET['taxonomy']) && $_GET['taxonomy'] == self::CAT_TAXONOMY && isset($_GET['post_type']) && $_GET['post_type'] == self::POST_TYPE)
-        {
-            add_filter('parent_file', create_function('$q', 'return "' . self::ADMIN_MENU . '";'), 999);
-        }
+    	if (current_user_can('manage_options')) {
+	        $page = add_menu_page('Downloads', 'CM Downloads', 'manage_options', self::ADMIN_MENU, create_function('$q', 'return;'));
+	        add_submenu_page(self::ADMIN_MENU, 'Add New', 'Add New', 'manage_options', 'post-new.php?post_type=' . self::POST_TYPE);
+	        add_submenu_page(self::ADMIN_MENU, 'Categories', 'Categories', 'manage_options', 'edit-tags.php?taxonomy=' . self::CAT_TAXONOMY . '&amp;post_type=' . self::POST_TYPE);
+	        if(isset($_GET['taxonomy']) && $_GET['taxonomy'] == self::CAT_TAXONOMY && isset($_GET['post_type']) && $_GET['post_type'] == self::POST_TYPE)
+	        {
+	            add_filter('parent_file', create_function('$q', 'return "' . self::ADMIN_MENU . '";'), 999);
+	        }
+    	}
     }
 
     public static function getAddonsTitle()
@@ -386,10 +388,12 @@ class CMDM_GroupDownloadPage extends CMDM_PostType
         }
         if(!$mimeType)
         {
-            $finfo    = finfo_open(FILEINFO_MIME_TYPE);
-            $mimeType = finfo_file($finfo, $filename);
-            finfo_close($finfo);
-            $this->setMimeType($mimeType);
+        	if (function_exists('finfo_open')) {
+	            $finfo    = finfo_open(FILEINFO_MIME_TYPE);
+	            $mimeType = finfo_file($finfo, $filename);
+	            finfo_close($finfo);
+	            $this->setMimeType($mimeType);
+        	}
         }
         return $mimeType;
     }
