@@ -16,7 +16,7 @@ class CMDM_Form_Element_Checkbox extends CMDM_Form_Element {
         return $this;
     }
     public function render() {
-        $html = '<input type="checkbox" id="'.$this->getId().'" name="'.$this->getId()
+        $html = '<input type="checkbox" id="'.esc_attr($this->getId()).'" name="'.esc_attr($this->getId())
                 .'" value="1"'.$this->_getChecked()
                 .$this->_getClassName().$this->_getStyle().$this->_getReadonly().$this->_getRequired().$this->_getOnClick().' />';
         return $html;

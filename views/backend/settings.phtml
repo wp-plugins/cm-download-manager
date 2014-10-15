@@ -10,7 +10,8 @@
 	<?php
 // check permalink settings 
 if (get_option('permalink_structure') == '') {
-      echo '<span style="color:red">Your WordPress Permalinks needs to be set to allow plugin to work correctly. Please Go to <a href="'.admin_url().'options-permalink.php" target="new">Settings->Permalinks</a> to set Permalinks to Post Name.</span><br><br>';
+      echo '<span style="color:red">Your WordPress Permalinks needs to be set to allow plugin to work correctly. Please Go to <a href="'.
+      	esc_attr(admin_url()).'options-permalink.php" target="new">Settings->Permalinks</a> to set Permalinks to Post Name.</span><br><br>';
 }
 
 ?>
@@ -50,15 +51,15 @@ if (get_option('permalink_structure') == '') {
                         <input id="upload_default_screenshot" type="text" size="60" name="upload_default_screenshot" value="<?php echo esc_attr($default_screenshot); ?>" />
                         <input id="upload_default_screenshot_button" type="button" value="Upload Image" />
                         <br />Enter an URL or upload an image (Size: H: 220px W: 720px)<br />
-                        <img id="upload_default_screenshot_img" src="<?php echo esc_url($default_screenshot); ?>" width="720" height="220" alt="Screenshot" />
+                        <img id="upload_default_screenshot_img" src="<?php echo esc_attr($default_screenshot); ?>" width="720" height="220" alt="Screenshot" />
                     </label></td>
             </tr>
             <tr valign="top">
-                <th scope="row" valign="middle" align="left" >Add "Downloads" (<a href="<?php echo home_url('/cmdownloads/'); ?>">/cmdownloads</a>) to site menu?:</th>
+                <th scope="row" valign="middle" align="left" >Add "Downloads" (<a href="<?php echo esc_attr(home_url('/cmdownloads/')); ?>">/cmdownloads</a>) to site menu?:</th>
                 <td ><input type="checkbox" name="add_addons_menu" value="1" <?php checked($add_addons_menu); ?>/><strong>Warning! You need to have "wp_nav_menu" trigger in your template</strong></td>
             </tr>
             <tr valign="top">
-                <th scope="row" valign="middle" align="left" >Add "My Downloads" (<a href="<?php echo home_url('/cmdownload/dashboard/'); ?>">/cmdownload/dashboard</a>) to site menu?:</th>
+                <th scope="row" valign="middle" align="left" >Add "My Downloads" (<a href="<?php echo esc_attr(home_url('/cmdownload/dashboard/')); ?>">/cmdownload/dashboard</a>) to site menu?:</th>
                 <td ><input type="checkbox" name="add_dashboard_menu" value="1" <?php checked($add_dashboard_menu); ?>/><strong>Warning! You need to have "wp_nav_menu" trigger in your template</strong></td>
             </tr>
             <tr valign="top">

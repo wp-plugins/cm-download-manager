@@ -22,7 +22,9 @@ get_header();
                 ?>
                 <div class="sideBox">
                     <div class="manageAddOns">
-                        <a class="manageAddOnsA" href="<?php echo CMDM_get_url('cmdownload', 'dashboard'); ?>"><?php _e('Manage my Downloads', 'cm-download-manager'); ?> <img src="<?php echo CMDM_URL; ?>/views/resources/imgs/uploadIcon.png" alt="" style="vertical-align:middle;"></a>
+                        <a class="manageAddOnsA" href="<?php echo esc_attr(CMDM_get_url('cmdownload', 'dashboard')); ?>"><?php
+                        	_e('Manage my Downloads', 'cm-download-manager'); ?> <img src="<?php echo esc_attr(CMDM_URL);
+                        	?>/views/resources/imgs/uploadIcon.png" alt="" style="vertical-align:middle;"></a>
 
                     </div>
                 </div>
@@ -52,7 +54,7 @@ get_header();
                 while($term->parent > 0)
                 {
                     $term = get_term($term->parent, CMDM_GroupDownloadPage::CAT_TAXONOMY);
-                    $link = '<a href="' . get_term_link($term) . '">' . $term->name . '</a>';
+                    $link = '<a href="' . esc_attr(get_term_link($term)) . '">' . $term->name . '</a>';
                     $cats = array_merge(array($link), $cats);
                 }
                 $title = $cats[count($cats) - 1];
@@ -103,7 +105,7 @@ get_header();
                         $prev_link = $result_pages > 1 && $currentPage > 1 ? (strip_tags(previous_posts(false))) : '#';
                         $next_link = $result_pages > 1 && $currentPage < $result_pages ? (strip_tags(next_posts(0, false))) : '#';
                         ?>
-                        <a href="<?php echo $prev_link; ?>" class="prev">&laquo;</a>
+                        <a href="<?php echo esc_attr($prev_link); ?>" class="prev">&laquo;</a>
                         <?php
                         for($i = 1; $i <= $result_pages; $i++)
                         {
@@ -111,10 +113,10 @@ get_header();
                             {
                                 echo ' ' . $i;
                             }
-                            else echo ' <a href="' . esc_url(get_pagenum_link($i)) . '">' . $i . '</a>';
+                            else echo ' <a href="' . esc_attr(get_pagenum_link($i)) . '">' . $i . '</a>';
                         }
                         ?>
-                        <a href="<?php echo $next_link; ?>" class="next">&raquo;</a></div>
+                        <a href="<?php echo esc_attr($next_link); ?>" class="next">&raquo;</a></div>
                     <!--/paging -->
                 <?php else: ?>
                     <div class="searchTitle"><?php _e('No results has been found', 'cm-download-manager'); ?></div>

@@ -26,7 +26,7 @@ class CMDM_Form_Element_Combobox extends CMDM_Form_Element {
         return $html;
     }
     public function render() {
-        $html = '<select id="'.$this->getId().'" name="'.$this->getId()
+        $html = '<select id="'.esc_attr($this->getId()).'" name="'.esc_attr($this->getId())
                 .'"'.$this->_getClassName().$this->_getStyle().$this->_getReadonly().$this->_getDisabled().$this->_getOnClick().$this->_getRequired().'>';
         $html .= $this->_renderOptions();
         $html .= '</select>';

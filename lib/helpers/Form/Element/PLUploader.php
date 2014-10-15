@@ -74,12 +74,12 @@ class CMDM_Form_Element_PLUploader extends CMDM_Form_Element
                 $(document).ready(function(){
                     // Custom example logic
                     $(function(){
-                        var fileInput = $("#<?php echo $this->getId(); ?>");
+                        var fileInput = $(<?php echo json_encode('#' . $this->getId()); ?>);
                         var uploader = new plupload.Uploader({
                             // General settings
                             runtimes: 'html5,gears,silverlight,browserplus,flash',
-                            url: '<?php echo $uploadUrl ?>',
-                            max_file_size: '<?php echo $sizeLimit ?>',
+                            url: <?php echo json_encode($uploadUrl); ?>,
+                            max_file_size: <?php echo json_encode($sizeLimit); ?>,
                             browse_button: 'pickfiles',
                             container: 'container',
                             chunk_size: '1mb',
@@ -92,12 +92,12 @@ class CMDM_Form_Element_PLUploader extends CMDM_Form_Element
                             //                            resize: {width: 720, height: 220, quality: 90},
                             // Specify what files to browse for
                             filters: [
-                                {title: "<?php echo $fileTypesDescription ?>", extensions: "<?php echo $fileTypes ?>"}
+                                {title: <?php echo json_encode($fileTypesDescription); ?>, extensions: <?php echo json_encode($fileTypes); ?>}
                             ],
                             // Flash settings
-                            flash_swf_url: '<?php echo CMDM_URL . '/views/resources/plupload/plupload.flash.swf' ?>',
+                            flash_swf_url: <?php echo json_encode(CMDM_URL . '/views/resources/plupload/plupload.flash.swf'); ?>,
                             // Silverlight settings
-                            silverlight_xap_url: '<?php echo CMDM_URL . '/views/resources/plupload/plupload.silverlight.xap' ?>'
+                            silverlight_xap_url: <?php echo json_encode(CMDM_URL . '/views/resources/plupload/plupload.silverlight.xap'); ?>
                         });
                         uploader.bind('Init', function(up, params){
                             //                            $('#filelist').html("<div>Current runtime: " + params.runtime + "</div>");
@@ -191,15 +191,16 @@ class CMDM_Form_Element_PLUploader extends CMDM_Form_Element
                     <div class="progressWrapper">
                         <?php $imgSrc = CMDM_get_url('cmdownload', 'screenshot', array('size' => '196x60', 'img' => $row)); ?>
                         <div class="progressImg" style="display:block">
-                            <i class="progressCancel" data-name="<?php echo $row; ?>">&times;</i>
-                            <img src="<?php echo $imgSrc ?>" height="60" />
+                            <i class="progressCancel" data-name="<?php echo esc_attr($row); ?>">&times;</i>
+                            <img src="<?php echo esc_attr($imgSrc); ?>" height="60" />
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
             <div class="clearfix"></div>
             <input type="button" id="pickfiles" value="Select files">
-            <input type="hidden" id="<?php echo $this->getId() ?>" name="<?php echo $this->getId() ?>" value="<?php echo esc_attr(json_encode($value)) ?>" />
+            <input type="hidden" id="<?php echo esc_attr($this->getId()) ?>" name="<?php echo esc_attr($this->getId());
+            	?>" value="<?php echo esc_attr(json_encode($value)) ?>" />
         </div>
         <?php
         $html = ob_get_clean();

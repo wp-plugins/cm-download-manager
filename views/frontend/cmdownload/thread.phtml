@@ -8,7 +8,7 @@ if( have_posts() ):
         ?>
             <div class="CMDM-app">
                 <div class="rating"><?php do_action('CMDM_show_rating', get_the_id()); ?></div>
-                <div class="backtolib"><a href="<?php echo home_url('/cmdownloads'); ?>">&laquo;&nbsp;<?php _e('Back to All Downloads', 'cm-download-manager'); ?></a></div>
+                <div class="backtolib"><a href="<?php echo esc_attr(home_url('/cmdownloads')); ?>">&laquo;&nbsp;<?php _e('Back to All Downloads', 'cm-download-manager'); ?></a></div>
                 <h2><?php the_title(); ?></h2>
                 <!--/h2 -->
                 <div class="aside">
@@ -27,7 +27,8 @@ if( have_posts() ):
                                     <thead>
                                         <tr>
                                             <th colspan="2" class="CMDM_thread_title"><?php if( $thread['resolved'] ): ?>[<?php _e('RESOLVED', 'cm-download-manager'); ?>] <?php endif; ?>
-                                                <a class="CMDM_back_to_support" href="<?php the_permalink($post->ID); ?>#support">&laquo; <?php _e('Back to Support Page', 'cm-download-manager'); ?></a><br><?php echo $thread['title']; ?></th>
+                                                <a class="CMDM_back_to_support" href="<?php echo esc_attr(get_permalink($post->ID)); ?>#support">&laquo; <?php
+                                                	_e('Back to Support Page', 'cm-download-manager'); ?></a><br><?php echo $thread['title']; ?></th>
                                         </tr>
                                     </thead>
                                     <tbody id="threadTableContainer">

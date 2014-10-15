@@ -1,11 +1,15 @@
 <span id="CMDM_rating_counter"><?php echo $ratingCounter; ?></span> Ratings
 <?php if ($allowed): global $post;?>
-    <form method="post" action="<?php echo CMDM_get_url('cmdownload', 'rate', array('id' => $post->ID)); ?>" id="CMDM_rating_form" style="display: inline-block;vertical-align: text-bottom;">
+    <form method="post" action="<?php echo esc_attr(CMDM_get_url('cmdownload', 'rate', array('id' => $post->ID)));
+    	?>" id="CMDM_rating_form" style="display: inline-block;vertical-align: text-bottom;">
         <fieldset class="CMDM-rating">
             <?php
             for ($i = 5; $i > 0; $i--):
                 ?>
-                <input type="radio" id="star<?php echo $i; ?>" name="rating" value="<?php echo $i; ?>" <?php if ($avgRating == $i): ?>checked="checked"<?php endif; ?>/><label for="star<?php echo $i; ?>" title="<?php printf(__('%d Stars', 'cm-download-manager'), $i); ?>"><?php printf(__('%d Stars', 'cm-download-manager'), $i); ?></label>
+                <input type="radio" id="star<?php echo $i; ?>" name="rating" value="<?php echo $i; ?>" <?php
+                	if ($avgRating == $i): ?>checked="checked"<?php endif; ?>/><label for="star<?php echo $i; ?>" title="<?php
+                	echo esc_attr(sprintf(__('%d Stars', 'cm-download-manager'), $i)); ?>"><?php
+                	printf(__('%d Stars', 'cm-download-manager'), $i); ?></label>
             <?php endfor; ?>
         </fieldset>
       ​</form>
@@ -31,10 +35,10 @@ jQuery(document).ready(function($) {
     <?php
 else:
     for ($i = 1; $i <= $avgRating; $i++) {
-        echo '<img src="' . CMDM_URL . '/views/resources/imgs/starOn.png" alt="" width="22" height="22"/> ';
+        echo '<img src="' . esc_attr(CMDM_URL . '/views/resources/imgs/starOn.png') .'" alt="" width="22" height="22"/> ';
     }
     for ($i = 1; $i <= 5 - $avgRating; $i++) {
-        echo '<img src="' . CMDM_URL . '/views/resources/imgs/star.png" alt="" width="22" height="22"/> ';
+        echo '<img src="' . esc_attr(CMDM_URL . '/views/resources/imgs/star.png') .'" alt="" width="22" height="22"/> ';
     }
 endif;
 ?>

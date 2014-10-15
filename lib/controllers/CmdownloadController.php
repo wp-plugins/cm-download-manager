@@ -480,7 +480,9 @@ class CMDM_CmdownloadController extends CMDM_BaseController
 
                 if( $item instanceof CMDM_GroupDownloadPage )
                 {
-                    self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully added', 'cm-download-manager'), $item->getTitle()) . ' - <a href="' . get_permalink($item->getId()) . '">' . __('View', 'cm-download-manager') . ' &raquo;</a>');
+                    self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully added', 'cm-download-manager'),
+                    	esc_html($item->getTitle()))
+                    	. ' - <a href="' . esc_attr(get_permalink($item->getId())) . '">' . __('View', 'cm-download-manager') . ' &raquo;</a>');
                 }
                 else
                 {
@@ -530,7 +532,8 @@ class CMDM_CmdownloadController extends CMDM_BaseController
 
                         if( $item instanceof CMDM_GroupDownloadPage )
                         {
-                            self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully updated', 'cm-download-manager'), $name) . ' - <a href="' . get_permalink($id) . '">View &raquo;</a>');
+                            self::_addMessage(self::MESSAGE_SUCCESS, sprintf(__('"%s" has been succesfully updated', 'cm-download-manager'), $name)
+                            	. ' - <a href="' . esc_attr(get_permalink($id)) . '">View &raquo;</a>');
                         }
                         else
                         {
@@ -862,7 +865,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         if ($categoriesCount == 0) {
         	printf('<div class="error"><p>%s<a href="%s" class="button" style="margin-left:1em;">%s</a></p></div>',
         		CMDM::__('CM Download Manager: you have to define at least one category.'),
-        		esc_attr('edit-tags.php?taxonomy=' . CMDM_GroupDownloadPage::CAT_TAXONOMY . '&post_type=' . CMDM_GroupDownloadPage::POST_TYPE),
+        		esc_attr('edit-tags.php?taxonomy=' . urlencode(CMDM_GroupDownloadPage::CAT_TAXONOMY) . '&post_type=' . urlencode(CMDM_GroupDownloadPage::POST_TYPE)),
         		CMDM::__('Go to Categories')
         	);
         }
