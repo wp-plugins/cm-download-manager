@@ -41,6 +41,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         add_filter('manage_edit-' . CMDM_GroupDownloadPage::POST_TYPE . '_columns', array(get_class(), 'registerAdminColumns'));
         add_filter('manage_' . CMDM_GroupDownloadPage::POST_TYPE . '_posts_custom_column', array(get_class(), 'adminColumnDisplay'), 10, 2);
         add_action( 'admin_notices', array(get_class(), 'checkCategoriesAdminNotice'));
+        add_action( 'admin_notices', array(get_class(), 'checkDirectoryAccessAdminNotice'));
         do_action('CMDM_custom_post_type_nav', CMDM_GroupDownloadPage::POST_TYPE);
         do_action('CMDM_custom_taxonomy_nav', CMDM_GroupDownloadPage::CAT_TAXONOMY);
         CMDM_SupportThread::init();
@@ -149,7 +150,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
                     $term = esc_sql(like_escape($term));
                     $search .= "{$searchand}(($wpdb->posts.post_title LIKE '{$n}{$term}{$n}') OR ($wpdb->posts.post_content LIKE '{$n}{$term}{$n}'))";
                 }
-                add_filter('get_search_query', create_function('$q', 'return "' . $search_term . '";'), 99, 1);
+                add_filter('get_search_query', function($q) use ($search_term) { return $search_term; }, 99, 1);
                 remove_filter('posts_request', 'relevanssi_prevent_default_request');
                 remove_filter('the_posts', 'relevanssi_query');
             }
@@ -869,6 +870,26 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         		CMDM::__('Go to Categories')
         	);
         }
+    }
+    
+    
+
+    public static function checkDirectoryAccessAdminNotice() {
+    	$uploadDir = wp_upload_dir();
+        $denyFile   = $uploadDir['basedir'] . '/' . CMDM_GroupDownloadPage::UPLOAD_DIR . '/.htaccess';
+    	if (!file_exists($denyFile)) {
+    		printf('<div class="error"><p>%s<a href="#" class="button" style="margin-left:1em;" '.
+    			'onclick="jQuery(this).parent().parent().find(\'.more\').show();return false">%s</a></p>
+    			<div class="more" style="display:none">
+    				<p>Create file "%s".<br />Include in this file the following:
+    				<pre>Order Deny,Allow'. PHP_EOL .'Deny from all'. PHP_EOL .'&lt;FilesMatch "\.jpg$">'.
+    				PHP_EOL .'&nbsp;&nbsp;&nbsp;Allow from all'. PHP_EOL .'&lt;/FilesMatch></pre></p>
+    			</div></div>',
+        		CMDM::__('CM Download Manager: to protect your upload directory please create the following .htaccess file.'),
+        		CMDM::__('More'),
+        		$denyFile
+        	);
+    	}
     }
     
 
