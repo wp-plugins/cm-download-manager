@@ -141,14 +141,15 @@ class CMDM_CmdownloadController extends CMDM_BaseController
                 // added slashes screw with quote grouping when done early, so done later
                 $search_term = stripslashes($search_term);
                 preg_match_all('/".*?("|$)|((?<=[\r\n\t ",+])|^)[^\r\n\t ",+]+/', $search_term, $matches);
-                $terms = array_map('_search_terms_tidy', $matches[0]);
+                @ $terms = array_map('_search_terms_tidy', $matches[0]);
 
                 $n = '%';
                 $searchand = ' AND ';
                 foreach((array) $terms as $term)
                 {
-                    $term = esc_sql(like_escape($term));
-                    $search .= "{$searchand}(($wpdb->posts.post_title LIKE '{$n}{$term}{$n}') OR ($wpdb->posts.post_content LIKE '{$n}{$term}{$n}'))";
+                	$search .= $wpdb->prepare(" AND ($wpdb->posts.post_title LIKE %s OR $wpdb->posts.post_content LIKE %s)", "%$term%", "%$term%");
+//                     $term = esc_sql(like_escape($term));
+//                     $search .= "{$searchand}(($wpdb->posts.post_title LIKE '{$n}{$term}{$n}') OR ($wpdb->posts.post_content LIKE '{$n}{$term}{$n}'))";
                 }
                 add_filter('get_search_query', function($q) use ($search_term) { return $search_term; }, 99, 1);
                 remove_filter('posts_request', 'relevanssi_prevent_default_request');
