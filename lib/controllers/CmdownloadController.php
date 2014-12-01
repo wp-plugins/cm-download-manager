@@ -58,7 +58,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
     {
         if( !empty($_POST['addons_title']) )
         {
-            update_option(CMDM_GroupDownloadPage::OPTION_ADDONS_TITLE, $_POST['addons_title']);
+            update_option(CMDM_GroupDownloadPage::OPTION_ADDONS_TITLE, strip_tags($_POST['addons_title']));
         }
         $params['addons_title'] = CMDM_GroupDownloadPage::getAddonsTitle();
         return $params;
@@ -80,7 +80,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
     {
         if( !empty($_POST['search_placeholder_text']) )
         {
-            update_option(self::OPTION_SEARCH_PLACEHOLDER, $_POST['search_placeholder_text']);
+            update_option(self::OPTION_SEARCH_PLACEHOLDER, strip_tags($_POST['search_placeholder_text']));
         }
         $params['searchPlaceholder'] = self::getSearchPlaceholder();
         
@@ -110,7 +110,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
     {
         if( !empty($_POST['allowed_extensions']) )
         {
-            $extensions = explode(',', $_POST['allowed_extensions']);
+            $extensions = explode(',', strip_tags($_POST['allowed_extensions']));
             array_walk($extensions, 'trim');
             update_option(CMDM_GroupDownloadPage::ALLOWED_EXTENSIONS_OPTION, $extensions);
         }
@@ -198,6 +198,10 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         $messages = array();
         try
         {
+	        // CSRF protection
+        	if (empty($_POST['nonce']) OR !wp_verify_nonce($_POST['nonce'], 'cmdm_topic_add')) {
+        		throw new Exception(serialize(array('Invalid nonce')));
+        	}
             $comment_id = CMDM_SupportThread::addThread($post->ID, $title, $content, $author_id, $notify);
         }
         catch(Exception $e)
@@ -232,6 +236,10 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         $messages = array();
         try
         {
+	        // CSRF protection
+        	if (empty($_POST['nonce']) OR !wp_verify_nonce($_POST['nonce'], 'cmdm_topic_comment')) {
+        		throw new Exception(serialize(array('Invalid nonce')));
+        	}
             $comment_id = CMDM_SupportThread::addCommentToThread($post->ID, $parent, $content, $author_id, $notify, $resolved);
         }
         catch(Exception $e)
@@ -367,7 +375,7 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         $download = CMDM_GroupDownloadPage::getInstance($id);
         $user = is_user_logged_in() ? get_current_user_id() : null;
         $allowed = $download->isRatingAllowed($user);
-        if( !$allowed )
+        if( !$allowed OR empty($_POST['nonce']) OR !wp_verify_nonce($_POST['nonce'], 'cmdm_rate'))
         {
             header('HTTP/1.1 403 Forbidden');
             exit;

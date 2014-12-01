@@ -47,6 +47,7 @@ if( is_user_logged_in())
             <label>
                 <input name="thread_notify" type="checkbox" value="1"/>
                 <?php _e('Notify me of follow', 'cm-download-manager'); ?></label>
+            <input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce('cmdm_topic_add')); ?>" />
             <button class="butPost"><?php _e('Post', 'cm-download-manager'); ?> &gt;</button>
         </form>
     </div>

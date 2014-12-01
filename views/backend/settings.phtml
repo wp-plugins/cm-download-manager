@@ -101,7 +101,7 @@ if (get_option('permalink_structure') == '') {
                     <td style="border-bottom:solid 1px #ccc"><input type="text" size="60" name="titles[<?php echo esc_attr($key); ?>]" value="<?php echo esc_attr($value); ?>" /></td>
                 </tr><?php endforeach; ?>
         </table>
-
+		<input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce(CMDM_BaseController::ADMIN_SETTINGS)); ?>" />
         <input type="submit" class="button" value="Update" />
     </form>
 </div>

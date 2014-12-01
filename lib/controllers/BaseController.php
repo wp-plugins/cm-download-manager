@@ -587,6 +587,12 @@ abstract class CMDM_BaseController
         wp_register_script('cmdm-admin-upload', CMDM_URL . '/views/resources/js/admin.js', array('jquery', 'media-upload', 'thickbox'));
         wp_enqueue_script('cmdm-admin-upload');
         wp_enqueue_style('thickbox');
+        
+        // CSRF protection
+        if (!empty($_POST) AND (empty($_POST['nonce']) OR !wp_verify_nonce($_POST['nonce'], self::ADMIN_SETTINGS))) {
+        	die('Invalid nonce');
+        }
+        
         $messages = array();
         if(!empty($_POST['titles']))
         {

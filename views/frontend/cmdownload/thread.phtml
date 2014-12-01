@@ -84,6 +84,7 @@ if( have_posts() ):
                                 <?php if( !$thread['resolved'] ): ?><label>
                                         <input name="thread_resolved" type="checkbox" value="1"/>
                                         <?php _e('Mark this topic as resolved', 'cm-download-manager'); ?></label><?php endif; ?>
+                                <input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce('cmdm_topic_comment')); ?>" />
                                 <button class="butPost"><?php _e('Post', 'cm-download-manager'); ?> &gt;</button>
                             </form>
                             <script type="text/javascript">
