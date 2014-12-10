@@ -45,13 +45,17 @@ class CMDM_CmdownloadController extends CMDM_BaseController
         do_action('CMDM_custom_post_type_nav', CMDM_GroupDownloadPage::POST_TYPE);
         do_action('CMDM_custom_taxonomy_nav', CMDM_GroupDownloadPage::CAT_TAXONOMY);
         CMDM_SupportThread::init();
-        register_sidebar(array(
+        add_action( 'widgets_init', array(__CLASS__, 'registerSidebars') );
+    }
+    
+    
+    public static function registerSidebars() {
+    	register_sidebar(array(
             'id'          => 'cm-download-manager-sidebar',
             'name'        => 'CM Download Manager Sidebar',
             'description' => 'This sidebar is shown on CM Download Manager Index'
         ));
     }
-    
 
 
     public static function processAddonsTitlePage($params = array())
