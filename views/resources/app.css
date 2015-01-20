@@ -240,5 +240,5 @@ div.CMDM_loadingOverlay {
     left:2px;
     background-position:left -22px;
 }​
-.wp-editor-wrap {width:400px;}
+.CMDM .wp-editor-wrap {width:400px;}
 .CMDM-edit-form .wp-editor-tools {display:none}

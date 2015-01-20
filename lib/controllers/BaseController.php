@@ -650,7 +650,7 @@ abstract class CMDM_BaseController
         if ($_GET['page'] == self::ADMIN_ABOUT) {
         	$iframeURL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&cat=Plugin&nitems=3';
         } else {
-        	$iframeURL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&amp;tags=Download&amp;nitems=3';
+        	$iframeURL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&tags=Download&nitems=3';
         }
         require(CMDM_PATH . '/views/backend/about.phtml');
         self::displayAdminPage(ob_get_clean());
