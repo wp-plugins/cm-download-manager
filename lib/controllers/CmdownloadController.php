@@ -895,8 +895,9 @@ class CMDM_CmdownloadController extends CMDM_BaseController
     			'onclick="jQuery(this).parent().parent().find(\'.more\').show();return false">%s</a></p>
     			<div class="more" style="display:none">
     				<p>Create file "%s".<br />Include in this file the following:
-    				<pre>Order Deny,Allow'. PHP_EOL .'Deny from all'. PHP_EOL .'&lt;FilesMatch "\.jpg$">'.
+    				<pre style="background:#f0f0f0;padding:5px;">Order Deny,Allow'. PHP_EOL .'Deny from all'. PHP_EOL .'&lt;FilesMatch "\.(?i:jpg|jpeg|png|gif|webp)$">'.
     				PHP_EOL .'&nbsp;&nbsp;&nbsp;Allow from all'. PHP_EOL .'&lt;/FilesMatch></pre></p>
+    				<p><strong>Notice:</strong> if you are using the preview option, add your documents extensions to the regexp (pdf|doc|docx).</p>
     			</div></div>',
         		CMDM::__('CM Download Manager: to protect your upload directory please create the following .htaccess file.'),
         		CMDM::__('More'),
