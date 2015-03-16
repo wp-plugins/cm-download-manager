@@ -5,10 +5,11 @@ abstract class CMDM_BaseController
     const MESSAGE_SUCCESS = 'success';
     const MESSAGE_ERROR   = 'error';
     const ADMIN_SETTINGS  = 'CMDM_admin_settings';
-    const ADMIN_ABOUT     = 'CMDM_admin_about';
-    const ADMIN_ADDONS = 'CMDM_addons';
     const ADMIN_PRO       = 'CMDM_admin_pro';
     const OPTION_TITLES   = 'CMDM_panel_titles';
+    const PAGE_ABOUT_URL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&cat=Plugin&nitems=3';
+    const PAGE_ADDONS_URL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&tags=Download&nitems=3';
+    const PAGE_USER_GUIDE_URL = 'http://downloadsmanager.cminds.com/cm-downloads-manager-user-guide/';
 
     public static $_messages = array(self::MESSAGE_SUCCESS => array(), self::MESSAGE_ERROR => array());
     public static $_messagesUsed = array();
@@ -566,16 +567,17 @@ abstract class CMDM_BaseController
 
     public static function registerAdminPages()
     {
-
+    	global $submenu;
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'CM Downloads Settings', 'Settings', 'manage_options', self::ADMIN_SETTINGS, array(get_class(), 'displaySettingsPage'));
-        add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'About', 'About', 'manage_options', self::ADMIN_ABOUT, array(get_class(), 'displayAboutPage'));
-        add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'Add-ons', 'Add-ons', 'manage_options', self::ADMIN_ADDONS, array(get_class(), 'displayAboutPage'));
+        if (current_user_can('manage_options')) {
+        	$submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][400] = array('About', 'manage_options', self::PAGE_ABOUT_URL);
+        	$submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][401] = array('Add-ons', 'manage_options', self::PAGE_ADDONS_URL);
+        }
         add_submenu_page(apply_filters('CMDM_admin_parent_menu', 'options-general.php'), 'Pro Version', 'Pro Version', 'manage_options', self::ADMIN_PRO, array(get_class(), 'displayProPage'));
-        global $submenu;
-        $current_user = wp_get_current_user();
-        if(user_can($current_user, 'edit_posts'))
+        
+        if(current_user_can('edit_posts'))
         {
-            $submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][500] = array('User Guide', 'manage_options', 'http://downloadsmanager.cminds.com/cm-downloads-manager-user-guide/');
+            $submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][500] = array('User Guide', 'manage_options', self::PAGE_USER_GUIDE_URL);
         }
     }
 
@@ -587,8 +589,8 @@ abstract class CMDM_BaseController
         wp_register_script('cmdm-admin-upload', CMDM_URL . '/views/resources/js/admin.js', array('jquery', 'media-upload', 'thickbox'));
         wp_enqueue_script('cmdm-admin-upload');
         wp_enqueue_style('thickbox');
-        wp_enqueue_style('cma-settings', CMA_URL . '/views/resources/settings.css');
-        wp_enqueue_script('cma-backend', CMA_URL . '/views/resources/backend.js');
+        wp_enqueue_style('cmdm-settings', CMDM_URL . '/views/resources/settings.css');
+        wp_enqueue_script('cmdm-backend', CMDM_URL . '/views/resources/backend.js');
         
         // CSRF protection
         if (!empty($_POST) AND (empty($_POST['nonce']) OR !wp_verify_nonce($_POST['nonce'], self::ADMIN_SETTINGS))) {
@@ -645,17 +647,6 @@ abstract class CMDM_BaseController
     {
         $nav = self::getAdminNav();
         require(CMDM_PATH . '/views/backend/template.phtml');
-    }
-
-	public static function displayAboutPage() {
-        ob_start();
-        if ($_GET['page'] == self::ADMIN_ABOUT) {
-        	$iframeURL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&cat=Plugin&nitems=3';
-        } else {
-        	$iframeURL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&tags=Download&nitems=3';
-        }
-        require(CMDM_PATH . '/views/backend/about.phtml');
-        self::displayAdminPage(ob_get_clean());
     }
 
     public static function displayProPage()
