@@ -5,7 +5,7 @@ Donate link: http://downloadsmanager.cminds.com
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,download tracker,download counter,download manager,download monitor,file management plugin,file manager,mp3,music,support,ajax,comments,facebook,google,images,page,pages,plugin,post,posts,seo,shortcode,sidebar,social,twitter,widget,widgets,wordpress,video
 Requires at least: 3.2
 Tested up to: 4.1.1
-Stable tag: 2.0.19
+Stable tag: 2.1.0
 
 Enables you to upload, manage, track and support documents or files in a directory listing structure for others to use and comment
 
@@ -13,7 +13,6 @@ Enables you to upload, manage, track and support documents or files in a directo
 CM Downloads Manager is a plug-in for WordPress that enables you to specify which users are allowed to upload, manage, track and support music, documents or files in a directory listing structure that others can use and comment upon. This plugin also supports downloads password protection, integration with retail store checkout, and has preview options for different file formats and for preview listening of music files before downloading.
 
 With this plugin you can create a directory where users can upload and manage Files / Downloads / Apps / Add-on / Packages / Plugins / Archives, where each posting contains its own detailed description. The CM Download Manager plugin tracks downloads with a counter and supports forum comments for each download page (similar to a WP Plugin Directory).  
-[VISIT PLUGIN SITE](http://downloadsmanager.cminds.com/) or [plugin video review](http://www.youtube.com/watch?v=eyims93g8ck)
 
 [youtube http://www.youtube.com/watch?v=eyims93g8ck]
 
@@ -27,7 +26,8 @@ With this plugin you can create a directory where users can upload and manage Fi
  
 > #### Add-Ons & Extensions
 >
-> * New [CM MicroPayments](https://plugins.cminds.com/cm-micropayment-platform/)
+> *  [CM MicroPayments](https://plugins.cminds.com/cm-micropayment-platform/)
+> * New [CM Download Manager Widgets](https://downloadsmanager.cminds.com/wordpress-cm-download-manager-widgets-extension/)
  
 ---
  
@@ -47,6 +47,9 @@ With this plugin you can create a directory where users can upload and manage Fi
 > [Blog](http://plugin.cminds.com/blog/) | [Twitter](http://twitter.com/cmplugins)  | [Google+](https://plus.google.com/108513627228464018583/) | [LinkedIn](https://www.linkedin.com/company/creativeminds) | [YouTube](https://www.youtube.com/user/cmindschannel) | [Pinterest](http://www.pinterest.com/cmplugins/) | [FaceBook](https://www.facebook.com/cmplugins/)
 
 ---
+
+[youtube https://www.youtube.com/watch?v=XyusVTlavxo]
+
 
 **Use-Cases**
 
