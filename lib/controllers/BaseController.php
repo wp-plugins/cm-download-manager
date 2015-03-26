@@ -10,6 +10,7 @@ abstract class CMDM_BaseController
     const PAGE_ABOUT_URL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&cat=Plugin&nitems=3';
     const PAGE_ADDONS_URL = 'https://plugins.cminds.com/product-catalog/?showfilter=No&tags=Download&nitems=3';
     const PAGE_USER_GUIDE_URL = 'http://downloadsmanager.cminds.com/cm-downloads-manager-user-guide/';
+    const PAGE_YEARLY_OFFER = 'https://www.cminds.com/store/cm-wordpress-plugins-yearly-membership/';
 
     public static $_messages = array(self::MESSAGE_SUCCESS => array(), self::MESSAGE_ERROR => array());
     public static $_messagesUsed = array();
@@ -579,7 +580,29 @@ abstract class CMDM_BaseController
         {
             $submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][500] = array('User Guide', 'manage_options', self::PAGE_USER_GUIDE_URL);
         }
+        
+        if (current_user_can('manage_options')) {
+        	$submenu[apply_filters('CMDM_admin_parent_menu', 'options-general.php')][501] = array('Yearly membership offer', 'manage_options', self::PAGE_YEARLY_OFFER);
+        	add_action('admin_head', array(__CLASS__, 'admin_head'));
+        }
+        
     }
+    
+
+    static function admin_head() {
+    	echo '<style type="text/css">
+        		#toplevel_page_CMDM_downloads_menu a[href*="cm-wordpress-plugins-yearly-membership"] {color: white;}
+    			a[href*="cm-wordpress-plugins-yearly-membership"]:before {font-size: 16px; vertical-align: middle; padding-right: 5px; color: #d54e21;
+    				content: "\f487";
+				    display: inline-block;
+					-webkit-font-smoothing: antialiased;
+					font: normal 16px/1 \'dashicons\';
+    			}
+    			#toplevel_page_CMDM_downloads_menu a[href*="cm-wordpress-plugins-yearly-membership"]:before {vertical-align: bottom;}
+        		
+        	</style>';
+    }
+    
 
     public static function displaySettingsPage()
     {
@@ -629,7 +652,7 @@ abstract class CMDM_BaseController
                 $name       = '';
                 if(count($slugParts) > 1) $name       = $slugParts[0];
                 $isCurrent  = ($slug == $plugin_page || (!empty($name) && $name === $pagenow));
-                $url        = (strpos($item[2], '.php') !== false || strpos($slug, 'http://') !== false ) ? $slug : get_admin_url('', 'admin.php?page=' . $slug);
+                $url        = (strpos($item[2], '.php') !== false || preg_match('#^https?://#', $slug) ) ? $slug : get_admin_url('', 'admin.php?page=' . $slug);
                 $submenus[] = array(
                     'link' => $url,
                     'title' => $item[0],

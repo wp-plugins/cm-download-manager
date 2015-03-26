@@ -5,7 +5,7 @@ Donate link: http://downloadsmanager.cminds.com
 Tags: Downloads,forum,splunkbase,comments,Apps,Archives,Apps Management,Apps Download,Apps directory,Download Management,Download Directory,Download Plugin,Downloads Plugin,Add-on,Add-on management,Add-on directory,addon,directory plugin,wordpress directory,wordpress directory plugin,directory plugin,link dir,link directory,website plugin directory,counter,download counter,hits,hits counter,rate,rating,customer service,customer support,document management plugin,download tracker,download counter,download manager,download monitor,file management plugin,file manager,mp3,music,support,ajax,comments,facebook,google,images,page,pages,plugin,post,posts,seo,shortcode,sidebar,social,twitter,widget,widgets,wordpress,video
 Requires at least: 3.2
 Tested up to: 4.1.1
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 
 Enables you to upload, manage, track and support documents or files in a directory listing structure for others to use and comment
 
