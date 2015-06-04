@@ -1,0 +1,128 @@
+<?php include 'sharebox.phtml'; ?>
+<?php include 'upgrade.phtml'; ?>
+
+<div class="clear">
+    <?php
+    if(!empty($messages)):
+        foreach($messages as $message):
+            ?><div class="updated"><p><?php echo $message; ?></p></div><?php
+        endforeach;
+    endif;
+    ?>
+	
+	<?php
+// check permalink settings 
+if (get_option('permalink_structure') == '') {
+      echo '<span style="color:red">Your WordPress Permalinks needs to be set to allow plugin to work correctly. Please Go to <a href="'.
+      	esc_attr(admin_url()).'options-permalink.php" target="new">Settings->Permalinks</a> to set Permalinks to Post Name.</span><br><br>';
+}
+
+?>
+
+<form method="post" enctype="multipart/form-data" id="settings">
+	<ul class="cmdm-settings-tabs">
+		<li><a href="#tab-general">General</a>
+		<li><a href="#tab-notifications">Notifications</a>
+		<li><a href="#tab-panel-titles">Panel Titles</a>
+	</ul>
+	<div class="inner">
+		<div class="settings-category settings-category-general">
+		    <table><tbody>
+		    	<tr>
+	                   <th scope="row" class="option-title"><strong>Link to downloads frontend list:</strong></th>
+	                   <td class="option-controls"><a href="<?php $url = CMDM_BaseController::getUrl('cmdownloads', 'index');
+	                   		echo esc_attr($url); ?>"><?php echo esc_html($url); ?></a></td>
+	                   <td class="option-description"></td>
+	            </tr>
+	            <tr>
+	                <th scope="row">Downloads listing title:</th>
+	                <td ><input type="text" size="60" name="addons_title" value="<?php echo esc_attr($addons_title); ?>" /></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <th scope="row">Search placeholder text:</th>
+	                <td ><input type="text" size="60" name="search_placeholder_text" value="<?php echo esc_attr($searchPlaceholder); ?>" /></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <th scope="row">Allowed file extensions (separate with comma):</th>
+	                <td ><input type="text" size="60" name="allowed_extensions" value="<?php echo esc_attr(implode(',', $allowed_extensions)); ?>" /></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <th scope="row" align="left">"No screenshot" image:</th>
+	                <td><label for="upload_default_screenshot">
+	
+	                        <input id="upload_default_screenshot" type="text" size="60" name="upload_default_screenshot" value="<?php echo esc_attr($default_screenshot); ?>" />
+	                        <input id="upload_default_screenshot_button" type="button" value="Upload Image" />
+	                        <br />Enter an URL or upload an image (Size: H: 220px W: 720px)<br />
+	                        <img id="upload_default_screenshot_img" src="<?php echo esc_attr($default_screenshot); ?>" width="720" height="220" alt="Screenshot" />
+	                    </label></td>
+                    <td></td>
+	            </tr>
+	            <tr>
+	                <th scope="row">Add "Downloads" (<a href="<?php echo esc_attr(home_url('/cmdownloads/')); ?>">/cmdownloads</a>) to site menu:</th>
+	                <td ><input type="checkbox" name="add_addons_menu" value="1" <?php checked($add_addons_menu); ?>/></td>
+	                <td><strong>Warning! You need to have "wp_nav_menu" trigger in your template</strong></td>
+	            </tr>
+	            <tr>
+	                <th scope="row">Add "My Downloads" (<a href="<?php echo esc_attr(home_url('/cmdownload/dashboard/')); ?>">/cmdownload/dashboard</a>) to site menu:</th>
+	                <td ><input type="checkbox" name="add_dashboard_menu" value="1" <?php checked($add_dashboard_menu); ?>/></td>
+	                <td><strong>Warning! You need to have "wp_nav_menu" trigger in your template</strong></td>
+	            </tr>
+	            <tr>
+			        <th scope="row">Force browser to download files:</th>
+			        <td ><input type="radio" name="forceBrowserDownload" id="forceBrowserDownload_0" value="0" <?php
+					if( !$forceBrowserDownload ) echo 'checked="checked"';
+					?>/><label for="forceBrowserDownload_0"> No</label> &nbsp; <input type="radio" name="forceBrowserDownload" id="forceBrowserDownload_1" value="1" <?php
+			        if( $forceBrowserDownload ) echo 'checked="checked"';
+			        ?>/><label for="forceBrowserDownload_1"> Yes</label></td>
+			        <td>If disabled, browser will open some file types instead of downloading it, for example PDF and images.</td>
+			    </tr>
+	        </tbody></table>
+        </div>
+        
+        <div class="settings-category settings-category-notifications">
+		    <table><tbody>
+	            <tr>
+	                <th scope="row">New topic notification title:</th>
+	                <td ><input type="text" size="60" name="<?php echo CMDM_SupportThread::OPTION_NEW_THREAD_NOTIFICATION_TITLE; ?>" value="<?php echo esc_attr($threadNewNotificationTitle); ?>" /></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <th scope="row">New topic notification message:</th>
+	                <td ><textarea cols="60" rows="5" name="<?php echo CMDM_SupportThread::OPTION_NEW_THREAD_NOTIFICATION; ?>"><?php echo $threadNewNotification; ?></textarea></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <th scope="row">Topic comment notification title:</th>
+	                <td ><input type="text" size="60" name="<?php echo CMDM_SupportThread::OPTION_THREAD_NOTIFICATION_TITLE; ?>" value="<?php echo esc_attr($threadNotificationTitle); ?>" /></td>
+	                <td></td>
+	            </tr>
+	            <tr>
+	                <th scope="row">Topic comment notification message:</th>
+	                <td ><textarea cols="60" rows="5" name="<?php echo CMDM_SupportThread::OPTION_THREAD_NOTIFICATION; ?>"><?php echo $threadNotification; ?></textarea></td>
+	                <td></td>
+	            </tr>
+	        </tbody></table>
+        </div>
+        
+        <div class="settings-category settings-category-panel-titles">
+		    <table><tbody>
+	            <?php foreach(self::$_titles as $key => $value): ?>
+	                <tr>
+	                    <th scope="row"><?php echo $key; ?></th>
+	                    <td><input type="text" size="60" name="titles[<?php echo esc_attr($key); ?>]" value="<?php echo esc_attr($value); ?>" /></td>
+	                    <td></td>
+	                </tr>
+	            <?php endforeach; ?>
+        	</tbody></table>
+       	</div>
+    </div>
+    
+    <p class="form-finalize">
+		<input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce(CMDM_BaseController::ADMIN_SETTINGS)); ?>" />
+        <input type="submit" class="button button-primary" value="Update" />
+    </p>
+    </form>
+</div>

@@ -1,0 +1,159 @@
+<?php
+get_header();
+?><div class="CMDM"><?php
+if( have_posts() ):
+    while(have_posts()):
+        the_post();
+        $download = CMDM_GroupDownloadPage::getInstance(get_the_id());
+        ?>
+            <div class="CMDM-app">
+                <div class="rating"><?php do_action('CMDM_show_rating', get_the_id()); ?></div>
+                <div class="backtolib"><a href="<?php echo esc_attr(home_url('/cmdownloads')); ?>">&laquo;&nbsp;<?php _e('Back to All Downloads', 'cm-download-manager'); ?></a></div>
+                <h2><?php the_title(); ?></h2>
+                <!--/h2 -->
+                <div class="aside">
+                    <?php do_action('CMDM_show_details', get_the_id()); ?>
+                    <!--/sideBox -->
+                    <?php do_action('CMDM_show_download_button', get_the_id()); ?>
+                    <!--/sideBox -->
+                    <?php dynamic_sidebar('cm-download-manager-sidebar'); ?>
+                </div>
+                <!--/aside -->
+                <div class="main">
+                    <div class="boxGrey724">
+                        <div class="tabItem" style="display:block">
+                            <div class="topicTblWrapper">
+                                <table class="topicTbl" id="threadTable" style="position:relative">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2" class="CMDM_thread_title"><?php if( $thread['resolved'] ): ?>[<?php _e('RESOLVED', 'cm-download-manager'); ?>] <?php endif; ?>
+                                                <a class="CMDM_back_to_support" href="<?php echo esc_attr(get_permalink($post->ID)); ?>#support">&laquo; <?php
+                                                	_e('Back to Support Page', 'cm-download-manager'); ?></a><br><?php echo $thread['title']; ?></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="threadTableContainer">
+                                        <tr class="CMDM_comment CMDM_comment_main" id="comment-<?php echo $thread['thread_id']; ?>">
+                                            <td class="CMDM_comment_meta" style="text-align:left;vertical-align:top">
+                                                <div class="CMDM_comment_author"><?php echo '<span class="CMDM_author_color">' . $thread['author'] . '</span>'; ?></div>
+                                                <div class="CMDM_comment_date"><?php echo ($thread['date']);
+                    ?> <a href="#comment-<?php echo $thread['thread_id']; ?>">#</a></div>
+                                            </td>
+                                            <td class="CMDM_comment_content" style="text-align:left;vertical-align:top">
+                                                <?php echo nl2br($thread['question']); ?>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table></div>
+                            <br>
+                            <div class="topicTblWrapper">
+                                <table class="topicTbl" id="threadTable" style="position:relative">
+                                    <tbody id="threadTableContainer">
+                                        <?php foreach($thread['comments'] as $comment): ?>
+                                            <tr class="CMDM_comment" id="comment-<?php echo $comment->comment_ID; ?>">
+                                                <td class="CMDM_comment_meta" style="text-align:left;vertical-align:top">
+                                                    <div class="CMDM_comment_author">
+                                                        <?php
+                                                        if( get_comment_author($comment->comment_ID) == $thread['author'] ) echo '<span class="CMDM_author_color">' . get_comment_author($comment->comment_ID) . '</span>';
+                                                        elseif( get_comment_author($comment->comment_ID) == $author ) echo get_comment_author($comment->comment_ID) . ' (' . __('Author', 'cm-download-manager') . ')';
+                                                        else echo get_comment_author($comment->comment_ID);
+                                                        ?>
+                                                    </div>
+                                                    <div class="CMDM_comment_date"><?php echo (get_comment_date('Y-m-d H:i', $comment->comment_ID));
+                                                        ?> <a href="#comment-<?php echo $comment->comment_ID; ?>">#</a></div>
+                                                </td>
+                                                <td class="CMDM_comment_content" style="text-align:left;vertical-align:top">
+                                                    <?php echo nl2br($comment->comment_content); ?>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table></div>
+                        </div>
+                        <div class="boxWhite694">
+                            <form id="addCommentForm" action="<?php the_permalink($post->ID); ?>topic/<?php echo $thread['thread_id']; ?>/add" method="post" style="position:relative">
+                                <h5><?php _e('Leave your comment', 'cm-download-manager'); ?></h5>
+                                <ul class="CMDM_error" style="display:none"></ul>
+                                <ul class="notes">
+                                    <li><?php _e('Allow markup', 'cm-download-manager'); ?>: &lt;strong&gt;, &lt;em&gt;, &lt;a&gt;</li>
+
+                                </ul>
+                                <textarea name="thread_comment" cols="" rows="" placeholder="<?php _e('What is your comment about?', 'cm-download-manager'); ?>"></textarea>
+                                <label>
+                                    <input name="thread_notify" type="checkbox" value="1"/>
+                                    <?php _e('Notify me of follow', 'cm-download-manager'); ?></label>
+                                <?php if( !$thread['resolved'] ): ?><label>
+                                        <input name="thread_resolved" type="checkbox" value="1"/>
+                                        <?php _e('Mark this topic as resolved', 'cm-download-manager'); ?></label><?php endif; ?>
+                                <input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce('cmdm_topic_comment')); ?>" />
+                                <button class="butPost"><?php _e('Post', 'cm-download-manager'); ?> &gt;</button>
+                            </form>
+                            <script type="text/javascript">
+
+                                function showNewComment (commentData) {
+                                    var row = document.createElement('tr');
+                                    row.setAttribute('class', 'CMDM_comment');
+                                    row.setAttribute('id', 'comment-' + commentData.id);
+                                    var meta = document.createElement('td');
+                                    meta.setAttribute('class', 'CMDM_comment_meta');
+                                    var author = document.createElement('div');
+                                    author.setAttribute('class', 'CMDM_comment_author');
+                                    author.innerHTML = commentData.author;
+                                    meta.appendChild(author);
+                                    var date = document.createElement('div');
+                                    date.setAttribute('class', 'CMDM_comment_date');
+                                    date.innerHTML = commentData.date + ' <a href="#comment-' + commentData.id + '">#</a>';
+                                    meta.appendChild(date);
+                                    row.appendChild(meta);
+                                    var content = document.createElement('td');
+                                    content.setAttribute('class', 'CMDM_comment_content');
+                                    content.innerHTML = commentData.content;
+                                    row.appendChild(content);
+                                    document.getElementById('threadTableContainer').appendChild(row);
+                                    window.location = '#comment-' + commentData.id;
+
+                                }
+
+                                (function ($)
+                                {
+                                    var $addThreadForm = $('#addThreadForm');
+                                    $(document).ready(function () {
+                                        if ($addThreadForm.length && false)
+                                        {
+                                            $addThreadForm.ajaxForm({
+                                                dataType: 'json',
+                                                beforeSubmit: function (arr, $form) {
+                                                    $form.find('.CMDM_error').hide().empty();
+                                                    $form.append('<div class="CMDM_loadingOverlay"></div>');
+                                                },
+                                                success: function (data, status, xhr, $form) {
+
+                                                    if (data.success === 1) {
+                                                        $form.find('.CMDM_loadingOverlay').remove();
+                                                        showNewComment(data.commentData);
+                                                        $form.resetForm();
+                                                    } else {
+                                                        for(var i = 0; i < data.message.length; i++)
+                                                            $form.find('.CMDM_error').append('<li>' + data.message[i] + '</li>').show().delay(5000).fadeOut('slow');
+                                                        $form.find('.CMDM_loadingOverlay').remove();
+                                                    }
+                                                }
+                                            });
+                                        }
+                                    });
+                                })(jQuery);
+                            </script>
+                        </div>
+                    </div>
+
+                    <!--/boxGrey724 -->
+                </div>
+                <!--/main -->
+            </div>
+            <?php
+        endwhile;
+    endif;
+    ?>
+</div>
+<?php
+get_footer();
+?>

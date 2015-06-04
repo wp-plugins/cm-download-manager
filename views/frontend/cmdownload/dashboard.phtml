@@ -1,0 +1,50 @@
+<div class="CMDM">
+<table class="CMDM-dashboard">
+    <thead>
+	<tr>
+	<th colspan=4>
+	&nbsp;&nbsp;<a href="<?php echo esc_attr(CMDM_get_url('cmdownload', 'add')); ?>" class="CMDM-add"><?php _e('Add new', 'cm-download-manager'); ?></a>
+	</th>
+	</tr>
+	<tr>
+            <th style="min-width:250px"><?php _e('Title', 'cm-download-manager'); ?></th>
+            <th><?php _e('Status', 'cm-download-manager'); ?></th>
+            <th ><?php _e('Downloads', 'cm-download-manager'); ?></th>
+            <th style="min-width:200px"><?php _e('Actions', 'cm-download-manager'); ?></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if (empty($myDownloads)): ?>
+            <tr><td colspan="3"><?php _e('You haven\'t added any downloads yet', 'cm-download-manager'); ?></td></tr>
+        <?php
+        else:
+            foreach ($myDownloads as $download):
+                ?>
+            <tr>
+                <td><a href="<?php echo esc_attr(get_permalink($download->getId())); ?>"><?php echo esc_html($download->getTitle()); ?></a></td>
+                <td><?php $status = $download->getStatus(); echo ucfirst($status); ?></td>
+                <td style="text-align:center"><?php echo $download->getNumberOfDownloads(); ?></td>
+                <?php
+                if ($status == 'published') {
+                    $action = 'unpublish';
+                    $actionLabel = __('Unpublish', 'cm-download-manager');
+                }
+                else {
+                    $action = 'publish';
+                    $actionLabel = __('Publish', 'cm-download-manager');
+                }
+                ?>
+                <td><a href="<?php echo esc_attr(CMDM_get_url('cmdownload', $action, array('id'=>$download->getId()))); ?>"><?php echo $actionLabel; ?></a> | 
+                    <a href="<?php echo esc_attr(CMDM_get_url('cmdownload', 'edit', array('id'=>$download->getId()))); ?>"><?php _e('Edit', 'cm-download-manager'); ?></a> | 
+                    <a href="<?php echo esc_attr(CMDM_get_url('cmdownload', 'del', array('id'=>$download->getId())));
+                    	?>" onclick="return confirm(<?php echo esc_attr(json_encode(__('Are you sure you want to delete?', 'cm-download-manager'))); ?>)"><?php
+                    	_e('Delete', 'cm-download-manager'); ?></a>
+                </td>
+            </tr>
+                <?php
+            endforeach;
+        endif;
+        ?>
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('.downloadBut').click(function(e) {
+            e.preventDefault();
+            $(this).parents('form').submit();
+        })
+    });
+    </script>
+<form method="post" class="CMDM-downloadForm" action="<?php echo esc_attr($action_url); ?>">
+    <input type="hidden" name="_wpnonce" value="<?php echo esc_attr($nonce); ?>" />
+    <input type="hidden" name="id" value="<?php echo esc_attr($download_id); ?>" />
+    <a href="#"  class="downloadBut"><?php _e('Download', 'cm-download-manager'); ?></a>
+    <input type="submit" value="Download"  style="display:none"/>
+</form>
