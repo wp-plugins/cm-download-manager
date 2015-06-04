@@ -1,0 +1,10 @@
+channel	channel	The "channel" word.	General
+channels	channels	The "channels" word.	General
+category	category	The "category" word.	General
+categories	categories	The "categories" word.	General
+video	video	The "video" word.	General
+videos	videos	The "videos" word.	General
+
+msg_access_denied	We are sorry, but you cannot view this channel.	The message "Access denied".	Messages
+msg_channel_not_found	Channel not available.	The message "Channel not available" for not found channels.	Messages
+msg_no_videos	No videos.	The message "No videos".	Messages
