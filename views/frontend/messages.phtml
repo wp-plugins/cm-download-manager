@@ -1,0 +1,21 @@
+<div class="CMDM">
+<?php if (!empty($messages[CMDM_BaseController::MESSAGE_SUCCESS])):
+    ?><ul class="CMDM_success"><?php
+    foreach ($messages[CMDM_BaseController::MESSAGE_SUCCESS] as $msg):
+        ?>
+            <li><?php echo $msg; ?></li>
+            <?php
+        endforeach;
+        ?></ul><?php
+endif;
+if (!empty($messages[CMDM_BaseController::MESSAGE_ERROR])):
+        ?><ul class="CMDM_error"><?php
+    foreach ($messages[CMDM_BaseController::MESSAGE_ERROR] as $msg):
+            ?>
+            <li><?php echo $msg; ?></li>
+            <?php
+        endforeach;
+        ?></ul><?php
+
+endif;
+?></div>
