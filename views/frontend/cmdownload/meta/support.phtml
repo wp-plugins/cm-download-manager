@@ -1,0 +1,131 @@
+<div class="topicTblWrapper">
+    <table class="topicTbl" style="position:relative">
+        <thead>
+            <tr>
+                <th><?php _e('Topic', 'cm-download-manager'); ?></th>
+                <th><?php _e('Posts', 'cm-download-manager'); ?></th>
+                <th><?php _e('Last Poster', 'cm-download-manager'); ?></th>
+                <th><?php _e('Updated', 'cm-download-manager'); ?></th>
+            </tr>
+        </thead>
+        <tbody id="threadsContainer">
+            <?php
+            do_action('CMDM_show_support_threads_list', $items);
+            ?>
+        </tbody>
+    </table>
+</div>
+<?php
+$perPage = 10;
+$pages = ceil($total / $perPage);
+$currentPage = 1;
+?>
+<div class="paging"><a href="#" class="prev">&laquo;</a>
+    <a href="#" class="currentPage" data-page="1">1</a>
+    <?php for($i = 2; $i <= $pages; $i++): ?>
+        <a href="#" data-page="<?php echo $i; ?>"><?php echo $i; ?></a>
+    <?php endfor; ?>
+    <a href="#" class="next">&raquo;</a></div>
+<!--/paging -->
+<script type="text/javascript">
+</script>
+<?php
+if( is_user_logged_in())
+{
+	
+    ?>
+    <div class="boxWhite694">
+        <form id="addThreadForm" action="<?php the_permalink($downloadId); ?>/topic/add" method="post" style="position:relative">
+            <h5><?php _e('Leave your comment/question', 'cm-download-manager'); ?></h5>
+            <ul class="CMDM_error" style="display:none"></ul>
+            <ul class="notes">
+                <li><?php _e('Allow markup', 'cm-download-manager'); ?>: &lt;strong&gt;, &lt;em&gt;, &lt;a&gt;</li>
+
+            </ul>
+            <input type="text" name="thread_title" placeholder="<?php _e('Title', 'cm-download-manager'); ?>" autocomplete="off"/><br />
+            <textarea name="thread_comment" cols="" rows="" placeholder="<?php _e('What is your comment about?"', 'cm-download-manager'); ?>"></textarea>
+            <label>
+                <input name="thread_notify" type="checkbox" value="1"/>
+                <?php _e('Notify me of follow', 'cm-download-manager'); ?></label>
+            <input type="hidden" name="nonce" value="<?php echo esc_attr(wp_create_nonce('cmdm_topic_add')); ?>" />
+            <button class="butPost"><?php _e('Post', 'cm-download-manager'); ?> &gt;</button>
+        </form>
+    </div>
+<?php } ?>
+<script type="text/javascript">
+    var totalSupportPages = <?php echo $pages; ?>;
+
+    (function ($) {
+        $(document).ready(function () {
+            var $addThreadForm = $('#addThreadForm');
+
+            $('.tabItemSupport .paging a').click(function (e) {
+                e.preventDefault();
+                var currentPageItem = $('.tabItemSupport .paging a.currentPage');
+                var currentPage = parseInt(currentPageItem.data('page'));
+                var selectedItem = $(this);
+                if (selectedItem.hasClass('prev')) {
+                    showSupportPage(currentPage - 1);
+                } else if (selectedItem.hasClass('next')) {
+                    showSupportPage(currentPage + 1);
+                } else {
+                    showSupportPage(selectedItem.data('page'));
+                }
+
+            });
+
+            function showSupportPage (pageNum, force) {
+                force = typeof force !== 'undefined' ? force : false;
+                var currentPageItem = $('.tabItemSupport .paging a.currentPage');
+                var currentPage = parseInt(currentPageItem.data('page'));
+
+                if (pageNum < 1)
+                    pageNum = 1;
+                if (pageNum > totalSupportPages)
+                    pageNum = totalSupportPages;
+                if (!force && pageNum == currentPage)
+                    return false;
+                else {
+                    currentPageItem.removeClass('currentPage');
+                    $.ajax({
+                        url: '<?php the_permalink(); ?>/topic/page/' + pageNum,
+                        dataType: 'html',
+                        beforeSend: function () {
+                            $('#threadsContainer').append('<div class="CMDM_loadingOverlay"></div>');
+                        },
+                        success: function (data) {
+                            $('#threadsContainer').html(data);
+                            $('.tabItemSupport .paging a[data-page=' + pageNum + ']').addClass('currentPage');
+                        }
+                    });
+                }
+
+            }
+
+            if ($addThreadForm.length && false)
+            {
+                $addThreadForm.ajaxForm({
+                    dataType: 'json',
+                    beforeSubmit: function (arr, $form) {
+                        $form.append('<div class="CMDM_loadingOverlay"></div>');
+                        $form.find('.CMDM_error').empty().hide();
+                    },
+                    success: function (data, status, xhr, $form) {
+
+                        if (data.success == 1) {
+                            $form.find('.CMDM_loadingOverlay').remove();
+                            $form.resetForm();
+                            showSupportPage(1, true);
+
+                        } else {
+                            for(var i = 0; i < data.message.length; i++)
+                                $form.find('.CMDM_error').append('<li>' + data.message[i] + '</li>').show().delay(5000).fadeOut('slow');
+                            $form.find('.CMDM_loadingOverlay').remove();
+                        }
+                    }
+                });
+            }
+        });
+    })(jQuery);
+
+</script>

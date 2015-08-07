@@ -1,0 +1,9 @@
+<?php if (!empty($categories)): ?>
+<h3>Categories: 
+    <?php foreach ($categories as $id=>$name) {
+        $links[] = '<a href="'.esc_attr(get_term_link($id, $taxonomy)).'">'.$name.'</a>';
+    }
+    echo implode(' | ', $links);
+    ?>
+</h3>
+<?php endif; ?>

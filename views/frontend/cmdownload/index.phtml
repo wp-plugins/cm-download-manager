@@ -1,0 +1,142 @@
+<?php
+/**
+ * The template for displaying Archive pages.
+ *
+ * Used to display archive-type pages if nothing more specific matches a query.
+ * For example, puts together date-based pages if no date.php file exists.
+ *
+ * Learn more: http://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package WordPress
+ * @subpackage Twenty_Eleven
+ * @since Twenty Eleven 1.0
+ */
+get_header();
+?>
+<div class="CMDM site-content">
+    <div class="CMDM-app">
+        <div class="aside">
+            <?php
+            if( is_user_logged_in() )
+            {
+                ?>
+                <div class="sideBox">
+                    <div class="manageAddOns">
+                        <a class="manageAddOnsA" href="<?php echo esc_attr(CMDM_get_url('cmdownload', 'dashboard')); ?>"><?php
+                        	_e('Manage my Downloads', 'cm-download-manager'); ?> <img src="<?php echo esc_attr(CMDM_URL);
+                        	?>/views/resources/imgs/uploadIcon.png" alt="" style="vertical-align:middle;"></a>
+
+                    </div>
+                </div>
+            <?php } ?>
+            <!--/sideBox -->
+            <?php dynamic_sidebar('cm-download-manager-sidebar'); ?>
+        </div>
+        <!--/aside -->
+        <div class="main">
+            <?php do_action('CMDM_show_search_form'); ?>
+            <!--/searchAddOns -->
+            <?php
+            $currentPage = get_query_var('paged');
+            if( $currentPage == 0 ) $currentPage = 1;
+            $perPage = get_query_var('posts_per_page');
+            $showingStart = ($currentPage - 1) * $perPage + 1;
+            $showingEnd = min($showingStart + $perPage - 1, $wp_query->found_posts);
+            $total = $wp_query->found_posts;
+            ?>
+            <?php
+            if( is_tax() )
+            {
+                global $wp_query;
+                $term = $wp_query->get_queried_object();
+                $term_id = $term->term_id;
+                $cats = array($term->name);
+                while($term->parent > 0)
+                {
+                    $term = get_term($term->parent, CMDM_GroupDownloadPage::CAT_TAXONOMY);
+                    $link = '<a href="' . esc_attr(get_term_link($term)) . '">' . $term->name . '</a>';
+                    $cats = array_merge(array($link), $cats);
+                }
+                $title = $cats[count($cats) - 1];
+            }
+            elseif( is_search() )
+            {
+                $title = __('Search Results for', 'cm-download-manager') . ' <em>"' . get_search_query() . '"</em>';
+            }
+            else
+            {
+                $title = __('All Downloads', 'cm-download-manager');
+            }
+            ?>
+
+            <h2>
+                <?php echo $title; ?> <span class="num">(<?php echo $total; ?>)</span>
+            </h2>
+            <!--/h2 -->
+            <div class="boxGrey724">
+                <?php do_action('CMDM_show_categories'); ?>
+
+            </div>
+            <!--/boxGrey724 -->
+            <div class="searchResItems">
+                <?php if( have_posts() ): ?>
+                    <div class="searchTitle"><?php
+                        printf(__('Showing %d-%d of %d', 'cm-download-manager'), $showingStart, $showingEnd, $total);
+                        ?>
+                    </div>
+                    <ul>
+                        <?php while(have_posts()): the_post(); ?>
+                            <li>
+                                <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a> <cite><?php
+                                    $counter = CMDM_number_of_downloads();
+                                    echo $counter;
+                                    ?> <?php
+                                    if( $counter > 1 || $counter == 0 ) _e('Downloads', 'cm-download-manager');
+                                    else _e('Download', 'cm-download-manager');
+                                    ?></cite>
+                                <a href="<?php the_permalink(); ?>" class="download"><?php _e('Info', 'cm-download-manager'); ?></a>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
+                    <div class="paging">
+                        <?php
+                        global $wp_query;
+                        $result_pages = $wp_query->max_num_pages;
+                        $prev_link = $result_pages > 1 && $currentPage > 1 ? (strip_tags(previous_posts(false))) : '#';
+                        $next_link = $result_pages > 1 && $currentPage < $result_pages ? (strip_tags(next_posts(0, false))) : '#';
+                        ?>
+                        <a href="<?php echo esc_attr($prev_link); ?>" class="prev">&laquo;</a>
+                        <?php
+                        for($i = 1; $i <= $result_pages; $i++)
+                        {
+                            if( ($paged == 0 && $i == 1) || $paged == $i )
+                            {
+                                echo ' ' . $i;
+                            }
+                            else echo ' <a href="' . esc_attr(get_pagenum_link($i)) . '">' . $i . '</a>';
+                        }
+                        ?>
+                        <a href="<?php echo esc_attr($next_link); ?>" class="next">&raquo;</a></div>
+                    <!--/paging -->
+                <?php else: ?>
+                    <div class="searchTitle"><?php _e('No results has been found', 'cm-download-manager'); ?></div>
+                    <div class="paging">
+                        <a href="#" class="prev">&laquo;</a>
+                        1
+                        <a href="#" class="next">&raquo;</a>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <!--/searchResItems -->
+            <div class="clear"></div>
+        </div>
+        <!--/main -->
+        <span class="cmdm_poweredby">
+          	<a href="http://cminds.com/" target="_blank" class="cmdm_poweredbylink">CreativeMinds WordPress</a>
+         	<a href="https://www.cminds.com/store/downloadsmanager/" target="_blank" class="cmdm_poweredbylink">CM Downloads Manager</a>
+        </span>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="clear"></div>
+<?php get_footer(); ?>

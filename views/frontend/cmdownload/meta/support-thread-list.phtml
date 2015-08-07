@@ -1,0 +1,21 @@
+<?php
+global $post;
+if (!empty($items)) {
+    foreach ($items as $comment) {
+        ?>
+        <tr>
+            <td><a class="topicLink" href="<?php echo esc_attr(get_permalink($comment['post_id']) . '/topic/' . $comment['thread_id']); ?>"><?php
+            	if ($comment['resolved']): ?>[<?php _e('RESOLVED', 'cm-download-manager'); ?>] <?php endif; ?><?php echo $comment['title']; ?></a></td>
+            <td><?php echo $comment['counter']; ?></td>
+            <td><?php echo $comment['lastPoster']; ?></td>
+            <td><?php echo CMDM_SupportThread::renderDaysAgo($comment['lastUpdate'], true); ?>
+            </td>
+        </tr>
+        <?php
+    }
+}
+else { ?>
+        <tr><td colspan="4"><?php _e('No topics', 'cm-download-manager'); ?>, 	<?php  if ( is_user_logged_in() ) {  ?> 
+    <?php _e('would you like to create one?', 'cm-download-manager'); ?><?php } ?></td></tr>
+<?php }
+?>
